@@ -1,0 +1,3 @@
+/* System permissions — English */
+"NSLocationWhenInUseUsageDescription" = "To show you the UV index and weather in your area.";
+"NSHealthUpdateUsageDescription" = "To record your sun exposure time in Apple Health.";
