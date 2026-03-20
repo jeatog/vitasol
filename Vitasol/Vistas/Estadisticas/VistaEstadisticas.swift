@@ -228,7 +228,19 @@ struct FilaHistorial: View {
     @AppStorage("unidadTemp") private var unidadTemp = "C"
     @AppStorage("idiomaApp")  private var idiomaApp  = "es"
 
-    private var locale: Locale { Locale(identifier: idiomaApp) }
+    private static let fmtHora: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.timeStyle = .short
+        fmt.dateStyle = .none
+        return fmt
+    }()
+
+    private static let fmtFecha: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateStyle = .medium
+        fmt.timeStyle = .none
+        return fmt
+    }()
 
     private var tempFormateada: String {
         unidadTemp == "F"
@@ -237,23 +249,18 @@ struct FilaHistorial: View {
     }
 
     private var rangoHoras: String {
+        let locale = Locale(identifier: idiomaApp)
+        Self.fmtHora.locale = locale
         let fin    = sesion.fecha
         let inicio = fin.addingTimeInterval(-TimeInterval(sesion.duracionSegundos))
-        let fmt    = DateFormatter()
-        fmt.timeStyle = .short
-        fmt.dateStyle = .none
-        fmt.locale    = locale
-        return "\(fmt.string(from: inicio)) – \(fmt.string(from: fin))"
+        return "\(Self.fmtHora.string(from: inicio)) – \(Self.fmtHora.string(from: fin))"
     }
 
     private var etiquetaFecha: String {
         if Calendar.current.isDateInToday(sesion.fecha)     { return String(localized: "general.hoy")  }
         if Calendar.current.isDateInYesterday(sesion.fecha) { return String(localized: "general.ayer") }
-        let fmt       = DateFormatter()
-        fmt.dateStyle = .medium
-        fmt.timeStyle = .none
-        fmt.locale    = locale
-        return fmt.string(from: sesion.fecha)
+        Self.fmtFecha.locale = Locale(identifier: idiomaApp)
+        return Self.fmtFecha.string(from: sesion.fecha)
     }
 
     var body: some View {

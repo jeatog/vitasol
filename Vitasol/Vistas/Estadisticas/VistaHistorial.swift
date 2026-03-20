@@ -182,7 +182,7 @@ struct VistaHistorial: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.vertical, 48)
             } else {
-                VStack(spacing: 0) {
+                LazyVStack(spacing: 0) {
                     ForEach(Array(sesionesFiltradas.enumerated()), id: \.element.id) { indice, sesion in
                         FilaHistorial(sesion: sesion)
                         if indice < sesionesFiltradas.count - 1 {
