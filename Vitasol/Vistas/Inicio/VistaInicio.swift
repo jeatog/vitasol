@@ -283,7 +283,7 @@ struct VistaInicio: View {
             }
             .padding(Diseno.rellenoS + 4)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(EstiloBotonTarjeta())
         .tarjetaVidrio()
         .overlay(
             RoundedRectangle(cornerRadius: 20, style: .continuous)

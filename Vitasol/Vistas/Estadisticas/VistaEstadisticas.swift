@@ -3,6 +3,7 @@ import SwiftData
 
 struct VistaEstadisticas: View {
     @Query(sort: \SesionSolar.fecha, order: .reverse) private var sesiones: [SesionSolar]
+    @Environment(GestorSesion.self) private var gestorSesion
 
     @State private var mostrarHistorial = false
     @State private var mostrarInfoStats = false
@@ -197,15 +198,16 @@ struct VistaEstadisticas: View {
             .padding(Diseno.rellenoS + 4)
             .tarjetaVidrio()
         }
-        .buttonStyle(.plain)
+        .buttonStyle(EstiloBotonTarjeta())
     }
 
     // MARK: Estado vacío
     private var estadoVacio: some View {
         VStack(spacing: 16) {
-            Image(systemName: "trophy")
+            Image(systemName: "sun.max.fill")
                 .font(.system(size: 52))
-                .foregroundStyle(Color.ambar.opacity(0.5))
+                .foregroundStyle(.ambar)
+                .symbolEffect(.bounce, value: sesiones.isEmpty)
 
             Text(Textos.Estadisticas.empezarViaje)
                 .font(.fuenteTitulo2)
@@ -215,6 +217,14 @@ struct VistaEstadisticas: View {
                 .font(.fuenteCuerpo)
                 .foregroundStyle(.textoSecundario)
                 .multilineTextAlignment(.center)
+
+            Button {
+                gestorSesion.navegarASesion = true
+            } label: {
+                Label(Textos.Inicio.iniciarSesion, systemImage: "play.fill")
+            }
+            .buttonStyle(EstiloBotonPrincipal())
+            .padding(.top, 4)
         }
         .frame(maxWidth: .infinity)
         .padding(Diseno.rellenoG)

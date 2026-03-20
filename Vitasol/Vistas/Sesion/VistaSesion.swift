@@ -200,6 +200,7 @@ struct VistaSesion: View {
                             pausado = false
                         }
                     }
+                    UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 } label: {
                     Image(systemName: pausado ? "play.fill" : "pause.fill")
                         .font(.system(size: 20, weight: .semibold))
@@ -239,6 +240,7 @@ struct VistaSesion: View {
                         } else {
                             gestorSesion.iniciar(duracionMinutos: duracionMinutos)
                             pausado = false
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                         }
                     } else {
                         mostrarConfirmacionNueva = true

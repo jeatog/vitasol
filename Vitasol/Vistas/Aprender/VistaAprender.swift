@@ -118,7 +118,7 @@ struct TarjetaArticulo: View {
             .tarjetaVidrio()
             .clipShape(RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(EstiloBotonTarjeta())
         .accessibilityAddTraits(.isButton)
     }
 }
