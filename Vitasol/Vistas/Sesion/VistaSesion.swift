@@ -256,6 +256,7 @@ struct VistaSesion: View {
                 }
             }
         }
+        .animation(.spring(response: 0.35), value: gestorSesion.segundosSesion > 0)
     }
 
     // MARK: Card de noche

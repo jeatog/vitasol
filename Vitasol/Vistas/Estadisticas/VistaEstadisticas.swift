@@ -6,6 +6,7 @@ struct VistaEstadisticas: View {
 
     @State private var mostrarHistorial = false
     @State private var mostrarInfoStats = false
+    @State private var progresoAnimado: Double = 0
 
     private var completadas: [SesionSolar] { sesiones.filter { $0.completada } }
 
@@ -113,7 +114,7 @@ struct VistaEstadisticas: View {
                 Circle()
                     .stroke(Color.ambar.opacity(0.12), lineWidth: 6)
                 Circle()
-                    .trim(from: 0, to: min(Double(racha) / 30.0, 1.0))
+                    .trim(from: 0, to: progresoAnimado)
                     .stroke(Color.ambar.gradient, style: StrokeStyle(lineWidth: 6, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                 Image(systemName: "flame.fill")
@@ -121,6 +122,11 @@ struct VistaEstadisticas: View {
                     .foregroundStyle(.ambar)
             }
             .frame(width: 56, height: 56)
+            .onAppear {
+                withAnimation(.spring(response: 1.0, dampingFraction: 0.7).delay(0.3)) {
+                    progresoAnimado = min(Double(racha) / 30.0, 1.0)
+                }
+            }
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(Textos.Estadisticas.rachaActual)
@@ -237,6 +243,7 @@ struct MosaicoStatCompacto: View {
                 .foregroundStyle(.textoPrimario)
                 .minimumScaleFactor(0.6)
                 .lineLimit(1)
+                .contentTransition(.numericText())
 
             Text(etiqueta)
                 .font(.fuenteMicro)

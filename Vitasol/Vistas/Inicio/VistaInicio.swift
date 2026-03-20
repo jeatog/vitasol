@@ -52,15 +52,21 @@ struct VistaInicio: View {
                         tarjetaClima
                         if haySessionActiva {
                             tarjetaSesionEnCurso
+                                .transition(.scale(scale: 0.95).combined(with: .opacity))
                         } else {
                             tarjetaListo
                             seccionCTA
                         }
-                        if sesionHoyCompletada { tarjetaCompletada }
+                        if sesionHoyCompletada {
+                            tarjetaCompletada
+                                .transition(.scale(scale: 0.9).combined(with: .opacity))
+                        }
                         Spacer(minLength: 100)
                     }
                     .padding(.horizontal, Diseno.relleno)
                     .padding(.top, 4)
+                    .animation(.spring(response: 0.4), value: haySessionActiva)
+                    .animation(.spring(response: 0.4), value: sesionHoyCompletada)
                 }
             }
             .navigationTitle("Vitasol")
