@@ -39,6 +39,12 @@ struct VistaInicio: View {
         sesiones.first
     }
 
+    private static let fmtDiaSemana: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "EEEE"
+        return fmt
+    }()
+
     private var haySessionActiva: Bool {
         gestorSesion.segundosSesion > 0
     }
@@ -367,10 +373,8 @@ struct VistaInicio: View {
                 if offset == 1 {
                     return Textos.Inicio.recordatorioManana(horaTexto)
                 }
-                let fmt = DateFormatter()
-                fmt.locale = Locale(identifier: idiomaApp)
-                fmt.dateFormat = "EEEE"
-                let nombreDia = fmt.string(from: futuro).capitalized
+                Self.fmtDiaSemana.locale = Locale(identifier: idiomaApp)
+                let nombreDia = Self.fmtDiaSemana.string(from: futuro).capitalized
                 return Textos.Inicio.recordatorioDia(nombreDia, horaTexto)
             }
         }

@@ -11,6 +11,8 @@ final class GestorTema {
 
     private(set) var esDeNoche: Bool = false
 
+    // Timer sin deinit: vive como @State en VitasolApp (toda la vida de la app).
+    // @Observable + @MainActor no permite nonisolated en stored properties para deinit.
     private var timer: Timer?
 
     init() {
