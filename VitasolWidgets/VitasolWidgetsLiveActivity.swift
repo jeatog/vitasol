@@ -19,7 +19,6 @@ private struct ArcoProgreso: View {
                 .trim(from: 0, to: progreso)
                 .stroke(colAmbar, style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 .rotationEffect(.degrees(-90))
-                .animation(.linear(duration: 1), value: progreso)
             Image(systemName: "sun.min.fill")
                 .font(.system(size: 13, weight: .bold))
                 .foregroundStyle(colAmbar)
@@ -97,7 +96,6 @@ struct VitasolWidgetsLiveActivity: Widget {
 
             return DynamicIsland {
 
-                // Arco — muestra 100% si la sesión expiró
                 DynamicIslandExpandedRegion(.leading) {
                     ArcoProgreso(progreso: context.isStale ? 1.0 : context.state.progreso)
                         .frame(width: 52, height: 52)
