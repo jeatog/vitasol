@@ -72,18 +72,17 @@ enum ExportadorHistorial {
         let margen:  CGFloat = 40
         let ancho    = tamano.width - margen * 2
 
-        let renderer = UIGraphicsPDFRenderer(bounds: tamano)
-
-        let tituloDoc = esIngles ? "Vitasol — Solar Report" : "Vitasol — Reporte solar"
-        let metadatos: [String: Any] = [
-            kCGPDFContextTitle as String: tituloDoc,
+        let formato = UIGraphicsPDFRendererFormat()
+        formato.documentInfo = [
+            kCGPDFContextTitle as String: esIngles ? "Vitasol — Solar Report" : "Vitasol — Reporte solar",
             kCGPDFContextAuthor as String: "Vitasol",
             kCGPDFContextSubject as String: esIngles ? "Sun exposure history" : "Historial de exposición solar",
             kCGPDFContextCreator as String: "Vitasol App",
         ]
+        let renderer = UIGraphicsPDFRenderer(bounds: tamano, format: formato)
 
         let datos = renderer.pdfData { ctx in
-            ctx.beginPage(withBounds: tamano, pageInfo: metadatos)
+            ctx.beginPage()
             var y: CGFloat = margen
 
             // --- Encabezado con logo ---
