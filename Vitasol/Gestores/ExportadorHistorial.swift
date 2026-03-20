@@ -52,7 +52,7 @@ enum ExportadorHistorial {
             csv += "\(estado)\n"
         }
 
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Historial.csv")
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Historial_\(UUID().uuidString.prefix(8)).csv")
         try? csv.write(to: url, atomically: true, encoding: .utf8)
         return url
     }
