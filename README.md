@@ -44,7 +44,7 @@ Dar a los usuarios una herramienta simple para cubrir su necesidad diaria de vit
 - **UI Framework:** SwiftUI (iOS 26, Liquid Glass)
 - **Persistencia:** SwiftData
 - **Concurrencia:** async/await, @MainActor
-- **Arquitectura:** MVVM con ObservableObject y EnvironmentObject
+- **Arquitectura:** MVVM con @Observable (Observation framework) y @Environment
 - **Localización:** String Catalogs (.xcstrings), idioma fuente español
 
 ---
@@ -60,7 +60,7 @@ Dar a los usuarios una herramienta simple para cubrir su necesidad diaria de vit
 | HealthKit | Registro de tiempo de exposición en Apple Salud |
 | CoreLocation | Coordenadas GPS y geocodificación inversa |
 | UserNotifications | Recordatorios diarios configurables |
-| Combine | Reactividad con ObservableObject / @Published |
+| Observation | Reactividad con @Observable y tracking granular por propiedad |
 | Foundation / URLSession | Consumo de la API Open-Meteo |
 
 ---
@@ -112,7 +112,7 @@ Las siguientes funcionalidades fueron diferidas conscientemente de la v1.0 y se 
 - Exportar historial como CSV
 
 ### Widget de pantalla de inicio
-- Widget estático con progreso diario y UV actual (la extensión existe como placeholder)
+- Widget estático con progreso diario y UV actual
 
 ### Sesión
 - Vibración háptica al completar la meta
@@ -124,15 +124,11 @@ Las siguientes funcionalidades fueron diferidas conscientemente de la v1.0 y se 
 - Meta de vitamina D personalizable (UI/día)
 
 ### Accesibilidad
-- Dynamic Type completo
-- VoiceOver en todas las vistas
 - Modo de alto contraste
 
 ### Onboarding
 - Carousel de 3 pantallas al primer lanzamiento
 
 ### Técnico
-- Migración de schema SwiftData al añadir campos no opcionales
-- Tests unitarios para GestorSesion, Logro y PeriodoFiltro
 - CI/CD con Xcode Cloud
 - Migración de Open-Meteo a Apple WeatherKit
