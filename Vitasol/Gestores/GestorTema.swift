@@ -11,17 +11,13 @@ final class GestorTema {
 
     private(set) var esDeNoche: Bool = false
 
-    nonisolated(unsafe) private var timer: Timer?
+    private var timer: Timer?
 
     init() {
         actualizar()
         timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
             Task { @MainActor [weak self] in self?.actualizar() }
         }
-    }
-
-    deinit {
-        timer?.invalidate()
     }
 
     /// ColorScheme que debe aplicarse en la raíz de la app.

@@ -20,6 +20,13 @@
 			remoteGlobalIDString = EC9281052F46A250009C9914;
 			remoteInfo = VitasolWidgetsExtension;
 		};
+		ECAF6B122F6CFCAE00D51C92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC9280B92F4629F8009C9914 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC9280C02F4629F8009C9914;
+			remoteInfo = Vitasol;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +48,7 @@
 		EC9281062F46A250009C9914 /* VitasolWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VitasolWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC9281082F46A250009C9914 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EC92810A2F46A251009C9914 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		ECAF6B0E2F6CFCAE00D51C92 /* VitasolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VitasolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -85,6 +93,11 @@
 			path = VitasolWidgets;
 			sourceTree = "<group>";
 		};
+		ECAF6B0F2F6CFCAE00D51C92 /* VitasolTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VitasolTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +117,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECAF6B0B2F6CFCAE00D51C92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -112,6 +132,7 @@
 			children = (
 				EC9280C32F4629F8009C9914 /* Vitasol */,
 				EC92810C2F46A251009C9914 /* VitasolWidgets */,
+				ECAF6B0F2F6CFCAE00D51C92 /* VitasolTests */,
 				EC9281072F46A250009C9914 /* Frameworks */,
 				EC9280C22F4629F8009C9914 /* Products */,
 			);
@@ -122,6 +143,7 @@
 			children = (
 				EC9280C12F4629F8009C9914 /* Vitasol.app */,
 				EC9281062F46A250009C9914 /* VitasolWidgetsExtension.appex */,
+				ECAF6B0E2F6CFCAE00D51C92 /* VitasolTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +206,29 @@
 			productReference = EC9281062F46A250009C9914 /* VitasolWidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		ECAF6B0D2F6CFCAE00D51C92 /* VitasolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECAF6B162F6CFCAE00D51C92 /* Build configuration list for PBXNativeTarget "VitasolTests" */;
+			buildPhases = (
+				ECAF6B0A2F6CFCAE00D51C92 /* Sources */,
+				ECAF6B0B2F6CFCAE00D51C92 /* Frameworks */,
+				ECAF6B0C2F6CFCAE00D51C92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ECAF6B132F6CFCAE00D51C92 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				ECAF6B0F2F6CFCAE00D51C92 /* VitasolTests */,
+			);
+			name = VitasolTests;
+			packageProductDependencies = (
+			);
+			productName = VitasolTests;
+			productReference = ECAF6B0E2F6CFCAE00D51C92 /* VitasolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -191,7 +236,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2620;
+				LastSwiftUpdateCheck = 2630;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					EC9280C02F4629F8009C9914 = {
@@ -199,6 +244,10 @@
 					};
 					EC9281052F46A250009C9914 = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					ECAF6B0D2F6CFCAE00D51C92 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = EC9280C02F4629F8009C9914;
 					};
 				};
 			};
@@ -219,6 +268,7 @@
 			targets = (
 				EC9280C02F4629F8009C9914 /* Vitasol */,
 				EC9281052F46A250009C9914 /* VitasolWidgetsExtension */,
+				ECAF6B0D2F6CFCAE00D51C92 /* VitasolTests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +282,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EC9281042F46A250009C9914 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECAF6B0C2F6CFCAE00D51C92 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,6 +312,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECAF6B0A2F6CFCAE00D51C92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -262,6 +326,11 @@
 			isa = PBXTargetDependency;
 			target = EC9281052F46A250009C9914 /* VitasolWidgetsExtension */;
 			targetProxy = EC9281162F46A253009C9914 /* PBXContainerItemProxy */;
+		};
+		ECAF6B132F6CFCAE00D51C92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC9280C02F4629F8009C9914 /* Vitasol */;
+			targetProxy = ECAF6B122F6CFCAE00D51C92 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -543,6 +612,46 @@
 			};
 			name = Release;
 		};
+		ECAF6B142F6CFCAE00D51C92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.jeatog.VitasolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vitasol.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vitasol";
+			};
+			name = Debug;
+		};
+		ECAF6B152F6CFCAE00D51C92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.jeatog.VitasolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vitasol.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vitasol";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -569,6 +678,15 @@
 			buildConfigurations = (
 				EC92811A2F46A253009C9914 /* Debug */,
 				EC92811B2F46A253009C9914 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECAF6B162F6CFCAE00D51C92 /* Build configuration list for PBXNativeTarget "VitasolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECAF6B142F6CFCAE00D51C92 /* Debug */,
+				ECAF6B152F6CFCAE00D51C92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

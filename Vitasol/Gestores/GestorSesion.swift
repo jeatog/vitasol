@@ -13,12 +13,12 @@ final class GestorSesion {
     var completo:         Bool = false
     var navegarASesion:   Bool = false
 
-    nonisolated(unsafe) private var temporizador:  Timer?
-    private var actividad:                          Activity<SesionSolarActividad>?
-    private var ticksActualizacion:                 Int = 0
-    private var fechaBackground:                    Date?
-    nonisolated(unsafe) private var tareaBackground: Task<Void, Never>?
-    nonisolated(unsafe) private var tareaForeground: Task<Void, Never>?
+    private var temporizador:       Timer?
+    private var actividad:          Activity<SesionSolarActividad>?
+    private var ticksActualizacion: Int = 0
+    private var fechaBackground:    Date?
+    private var tareaBackground:    Task<Void, Never>?
+    private var tareaForeground:    Task<Void, Never>?
 
     // MARK: Manejamos estado en background
 
@@ -54,12 +54,6 @@ final class GestorSesion {
                 }
             }
         }
-    }
-
-    deinit {
-        tareaBackground?.cancel()
-        tareaForeground?.cancel()
-        temporizador?.invalidate()
     }
 
     var progreso: Double {
