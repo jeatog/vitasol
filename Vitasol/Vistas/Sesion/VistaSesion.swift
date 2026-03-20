@@ -96,7 +96,6 @@ struct VistaSesion: View {
                 }
             }
         }
-        .id(idiomaApp)
     }
 
     // MARK: Anillo cronómetro
@@ -141,6 +140,9 @@ struct VistaSesion: View {
             .padding(.vertical, 20)
             .glassEffect(in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(gestorSesion.tiempoTexto))
+        .accessibilityValue(Text(Textos.Sesion.completado(Int(gestorSesion.progreso * 100))))
     }
 
     // Solecito posicionado en la punta del arco de progreso
@@ -180,6 +182,7 @@ struct VistaSesion: View {
                         .padding(18)
                         .glassEffect(in: Circle())
                 }
+                .accessibilityLabel(pausado ? String(localized: "sesion.reanudar") : String(localized: "sesion.pausar"))
 
                 Button {
                     withAnimation {
@@ -193,6 +196,7 @@ struct VistaSesion: View {
                         .padding(18)
                         .glassEffect(in: Circle())
                 }
+                .accessibilityLabel(String(localized: "sesion.detener"))
             }
 
             // Botón principal: iniciar (con checks) o nueva sesión / card de noche
@@ -258,6 +262,7 @@ struct VistaSesion: View {
         }
         .padding(.vertical, 18)
         .tarjetaVidrio()
+        .accessibilityElement(children: .combine)
     }
 
     private func celdaInfo(icono: String, etiqueta: LocalizedStringKey, valor: String) -> some View {

@@ -6,7 +6,7 @@ struct VistaInicio: View {
     @Binding var tabSeleccionada: Int
 
     @Environment(\.modelContext) private var contexto
-    @Query(sort: \SesionSolar.fecha, order: .reverse) private var sesiones: [SesionSolar]
+    @Query private var sesiones: [SesionSolar]
     @EnvironmentObject private var gestorSesion:    GestorSesion
     @EnvironmentObject private var gestorUbicacion: GestorUbicacion
     @EnvironmentObject private var gestorTema:      GestorTema
@@ -18,12 +18,22 @@ struct VistaInicio: View {
     @AppStorage("ubicacionActiva")       private var ubicacionActiva    = false
     @AppStorage("unidadTemp")            private var unidadTemp         = "C"
 
+    init(tabSeleccionada: Binding<Int>) {
+        _tabSeleccionada = tabSeleccionada
+        let inicioHoy = Calendar.current.startOfDay(for: .now)
+        _sesiones = Query(
+            filter: #Predicate<SesionSolar> { $0.fecha >= inicioHoy },
+            sort: \SesionSolar.fecha,
+            order: .reverse
+        )
+    }
+
     private var sesionHoyCompletada: Bool {
-        sesiones.first { $0.esHoy && $0.completada } != nil
+        sesiones.first { $0.completada } != nil
     }
 
     private var sesionDeHoy: SesionSolar? {
-        sesiones.first { $0.esHoy }
+        sesiones.first
     }
 
     private var haySessionActiva: Bool {
@@ -102,6 +112,7 @@ struct VistaInicio: View {
             }
         }
         .padding(.top, 6)
+        .accessibilityElement(children: .combine)
     }
 
     // MARK: Tarjeta de clima
@@ -189,6 +200,7 @@ struct VistaInicio: View {
         }
         .padding(Diseno.relleno)
         .tarjetaVidrio()
+        .accessibilityElement(children: .combine)
     }
 
     // MARK: Tarjeta "¿Listo?"
@@ -197,7 +209,6 @@ struct VistaInicio: View {
             Image(systemName: gestorTema.esDeNoche ? "moon.fill" : "sun.horizon.fill")
                 .font(.system(size: 40))
                 .foregroundStyle(.ambar)
-                .symbolEffect(.pulse.byLayer)
 
             VStack(spacing: 5) {
                 Text(Textos.Inicio.listoParaSol)
@@ -270,6 +281,8 @@ struct VistaInicio: View {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .strokeBorder(Color.ambar.opacity(0.35), lineWidth: 1)
         )
+        .accessibilityElement(children: .combine)
+        .accessibilityHint(String(localized: "general.toca_para_ver"))
     }
 
     // MARK: Tarjeta de sesión completada

@@ -89,7 +89,6 @@ struct VistaAjustes: View {
                 Text(Textos.Ajustes.ubicacionBloqueadaMsg)
             }
         }
-        .id(idiomaApp)
     }
 
     // MARK: Sección de idioma y unidades
@@ -199,6 +198,7 @@ struct VistaAjustes: View {
                                     )
                             )
                     }
+                    .accessibilityAddTraits(activo ? .isSelected : [])
                     .animation(.easeInOut(duration: 0.18), value: activo)
                 }
             }

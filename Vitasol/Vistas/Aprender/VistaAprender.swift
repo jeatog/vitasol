@@ -102,12 +102,8 @@ struct VistaAprender: View {
             }
         }
         .padding(Diseno.relleno)
-        .background(Color.ambar.opacity(0.08))
-        .clipShape(RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous)
-                .strokeBorder(Color.ambar.opacity(0.25), lineWidth: 1)
-        )
+        .tarjetaVidrio()
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -169,5 +165,7 @@ struct TarjetaTema: View {
         }
         .tarjetaVidrio()
         .clipShape(RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityHint(expandido ? String(localized: "aprender.contraer") : String(localized: "aprender.expandir"))
     }
 }

@@ -216,6 +216,9 @@ struct MosaicoStat: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Diseno.rellenoS + 4)
         .tarjetaVidrio()
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(etiqueta))
+        .accessibilityValue(Text(valor))
     }
 }
 
@@ -295,6 +298,7 @@ struct FilaHistorial: View {
         }
         .padding(.horizontal, Diseno.rellenoS + 4)
         .padding(.vertical, Diseno.rellenoS)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -339,5 +343,7 @@ struct FilaLogro: View {
         .padding(.horizontal, Diseno.rellenoS + 4)
         .padding(.vertical, Diseno.rellenoS)
         .animation(.spring(response: 0.4, dampingFraction: 0.7), value: logro.desbloqueado)
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(logro.desbloqueado ? .isSelected : [])
     }
 }
