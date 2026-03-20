@@ -109,7 +109,8 @@ enum ExportadorHistorial {
             dibujarPie(tamano: tamano, margen: margen, ancho: ancho, esIngles: esIngles)
         }
 
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Report_\(fechaArchivo).pdf")
+        let nombreArchivo = esIngles ? "Vitasol_Report" : "Vitasol_Reporte"
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("\(nombreArchivo)_\(fechaArchivo).pdf")
         try? datos.write(to: url)
         return url
     }
