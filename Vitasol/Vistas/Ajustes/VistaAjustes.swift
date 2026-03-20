@@ -355,7 +355,7 @@ struct FilaConfiguracion: View {
 
             Spacer()
 
-            Toggle("", isOn: $activado)
+            Toggle(titulo, isOn: $activado)
                 .tint(.ambar)
                 .labelsHidden()
                 .onChange(of: activado) { _, nuevoValor in

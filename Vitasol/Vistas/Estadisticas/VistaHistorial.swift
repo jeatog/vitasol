@@ -254,6 +254,7 @@ struct ChipFiltro: View {
         if seleccionado {
             chipBase
                 .background(color.gradient, in: Capsule())
+                .accessibilityAddTraits(.isSelected)
         } else {
             chipBase
                 .glassEffect(in: Capsule())
