@@ -52,7 +52,7 @@ enum ExportadorHistorial {
             csv += "\(estado)\n"
         }
 
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Historial_\(UUID().uuidString.prefix(8)).csv")
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Historial_\(fechaArchivo).csv")
         try? csv.write(to: url, atomically: true, encoding: .utf8)
         return url
     }
@@ -102,7 +102,7 @@ enum ExportadorHistorial {
             dibujarPie(tamano: tamano, margen: margen, ancho: ancho, esIngles: esIngles)
         }
 
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Reporte.pdf")
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Reporte_\(fechaArchivo).pdf")
         try? datos.write(to: url)
         return url
     }
@@ -386,6 +386,12 @@ enum ExportadorHistorial {
     }
 
     // MARK: - Auxiliares
+
+    private static var fechaArchivo: String {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "ddMMyyyy"
+        return fmt.string(from: .now)
+    }
 
     private static func colorParaUV(_ uv: Double) -> UIColor {
         switch Int(uv) {
