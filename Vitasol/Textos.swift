@@ -40,6 +40,9 @@ enum Textos {
         static func recordatorioManana(_ hora: String) -> LocalizedStringKey {
             "inicio.recordatorio_manana \(hora)"
         }
+        static func recordatorioDia(_ dia: String, _ hora: String) -> LocalizedStringKey {
+            "inicio.recordatorio_dia \(dia) \(hora)"
+        }
         static func duracionRecomendada(_ mins: Int) -> LocalizedStringKey {
             "inicio.duracion_recomendada \(mins)"
         }

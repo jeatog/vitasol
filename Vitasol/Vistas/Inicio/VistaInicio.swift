@@ -18,6 +18,8 @@ struct VistaInicio: View {
     @AppStorage("horarioMinuto")         private var minutoRecordatorio = 0
     @AppStorage("ubicacionActiva")       private var ubicacionActiva    = false
     @AppStorage("unidadTemp")            private var unidadTemp         = "C"
+    @AppStorage("diasActivosTexto")     private var diasActivosTexto   = "2,3,4,5,6"
+    @AppStorage("idiomaApp")            private var idiomaApp          = "es"
 
     init(tabSeleccionada: Binding<Int>) {
         _tabSeleccionada = tabSeleccionada
@@ -223,9 +225,7 @@ struct VistaInicio: View {
                     .font(.fuenteTitulo2)
                     .foregroundStyle(.textoPrimario)
 
-                Text(recordatorioYaPaso
-                     ? Textos.Inicio.recordatorioManana(horaTexto)
-                     : Textos.Inicio.recordatorio(horaTexto))
+                Text(textoProximoRecordatorio)
                     .font(.fuenteCuerpo)
                     .foregroundStyle(.textoSecundario)
                     .multilineTextAlignment(.center)
@@ -339,11 +339,43 @@ struct VistaInicio: View {
 
     private var tempUnidad: String { unidadTemp == "F" ? "°F" : "°C" }
 
-    private var recordatorioYaPaso: Bool {
-        let ahora     = Calendar.current.dateComponents([.hour, .minute], from: .now)
-        let minActual = (ahora.hour ?? 0) * 60 + (ahora.minute ?? 0)
-        let minConfig = horaRecordatorio * 60 + minutoRecordatorio
-        return minActual >= minConfig
+    private var diasActivos: Set<Int> {
+        Set(diasActivosTexto.split(separator: ",").compactMap { Int($0) })
+    }
+
+    private var textoProximoRecordatorio: LocalizedStringKey {
+        let calendario = Calendar.current
+        let ahora      = Date.now
+        let hoyWeekday = calendario.component(.weekday, from: ahora)
+        let minActual  = calendario.component(.hour, from: ahora) * 60 + calendario.component(.minute, from: ahora)
+        let minConfig  = horaRecordatorio * 60 + minutoRecordatorio
+
+        // Si hoy es día activo y la hora no ha pasado
+        if diasActivos.contains(hoyWeekday) && minActual < minConfig {
+            return Textos.Inicio.recordatorio(horaTexto)
+        }
+
+        // Buscar el próximo día activo
+        guard !diasActivos.isEmpty else {
+            return Textos.Inicio.recordatorio(horaTexto)
+        }
+
+        for offset in 1...7 {
+            guard let futuro = calendario.date(byAdding: .day, value: offset, to: ahora) else { continue }
+            let weekday = calendario.component(.weekday, from: futuro)
+            if diasActivos.contains(weekday) {
+                if offset == 1 {
+                    return Textos.Inicio.recordatorioManana(horaTexto)
+                }
+                let fmt = DateFormatter()
+                fmt.locale = Locale(identifier: idiomaApp)
+                fmt.dateFormat = "EEEE"
+                let nombreDia = fmt.string(from: futuro).capitalized
+                return Textos.Inicio.recordatorioDia(nombreDia, horaTexto)
+            }
+        }
+
+        return Textos.Inicio.recordatorio(horaTexto)
     }
 
     /// "Intenta más tarde" si estamos antes de las 18:00, "Intenta mañana" si >= 18:00
