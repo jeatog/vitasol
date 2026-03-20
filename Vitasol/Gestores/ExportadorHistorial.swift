@@ -102,7 +102,7 @@ enum ExportadorHistorial {
             dibujarPie(tamano: tamano, margen: margen, ancho: ancho, esIngles: esIngles)
         }
 
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Reporte_\(fechaArchivo).pdf")
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Vitasol_Report_\(fechaArchivo).pdf")
         try? datos.write(to: url)
         return url
     }
@@ -335,7 +335,7 @@ enum ExportadorHistorial {
             colAmbar.withAlphaComponent(0.3).setFill()
             circulo.fill()
 
-            let textoLogro = logro.id.replacingOccurrences(of: "_", with: " ").capitalized
+            let textoLogro = nombreLogro(id: logro.id, esIngles: esIngles)
             NSString(string: textoLogro).draw(at: CGPoint(x: x + 14, y: y), withAttributes: attrLogro)
 
             if col == columnas - 1 || i == desbloqueados.count - 1 {
@@ -408,5 +408,28 @@ enum ExportadorHistorial {
             resultado = String(resultado.dropLast(2)) + "…"
         }
         return resultado
+    }
+
+    private static func nombreLogro(id: String, esIngles: Bool) -> String {
+        let nombres: [String: (es: String, en: String)] = [
+            "primer_rayo":    ("Primer rayo",          "First ray"),
+            "racha_3":        ("Racha de 3",            "3-day streak"),
+            "semana":         ("Semana solar",          "Solar week"),
+            "racha_14":       ("Imparable",             "Unstoppable"),
+            "mes":            ("Mes perfecto",          "Perfect month"),
+            "racha_60":       ("Realeza solar",         "Solar royalty"),
+            "devoto":         ("Devoto del sol",        "Sun devotee"),
+            "centenario":     ("Centenario",            "Centenary"),
+            "diez_horas":     ("Horas doradas",         "Golden hours"),
+            "madrugador":     ("Madrugador",            "Early bird"),
+            "mediodia":       ("Guerrero del mediodía", "Noon warrior"),
+            "trotamundos":    ("Trotamundos",           "Globetrotter"),
+            "uv_extremo":     ("UV extremo",            "Extreme UV"),
+            "fin_de_semana":  ("Fin de semana solar",   "Solar weekend"),
+        ]
+        guard let nombre = nombres[id] else {
+            return id.replacingOccurrences(of: "_", with: " ").capitalized
+        }
+        return esIngles ? nombre.en : nombre.es
     }
 }
