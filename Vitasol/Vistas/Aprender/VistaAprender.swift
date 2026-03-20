@@ -1,64 +1,14 @@
 import SwiftUI
 
-// MARK: Modelo de tema de aprendizaje
-struct TemaAprendizaje: Identifiable {
-    let id    = UUID()
-    let icono:  String
-    let titulo: LocalizedStringKey
-    let color:  Color
-    let puntos: [LocalizedStringKey]
-}
+// MARK: Vista principal de Aprender
 
-// MARK: Vista principal
 struct VistaAprender: View {
-    private let temas: [TemaAprendizaje] = [
-        TemaAprendizaje(
-            icono: "sun.max.fill",
-            titulo: Textos.Aprender.queEsTitulo,
-            color: .ambar,
-            puntos: [
-                Textos.Aprender.queEsB1,
-                Textos.Aprender.queEsB2,
-                Textos.Aprender.queEsB3,
-            ]
-        ),
-        TemaAprendizaje(
-            icono: "heart.fill",
-            titulo: Textos.Aprender.beneficiosTitulo,
-            color: Color(red: 0.80, green: 0.25, blue: 0.45),
-            puntos: [
-                Textos.Aprender.beneficiosB1,
-                Textos.Aprender.beneficiosB2,
-                Textos.Aprender.beneficiosB3,
-                Textos.Aprender.beneficiosB4,
-                Textos.Aprender.beneficiosB5,
-            ]
-        ),
-        TemaAprendizaje(
-            icono: "leaf.fill",
-            titulo: Textos.Aprender.fuentesTitulo,
-            color: .salvia,
-            puntos: [
-                Textos.Aprender.fuentesB1,
-                Textos.Aprender.fuentesB2,
-                Textos.Aprender.fuentesB3,
-                Textos.Aprender.fuentesB4,
-                Textos.Aprender.fuentesB5,
-            ]
-        ),
-        TemaAprendizaje(
-            icono: "lightbulb.fill",
-            titulo: Textos.Aprender.consejosTitulo,
-            color: .dorado,
-            puntos: [
-                Textos.Aprender.consejosB1,
-                Textos.Aprender.consejosB2,
-                Textos.Aprender.consejosB3,
-                Textos.Aprender.consejosB4,
-                Textos.Aprender.consejosB5,
-            ]
-        ),
-    ]
+    @AppStorage("idiomaApp") private var idiomaApp = "es"
+    @State private var articuloSeleccionado: Articulo?
+
+    private var articulos: [Articulo] {
+        CargadorArticulos.cargar(idioma: idiomaApp)
+    }
 
     var body: some View {
         NavigationStack {
@@ -67,8 +17,10 @@ struct VistaAprender: View {
 
                 ScrollView {
                     VStack(spacing: Diseno.espaciado) {
-                        ForEach(temas) { tema in
-                            TarjetaTema(tema: tema)
+                        ForEach(articulos) { articulo in
+                            TarjetaArticulo(articulo: articulo) {
+                                articuloSeleccionado = articulo
+                            }
                         }
                         avisoImportante
                         Spacer(minLength: 100)
@@ -79,10 +31,13 @@ struct VistaAprender: View {
             }
             .navigationTitle(Textos.Aprender.titulo)
             .navigationBarTitleDisplayMode(.large)
+            .sheet(item: $articuloSeleccionado) { articulo in
+                DetalleArticulo(articulo: articulo)
+            }
         }
     }
 
-    // MARK: Aviso legal / disclaimer
+    // MARK: Disclaimer
     private var avisoImportante: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: "info.circle.fill")
@@ -107,65 +62,158 @@ struct VistaAprender: View {
     }
 }
 
-// MARK: Tarjeta de tema (expandible)
-struct TarjetaTema: View {
-    let tema: TemaAprendizaje
-    @State private var expandido = false
+// MARK: Tarjeta de artículo (lista principal)
+
+struct TarjetaArticulo: View {
+    let articulo: Articulo
+    let alSeleccionar: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            // Cabecera — tap para expandir
-            Button {
-                withAnimation(.spring(response: 0.38, dampingFraction: 0.8)) {
-                    expandido.toggle()
-                }
-            } label: {
-                HStack(spacing: 14) {
-                    Image(systemName: tema.icono)
-                        .font(.system(size: 17))
-                        .foregroundStyle(tema.color)
-                        .frame(width: 40, height: 40)
-                        .background(tema.color.opacity(0.12))
-                        .clipShape(Circle())
+        Button(action: alSeleccionar) {
+            VStack(spacing: 0) {
+                // Encabezado con gradiente e ícono
+                ZStack {
+                    LinearGradient(
+                        colors: [articulo.colorInicio, articulo.colorFin],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
 
-                    Text(tema.titulo)
+                    // Ícono decorativo grande semitransparente
+                    Image(systemName: articulo.icono)
+                        .font(.system(size: 56, weight: .bold))
+                        .foregroundStyle(.white.opacity(0.2))
+                        .offset(x: 60, y: -10)
+
+                    // Ícono principal centrado
+                    Image(systemName: articulo.icono)
+                        .font(.system(size: 32, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .shadow(color: .black.opacity(0.2), radius: 4, y: 2)
+                }
+                .frame(height: 120)
+                .clipShape(
+                    UnevenRoundedRectangle(
+                        topLeadingRadius: Diseno.radio,
+                        topTrailingRadius: Diseno.radio
+                    )
+                )
+
+                // Título y subtítulo
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(articulo.titulo)
                         .font(.fuenteCabecera)
                         .foregroundStyle(.textoPrimario)
                         .multilineTextAlignment(.leading)
 
-                    Spacer()
-
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 13, weight: .semibold))
+                    Text(articulo.subtitulo)
+                        .font(.fuenteCaption)
                         .foregroundStyle(.textoApagado)
-                        .rotationEffect(.degrees(expandido ? 90 : 0))
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(Diseno.relleno)
-                .contentShape(Rectangle())
             }
-            .buttonStyle(.plain)
+            .tarjetaVidrio()
+            .clipShape(RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(.isButton)
+    }
+}
 
-            // Contenido expandido
-            if expandido {
-                Divider()
-                    .overlay(Color.textoApagado.opacity(0.18))
-                    .padding(.horizontal, Diseno.relleno)
+// MARK: Detalle del artículo (sheet)
 
-                VStack(alignment: .leading, spacing: 10) {
-                    ForEach(Array(tema.puntos.enumerated()), id: \.offset) { _, punto in
-                        Text(punto)
-                            .font(.fuenteCuerpo)
-                            .foregroundStyle(.textoSecundario)
-                            .fixedSize(horizontal: false, vertical: true)
+struct DetalleArticulo: View {
+    let articulo: Articulo
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    // Encabezado con gradiente
+                    ZStack(alignment: .bottomLeading) {
+                        LinearGradient(
+                            colors: [articulo.colorInicio, articulo.colorFin],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+
+                        // Íconos decorativos
+                        Image(systemName: articulo.icono)
+                            .font(.system(size: 120, weight: .bold))
+                            .foregroundStyle(.white.opacity(0.1))
+                            .offset(x: 180, y: -20)
+
+                        Image(systemName: articulo.icono)
+                            .font(.system(size: 44, weight: .semibold))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.2), radius: 6, y: 3)
+                            .padding(Diseno.rellenoG)
+                    }
+                    .frame(height: 200)
+
+                    // Contenido
+                    VStack(alignment: .leading, spacing: 24) {
+                        // Título
+                        Text(articulo.titulo)
+                            .font(.system(.title, design: .rounded, weight: .bold))
+                            .foregroundStyle(.textoPrimario)
+
+                        // Secciones
+                        ForEach(Array(articulo.secciones.enumerated()), id: \.offset) { _, seccion in
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(seccion.titulo)
+                                    .font(.fuenteTitulo2)
+                                    .foregroundStyle(.textoPrimario)
+
+                                ForEach(seccion.parrafos, id: \.self) { parrafo in
+                                    Text(parrafo)
+                                        .font(.fuenteCuerpo)
+                                        .foregroundStyle(.textoSecundario)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                        .lineSpacing(4)
+                                }
+                            }
+                        }
+
+                        // Fuentes
+                        if !articulo.fuentes.isEmpty {
+                            Divider()
+                                .overlay(Color.textoApagado.opacity(0.2))
+
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text(String(localized: "aprender.fuentes"))
+                                    .font(.fuenteCaption)
+                                    .foregroundStyle(.textoApagado)
+                                    .textCase(.uppercase)
+                                    .tracking(0.8)
+
+                                ForEach(articulo.fuentes, id: \.self) { fuente in
+                                    Text("• \(fuente)")
+                                        .font(.fuenteMicro)
+                                        .foregroundStyle(.textoApagado)
+                                }
+                            }
+                        }
+                    }
+                    .padding(Diseno.relleno)
+                    .padding(.top, 8)
+                }
+            }
+            .ignoresSafeArea(.container, edges: .top)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { dismiss() } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 26))
+                            .foregroundStyle(.textoApagado)
+                            .symbolRenderingMode(.hierarchical)
                     }
                 }
-                .padding(Diseno.relleno)
-                .transition(.opacity.combined(with: .push(from: .top)))
             }
         }
-        .tarjetaVidrio()
-        .clipShape(RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
-        .accessibilityAddTraits(.isButton)
-        .accessibilityHint(expandido ? String(localized: "aprender.contraer") : String(localized: "aprender.expandir"))
     }
 }

@@ -497,6 +497,22 @@
         }
       }
     },
+    "aprender.fuentes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuentes"
+          }
+        }
+      }
+    },
     "aprender.aviso_titulo" : {
       "localizations" : {
         "en" : {

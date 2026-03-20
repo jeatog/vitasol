@@ -1,0 +1,269 @@
+[
+  {
+    "id": "que_es",
+    "titulo": "What Is Vitamin D?",
+    "subtitulo": "The \"sunshine vitamin\" is actually an essential hormone your body needs.",
+    "icono": "sun.max.fill",
+    "secciones": [
+      {
+        "titulo": "Your Invisible Ally",
+        "parrafos": [
+          "Vitamin D is a fat-soluble vitamin your body can produce on its own when skin is exposed to sunlight. It functions as a hormone: it passes through the liver and kidneys where it becomes calcitriol, its active form.",
+          "There are two main forms: D2 (ergocalciferol) from plant sources, and D3 (cholecalciferol) produced in your skin and found in animal foods. D3 is more effective at maintaining blood levels."
+        ]
+      },
+      {
+        "titulo": "What Your Body Uses It For",
+        "parrafos": [
+          "Its best-known function is facilitating calcium and phosphorus absorption. Without enough vitamin D, your body absorbs only 10–15% of dietary calcium; with adequate levels, that rises to 30–40%.",
+          "It also plays a role in immune function, muscle health, cardiovascular function, and mood regulation."
+        ]
+      },
+      {
+        "titulo": "A Very Common Deficiency",
+        "parrafos": [
+          "The recommended daily intake is 600 IU for adults aged 1–70 and 800 IU for those over 70. Groups at greatest risk include older adults, people with dark skin, and those who spend little time outdoors.",
+          "Always consult your doctor to determine whether you need supplementation."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH Office of Dietary Supplements — Vitamin D Fact Sheet",
+      "Mayo Clinic — Vitamin D",
+      "NIH News in Health — Digging Into Vitamin D (2023)"
+    ]
+  },
+  {
+    "id": "como_produce",
+    "titulo": "How the Sun Produces Vitamin D",
+    "subtitulo": "Your skin is a solar factory: UVB radiation triggers a fascinating process.",
+    "icono": "bolt.fill",
+    "secciones": [
+      {
+        "titulo": "The Step-by-Step Process",
+        "parrafos": [
+          "When UVB rays (290–320 nm) reach your uncovered skin, they interact with 7-dehydrocholesterol in the epidermis, converting it into previtamin D3 within minutes.",
+          "Previtamin D3 then transforms into vitamin D3 through body heat, enters dermal capillaries, and travels to the liver and kidneys for final activation."
+        ]
+      },
+      {
+        "titulo": "A Self-Regulating System",
+        "parrafos": [
+          "It's impossible to develop vitamin D toxicity from sun exposure. With prolonged exposure, previtamin D3 degrades into inactive products. The skin converts at most 15% of available 7-dehydrocholesterol.",
+          "This safety mechanism doesn't apply to oral supplements, where toxic levels can be reached."
+        ]
+      },
+      {
+        "titulo": "Factors That Influence Production",
+        "parrafos": [
+          "Efficiency depends on latitude, season, time of day, cloud cover, and skin melanin. Above 37° latitude (like Madrid in winter), UVB may be insufficient for months.",
+          "Window glass completely blocks UVB: sunbathing through a window produces no vitamin D."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/NCBI — Vitamin D: Production, Metabolism, and Mechanism of Action",
+      "NIH/PMC — Sunlight and Vitamin D: A Global Perspective for Health"
+    ]
+  },
+  {
+    "id": "tipo_piel",
+    "titulo": "How Much Sun You Need by Skin Type",
+    "subtitulo": "Melanin determines how long you need in the sun to safely produce vitamin D.",
+    "icono": "hand.raised.fill",
+    "secciones": [
+      {
+        "titulo": "The Fitzpatrick Scale",
+        "parrafos": [
+          "The Fitzpatrick classification divides skin into six phototypes. Types I–II (fair skin) produce vitamin D quickly but are most vulnerable. Types V–VI (dark skin) need significantly more time.",
+          "Fair skin converts up to 30 times more vitamin D than dark skin in the same exposure time."
+        ]
+      },
+      {
+        "titulo": "Approximate Exposure Times",
+        "parrafos": [
+          "To synthesize ~400 IU at noon with face, arms, and hands exposed: skin types II–III need 3–8 minutes; types III–IV, 8–15 minutes; types V–VI, 20–30 minutes or more.",
+          "These times vary by season, latitude, and atmospheric conditions."
+        ]
+      },
+      {
+        "titulo": "Finding Your Balance",
+        "parrafos": [
+          "Never expose yourself until skin turns red. Vitamin D production peaks before any sign of sunburn.",
+          "Consult a dermatologist if you have questions about your skin type or safe exposure time."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/PMC — Benefits and Risks of Sun Exposure",
+      "NIH/PMC — Colour Counts: Sunlight and Skin Type as Drivers of Vitamin D Deficiency"
+    ]
+  },
+  {
+    "id": "horarios",
+    "titulo": "The Best Times to Get Sun",
+    "subtitulo": "Time of day determines both synthesis efficiency and risk to your skin.",
+    "icono": "clock.fill",
+    "secciones": [
+      {
+        "titulo": "The Peak Production Window",
+        "parrafos": [
+          "UVB peaks between 10:00 AM and 2:00 PM. In summer, production is efficient from 9:00 AM to 3:00 PM. In winter, the window narrows considerably.",
+          "At noon UVB is most intense, allowing shorter sessions (5–10 min) for the same production as longer exposure at less intense times."
+        ]
+      },
+      {
+        "titulo": "The Risk-Benefit Balance",
+        "parrafos": [
+          "A moderate exposure of 5 to 20 minutes per day, most days, without sunscreen, may be sufficient. Exact time depends on skin type, latitude, and season.",
+          "Check the UV index in your area. The WHO recommends precautions when UV is 3 or higher."
+        ]
+      },
+      {
+        "titulo": "Other Time Factors",
+        "parrafos": [
+          "At mid-high latitudes during November–February, UVB may be too low for vitamin D production. Altitude increases UV intensity. Cloud cover can reduce UVB by 50–90%."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/PubMed — At What Time Should One Go Out in the Sun?",
+      "Harvard Health — Time for More Vitamin D",
+      "WHO — The Ultraviolet (UV) Index"
+    ]
+  },
+  {
+    "id": "riesgos",
+    "titulo": "Risks of Sun Overexposure",
+    "subtitulo": "The sun is necessary, but too much can cause serious and irreversible damage.",
+    "icono": "exclamationmark.triangle.fill",
+    "secciones": [
+      {
+        "titulo": "Sunburn",
+        "parrafos": [
+          "Sunburn damages epidermal cell DNA. A severe sunburn in childhood significantly increases melanoma risk later in life.",
+          "The WHO warns there is no \"healthy tan\": a tan is itself a response to DNA damage."
+        ]
+      },
+      {
+        "titulo": "Aging and Cancer",
+        "parrafos": [
+          "Cumulative exposure causes irreversible photoaging: wrinkles, spots, and loss of elasticity. UVA rays penetrate deep, destroying collagen and elastin.",
+          "Each year, 2–3 million non-melanoma skin cancers and 132,000 melanomas are diagnosed worldwide."
+        ]
+      },
+      {
+        "titulo": "Smart Protection",
+        "parrafos": [
+          "Get just enough sun for vitamin D, then protect yourself: clothing, hat, UV400 sunglasses, and SPF 30+ sunscreen. Nothing replaces your dermatologist's advice."
+        ]
+      }
+    ],
+    "fuentes": [
+      "WHO — Known Health Effects of Ultraviolet Radiation",
+      "American Academy of Dermatology — Sun-Damaged Skin",
+      "NIH/PMC — Sun Exposure and Risk of Melanoma"
+    ]
+  },
+  {
+    "id": "salud_osea",
+    "titulo": "Vitamin D and Bone Health",
+    "subtitulo": "Without adequate vitamin D, your bones can't absorb the calcium they need.",
+    "icono": "figure.walk",
+    "secciones": [
+      {
+        "titulo": "Vitamin D and Calcium",
+        "parrafos": [
+          "With insufficient vitamin D, the intestine absorbs only 10–15% of ingested calcium. With adequate levels, absorption rises to 30–40%.",
+          "Vitamin D also facilitates phosphorus absorption and regulates blood calcium levels."
+        ]
+      },
+      {
+        "titulo": "Rickets and Osteoporosis",
+        "parrafos": [
+          "Severe deficiency causes rickets in children (soft bones) and osteomalacia in adults (bone pain and muscle weakness). Both are preventable.",
+          "Chronic deficiency is a risk factor for osteoporosis. Calcium + vitamin D supplementation can reduce bone loss and fractures."
+        ]
+      },
+      {
+        "titulo": "Protecting Your Bones",
+        "parrafos": [
+          "Ensure 1,000–1,200 mg/day of calcium and 600–800 IU/day of vitamin D. Weight-bearing exercise (walking, running) is also essential.",
+          "After age 50, a 25-hydroxyvitamin D blood test can determine your status. Consult your doctor."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/NIAMS — Calcium and Vitamin D: Important for Bone Health",
+      "NIH/PMC — Vitamin D and Bone Health: Potential Mechanisms",
+      "Mayo Clinic — Calcium and Calcium Supplements"
+    ]
+  },
+  {
+    "id": "alimentos",
+    "titulo": "Food Sources of Vitamin D",
+    "subtitulo": "Few foods contain it naturally, but knowing them helps supplement what the sun doesn't provide.",
+    "icono": "leaf.fill",
+    "secciones": [
+      {
+        "titulo": "Best Natural Sources",
+        "parrafos": [
+          "Wild salmon provides ~988 IU per 100 g; farmed ~240 IU. Other fatty fish (mackerel, sardines, tuna, herring) provide 200–500 IU per serving.",
+          "Cod liver oil has ~1,360 IU per tablespoon. Eggs provide ~44 IU per yolk."
+        ]
+      },
+      {
+        "titulo": "Mushrooms: The Plant-Based Option",
+        "parrafos": [
+          "Mushrooms are the only significant plant source. UV-exposed cremini mushrooms can contain over 1,100 IU per cup.",
+          "Mushrooms produce D2 while animal foods contain D3. D3 is more effective long-term."
+        ]
+      },
+      {
+        "titulo": "Fortified Foods",
+        "parrafos": [
+          "Fortified milk provides ~120 IU per cup. Some juices, cereals, and yogurts are also enriched (80–120 IU per serving).",
+          "For vegan diets, fortified foods and supplements are especially important. Read labels carefully."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH ODS — Vitamin D Consumer Fact Sheet",
+      "NIH/PMC — Mushrooms as a Potential Source of Dietary Vitamin D",
+      "NIH/PMC — Vitamin D in Wild and Farmed Atlantic Salmon"
+    ]
+  },
+  {
+    "id": "mitos",
+    "titulo": "Common Myths About Sun and Vitamin D",
+    "subtitulo": "Separating facts from popular beliefs to take care of your health.",
+    "icono": "questionmark.circle.fill",
+    "secciones": [
+      {
+        "titulo": "\"Sunscreen Prevents Vitamin D Production\"",
+        "parrafos": [
+          "In the lab, sunscreen does reduce production. But in real life, regular sunscreen users generally don't have deficiency. Most people don't apply enough or reapply frequently enough.",
+          "An international expert panel concluded that sunscreen use does not compromise vitamin D status in healthy people."
+        ]
+      },
+      {
+        "titulo": "\"I Can Get Vitamin D Through a Window\"",
+        "parrafos": [
+          "Completely false. Glass absorbs virtually all UVB radiation. Through a window you'll get UVA (causing photoaging) but produce zero vitamin D."
+        ]
+      },
+      {
+        "titulo": "\"More Sun Is Always Better\"",
+        "parrafos": [
+          "Your body has a daily production ceiling. After reaching it (minutes for fair skin), more exposure only causes damage. Previtamin D3 degrades with prolonged exposure.",
+          "It's also false that dark-skinned people don't need to worry: their higher melanin makes them more prone to deficiency. The information here does not replace consultation with a healthcare professional."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/PMC — Do Sunscreens Block Vitamin D Production?",
+      "Harvard Health — 6 Things You Should Know About Vitamin D",
+      "NIH/PMC — Sunscreen Photoprotection and Vitamin D Status"
+    ]
+  }
+]

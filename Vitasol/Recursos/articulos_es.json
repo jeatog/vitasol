@@ -1,0 +1,269 @@
+[
+  {
+    "id": "que_es",
+    "titulo": "¿Qué es la vitamina D?",
+    "subtitulo": "La \"vitamina del sol\" es en realidad una hormona esencial para tu cuerpo.",
+    "icono": "sun.max.fill",
+    "secciones": [
+      {
+        "titulo": "Tu aliada invisible",
+        "parrafos": [
+          "La vitamina D es una vitamina liposoluble que tu cuerpo puede producir por sí mismo cuando la piel se expone a la luz solar. Técnicamente funciona como una hormona: pasa por el hígado y los riñones donde se transforma en su forma activa, el calcitriol.",
+          "Existen dos formas principales: la D2 (ergocalciferol), de fuentes vegetales, y la D3 (colecalciferol), que se produce en tu piel y se encuentra en alimentos animales. La D3 es más eficaz para mantener los niveles en sangre."
+        ]
+      },
+      {
+        "titulo": "Para qué la necesita tu cuerpo",
+        "parrafos": [
+          "Su función más conocida es facilitar la absorción de calcio y fósforo. Sin vitamina D suficiente, tu cuerpo solo absorbe entre el 10% y el 15% del calcio de la dieta; con niveles adecuados, esa cifra sube al 30–40%.",
+          "También participa en la función inmunitaria, la salud muscular, la función cardiovascular y la regulación del estado de ánimo."
+        ]
+      },
+      {
+        "titulo": "Una deficiencia muy común",
+        "parrafos": [
+          "La ingesta diaria recomendada es de 600 UI para adultos de 1 a 70 años y de 800 UI para mayores de 70. Los grupos con mayor riesgo incluyen personas mayores, quienes tienen piel oscura y quienes pasan poco tiempo al aire libre.",
+          "Consulta siempre con tu médico para determinar si necesitas suplementación."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH Office of Dietary Supplements — Vitamin D Fact Sheet",
+      "Mayo Clinic — Vitamin D",
+      "Secretaría de Salud de México — Vitamina D y salud ósea"
+    ]
+  },
+  {
+    "id": "como_produce",
+    "titulo": "Cómo el sol produce vitamina D",
+    "subtitulo": "Tu piel es una fábrica solar: la radiación UVB desencadena un proceso fascinante.",
+    "icono": "bolt.fill",
+    "secciones": [
+      {
+        "titulo": "El proceso paso a paso",
+        "parrafos": [
+          "Cuando los rayos UVB (290–320 nm) alcanzan tu piel descubierta, interactúan con el 7-dehidrocolesterol en la epidermis y lo transforman en previtamina D3. Es un proceso fotoquímico que ocurre en minutos.",
+          "La previtamina D3 se convierte en vitamina D3 por el calor corporal, pasa a los capilares de la dermis, y viaja al hígado y riñones para su activación final."
+        ]
+      },
+      {
+        "titulo": "Un sistema con autorregulación",
+        "parrafos": [
+          "Es imposible intoxicarse con vitamina D por tomar el sol. Cuando la exposición es prolongada, la previtamina D3 se degrada en productos inactivos. La piel convierte como máximo un 15% del 7-dehidrocolesterol disponible.",
+          "Este mecanismo no aplica a los suplementos orales, donde sí es posible alcanzar niveles tóxicos."
+        ]
+      },
+      {
+        "titulo": "Factores que influyen",
+        "parrafos": [
+          "La eficiencia depende de la latitud, la estación, la hora del día, la nubosidad y la melanina en tu piel. En latitudes por encima de 37° (como Madrid en invierno), la UVB puede ser insuficiente durante meses.",
+          "El vidrio bloquea completamente la UVB: tomar el sol a través de una ventana no produce vitamina D."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/NCBI — Vitamin D: Production, Metabolism, and Mechanism of Action",
+      "NIH/PMC — Sunlight and Vitamin D: A Global Perspective for Health"
+    ]
+  },
+  {
+    "id": "tipo_piel",
+    "titulo": "Cuánto sol necesitas según tu piel",
+    "subtitulo": "La melanina determina cuánto tiempo necesitas para producir vitamina D de forma segura.",
+    "icono": "hand.raised.fill",
+    "secciones": [
+      {
+        "titulo": "La escala Fitzpatrick",
+        "parrafos": [
+          "La clasificación Fitzpatrick divide la piel en seis fototipos. Los tipos I–II (piel clara) producen vitamina D rápidamente pero son más vulnerables al daño. Los tipos V–VI (piel oscura) necesitan significativamente más tiempo.",
+          "La piel clara convierte hasta 30 veces más vitamina D que la piel oscura en el mismo tiempo de exposición."
+        ]
+      },
+      {
+        "titulo": "Tiempos orientativos",
+        "parrafos": [
+          "Para sintetizar ~400 UI al mediodía con cara, brazos y manos expuestos: piel tipo II–III necesita 3–8 minutos; tipo III–IV, 8–15 minutos; tipo V–VI, 20–30 minutos o más.",
+          "Estos tiempos varían según la estación, latitud y condiciones atmosféricas."
+        ]
+      },
+      {
+        "titulo": "Encuentra tu equilibrio",
+        "parrafos": [
+          "Nunca te expongas hasta que la piel se enrojezca. La producción de vitamina D alcanza su máximo antes de cualquier signo de quemadura.",
+          "Consulta con un dermatólogo si tienes dudas sobre tu tipo de piel o el tiempo adecuado."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/PMC — Benefits and Risks of Sun Exposure",
+      "NIH/PMC — Colour Counts: Sunlight and Skin Type as Drivers of Vitamin D Deficiency"
+    ]
+  },
+  {
+    "id": "horarios",
+    "titulo": "Los horarios óptimos para tomar sol",
+    "subtitulo": "El momento del día determina la eficiencia de la síntesis y el riesgo para tu piel.",
+    "icono": "clock.fill",
+    "secciones": [
+      {
+        "titulo": "La ventana de máxima producción",
+        "parrafos": [
+          "La UVB alcanza su pico entre las 10:00 y las 14:00 horas. En verano, la producción es eficiente entre las 9:00 y las 15:00. En invierno, la ventana se estrecha considerablemente.",
+          "Al mediodía la UVB es más intensa, lo que permite sesiones más cortas (5–10 min) para la misma producción que una exposición más larga en horarios menos intensos."
+        ]
+      },
+      {
+        "titulo": "El equilibrio riesgo-beneficio",
+        "parrafos": [
+          "Una exposición de 5 a 20 minutos al día, la mayoría de los días, sin protector solar, puede ser suficiente. El tiempo exacto depende de tu tipo de piel, latitud y estación.",
+          "Consulta el índice UV de tu localidad. La OMS recomienda precauciones cuando el UV es 3 o superior."
+        ]
+      },
+      {
+        "titulo": "Otros factores temporales",
+        "parrafos": [
+          "En latitudes medias-altas, durante noviembre a febrero, la UVB puede ser tan baja que no se produce vitamina D. La altitud aumenta la intensidad UV. La nubosidad puede reducir la UVB entre un 50% y un 90%."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/PubMed — At What Time Should One Go Out in the Sun?",
+      "Harvard Health — Time for More Vitamin D",
+      "OMS — Índice Ultravioleta (UV)"
+    ]
+  },
+  {
+    "id": "riesgos",
+    "titulo": "Riesgos de la sobreexposición",
+    "subtitulo": "El sol es necesario, pero el exceso puede causar daños graves e irreversibles.",
+    "icono": "exclamationmark.triangle.fill",
+    "secciones": [
+      {
+        "titulo": "Quemaduras solares",
+        "parrafos": [
+          "La quemadura solar daña el ADN de las células de la epidermis. Una quemadura grave en la infancia aumenta significativamente el riesgo de melanoma en la vida adulta.",
+          "La OMS advierte que no existe un \"bronceado saludable\": el bronceado es una respuesta al daño del ADN."
+        ]
+      },
+      {
+        "titulo": "Envejecimiento y cáncer",
+        "parrafos": [
+          "La exposición acumulada causa fotoenvejecimiento irreversible: arrugas, manchas y pérdida de elasticidad. Los rayos UVA penetran profundamente destruyendo colágeno y elastina.",
+          "Cada año se diagnostican entre 2 y 3 millones de cánceres de piel no melanoma y 132.000 melanomas en todo el mundo."
+        ]
+      },
+      {
+        "titulo": "Protección inteligente",
+        "parrafos": [
+          "Exponte el tiempo justo para la vitamina D y luego protégete: ropa, sombrero, gafas UV400 y protector solar SPF 30+. Nada reemplaza el consejo de tu dermatólogo."
+        ]
+      }
+    ],
+    "fuentes": [
+      "OMS — Efectos de la Radiación Ultravioleta en la Salud",
+      "American Academy of Dermatology — Sun-Damaged Skin",
+      "IMSS — Recomendaciones para la protección solar"
+    ]
+  },
+  {
+    "id": "salud_osea",
+    "titulo": "Vitamina D y salud ósea",
+    "subtitulo": "Sin vitamina D adecuada, tus huesos no absorben el calcio que necesitan.",
+    "icono": "figure.walk",
+    "secciones": [
+      {
+        "titulo": "Vitamina D y calcio",
+        "parrafos": [
+          "Con niveles insuficientes de vitamina D, el intestino solo absorbe el 10–15% del calcio ingerido. Con niveles adecuados, la absorción sube al 30–40%.",
+          "La vitamina D también facilita la absorción de fósforo y regula los niveles de calcio en sangre."
+        ]
+      },
+      {
+        "titulo": "Raquitismo y osteoporosis",
+        "parrafos": [
+          "La deficiencia severa causa raquitismo en niños (huesos blandos) y osteomalacia en adultos (dolor óseo y debilidad muscular). Ambas son prevenibles.",
+          "La deficiencia crónica es un factor de riesgo para la osteoporosis. La suplementación de calcio + vitamina D puede reducir la pérdida ósea y las fracturas."
+        ]
+      },
+      {
+        "titulo": "Proteger tus huesos",
+        "parrafos": [
+          "Asegura 1.000–1.200 mg/día de calcio y 600–800 UI/día de vitamina D. El ejercicio con carga (caminar, correr) también es esencial.",
+          "Después de los 50 años, un análisis de 25-hidroxivitamina D puede determinar tu estado. Consulta con tu médico."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/NIAMS — Calcium and Vitamin D: Important for Bone Health",
+      "Secretaría de Salud de México — Prevención de osteoporosis",
+      "Mayo Clinic — Calcium and Calcium Supplements"
+    ]
+  },
+  {
+    "id": "alimentos",
+    "titulo": "Fuentes alimentarias de vitamina D",
+    "subtitulo": "Pocos alimentos la contienen naturalmente, pero conocerlos complementa lo que el sol no aporta.",
+    "icono": "leaf.fill",
+    "secciones": [
+      {
+        "titulo": "Las mejores fuentes naturales",
+        "parrafos": [
+          "El salmón salvaje aporta ~988 UI por 100 g; el de piscifactoría ~240 UI. Otros pescados grasos (caballa, sardinas, atún, arenque) aportan 200–500 UI por ración.",
+          "El aceite de hígado de bacalao tiene ~1.360 UI por cucharada. Los huevos aportan ~44 UI por yema."
+        ]
+      },
+      {
+        "titulo": "Hongos: la alternativa vegetal",
+        "parrafos": [
+          "Los hongos son la única fuente vegetal significativa. Los champiñones expuestos a luz UV pueden contener más de 1.100 UI por taza.",
+          "Los hongos producen vitamina D2, mientras que los alimentos animales contienen D3. La D3 es más eficaz a largo plazo."
+        ]
+      },
+      {
+        "titulo": "Alimentos fortificados",
+        "parrafos": [
+          "La leche fortificada aporta ~120 UI por taza. Algunos jugos, cereales y yogures también están enriquecidos (80–120 UI por ración).",
+          "Para dietas veganas, los alimentos fortificados y suplementos son especialmente importantes. Lee las etiquetas."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH ODS — Vitamin D Consumer Fact Sheet",
+      "NIH/PMC — Mushrooms as a Potential Source of Dietary Vitamin D",
+      "Secretaría de Salud de México — Guía de alimentación saludable"
+    ]
+  },
+  {
+    "id": "mitos",
+    "titulo": "Mitos sobre el sol y la vitamina D",
+    "subtitulo": "Separar los hechos de las creencias populares para cuidar tu salud.",
+    "icono": "questionmark.circle.fill",
+    "secciones": [
+      {
+        "titulo": "\"El protector solar impide producir vitamina D\"",
+        "parrafos": [
+          "En laboratorio el protector sí reduce la producción, pero en la vida real los usuarios habituales generalmente no presentan deficiencia. La razón: la mayoría no aplica la cantidad suficiente ni lo reaplica con la frecuencia necesaria.",
+          "Un panel internacional concluyó que el uso de protector solar no compromete los niveles de vitamina D en personas sanas."
+        ]
+      },
+      {
+        "titulo": "\"Puedo obtener vitamina D por la ventana\"",
+        "parrafos": [
+          "Completamente falso. El vidrio absorbe prácticamente toda la radiación UVB. Si tomas el sol a través de una ventana, recibirás UVA (que causa fotoenvejecimiento) pero no producirás vitamina D."
+        ]
+      },
+      {
+        "titulo": "\"Más sol siempre es mejor\"",
+        "parrafos": [
+          "Tu cuerpo tiene un tope de producción diaria. Después de alcanzarlo (pocos minutos en piel clara), más exposición solo causa más daño. La previtamina D3 se degrada con exposición prolongada.",
+          "También es falso que las personas de piel oscura no necesiten preocuparse: precisamente por su mayor melanina, son más propensas a la deficiencia. La información aquí no reemplaza la consulta con un profesional de la salud."
+        ]
+      }
+    ],
+    "fuentes": [
+      "NIH/PMC — Do Sunscreens Block Vitamin D Production?",
+      "Harvard Health — 6 Things You Should Know About Vitamin D",
+      "IMSS — Mitos y realidades sobre la exposición solar"
+    ]
+  }
+]
