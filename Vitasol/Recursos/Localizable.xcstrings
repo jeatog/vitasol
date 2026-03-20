@@ -16,12 +16,6 @@
     "°F" : {
 
     },
-    "5 min" : {
-
-    },
-    "60 min" : {
-
-    },
     "ajustes.dias_activos" : {
       "localizations" : {
         "en" : {
@@ -34,6 +28,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Días activos"
+          }
+        }
+      }
+    },
+    "ajustes.duracion_max" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60 min"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60 min"
+          }
+        }
+      }
+    },
+    "ajustes.duracion_min" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 min"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 min"
           }
         }
       }
@@ -66,38 +92,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld min"
-          }
-        }
-      }
-    },
-    "ajustes.duracion_min" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "5 min"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "5 min"
-          }
-        }
-      }
-    },
-    "ajustes.duracion_max" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "60 min"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "60 min"
           }
         }
       }
@@ -342,22 +336,6 @@
         }
       }
     },
-    "ajustes.ubicacion_sub" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "For real-time weather and UV data"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para datos de clima y UV en tiempo real"
-          }
-        }
-      }
-    },
     "ajustes.ubicacion_bloqueada" : {
       "localizations" : {
         "en" : {
@@ -386,6 +364,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Para obtener datos del clima en tiempo real, permite el acceso a la ubicación en Ajustes de tu iPhone."
+          }
+        }
+      }
+    },
+    "ajustes.ubicacion_sub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For real-time weather and UV data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para datos de clima y UV en tiempo real"
           }
         }
       }
@@ -626,6 +620,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consejos Prácticos"
+          }
+        }
+      }
+    },
+    "aprender.contraer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to collapse"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca para contraer"
+          }
+        }
+      }
+    },
+    "aprender.expandir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to expand"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca para expandir"
           }
         }
       }
@@ -1142,6 +1168,22 @@
         }
       }
     },
+    "estadisticas.completadas_info" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These figures only include sessions you completed in full. Sessions stopped manually are not counted."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estas cifras solo incluyen sesiones que completaste en su totalidad. Las sesiones detenidas manualmente no se contabilizan."
+          }
+        }
+      }
+    },
     "estadisticas.dias %lld" : {
       "localizations" : {
         "en" : {
@@ -1314,22 +1356,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Racha actual"
-          }
-        }
-      }
-    },
-    "estadisticas.completadas_info" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "These figures only include sessions you completed in full. Sessions stopped manually are not counted."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estas cifras solo incluyen sesiones que completaste en su totalidad. Las sesiones detenidas manualmente no se contabilizan."
           }
         }
       }
@@ -1682,6 +1708,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "minutos"
+          }
+        }
+      }
+    },
+    "general.toca_para_ver" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to view"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca para ver"
           }
         }
       }
@@ -2102,18 +2144,18 @@
         }
       }
     },
-    "notificacion.titulo" : {
+    "notificacion.sesion_completada_cuerpo %lld" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your Sun Dose ☀️"
+            "value" : "Your %lld-minute sun session is done."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu Dosis de Sol ☀️"
+            "value" : "Tu sesión solar de %lld minutos ha terminado."
           }
         }
       }
@@ -2134,18 +2176,66 @@
         }
       }
     },
-    "notificacion.sesion_completada_cuerpo %lld" : {
+    "notificacion.titulo" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your %lld-minute sun session is done."
+            "value" : "Your Sun Dose ☀️"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu sesión solar de %lld minutos ha terminado."
+            "value" : "Tu Dosis de Sol ☀️"
+          }
+        }
+      }
+    },
+    "sesion.alerta_mal_clima_continuar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start anyway"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar de todos modos"
+          }
+        }
+      }
+    },
+    "sesion.alerta_mal_clima_mensaje" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current weather conditions are not ideal for sun exposure. UV radiation may be insufficient."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las condiciones climáticas actuales no son ideales para exponerse al sol. La radiación UV puede ser insuficiente."
+          }
+        }
+      }
+    },
+    "sesion.alerta_mal_clima_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unfavorable conditions"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condiciones desfavorables"
           }
         }
       }
@@ -2246,54 +2336,6 @@
         }
       }
     },
-    "sesion.alerta_mal_clima_continuar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start anyway"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Iniciar de todos modos"
-          }
-        }
-      }
-    },
-    "sesion.alerta_mal_clima_mensaje" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Current weather conditions are not ideal for sun exposure. UV radiation may be insufficient."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Las condiciones climáticas actuales no son ideales para exponerse al sol. La radiación UV puede ser insuficiente."
-          }
-        }
-      }
-    },
-    "sesion.alerta_mal_clima_titulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unfavorable conditions"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Condiciones desfavorables"
-          }
-        }
-      }
-    },
     "sesion.completado %lld" : {
       "localizations" : {
         "en" : {
@@ -2338,6 +2380,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "¿Nueva sesión?"
+          }
+        }
+      }
+    },
+    "sesion.detener" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detener"
           }
         }
       }
@@ -2402,6 +2460,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Objetivo"
+          }
+        }
+      }
+    },
+    "sesion.pausar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausar"
+          }
+        }
+      }
+    },
+    "sesion.reanudar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reanudar"
           }
         }
       }
@@ -2504,102 +2594,6 @@
     },
     "Vitasol" : {
 
-    },
-    "general.toca_para_ver" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap to view"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca para ver"
-          }
-        }
-      }
-    },
-    "sesion.reanudar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resume"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reanudar"
-          }
-        }
-      }
-    },
-    "sesion.pausar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pause"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pausar"
-          }
-        }
-      }
-    },
-    "sesion.detener" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stop"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detener"
-          }
-        }
-      }
-    },
-    "aprender.expandir" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap to expand"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca para expandir"
-          }
-        }
-      }
-    },
-    "aprender.contraer" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap to collapse"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toca para contraer"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"
