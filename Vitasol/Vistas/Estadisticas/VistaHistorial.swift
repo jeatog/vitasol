@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 // MARK: Filtro de período
 
@@ -70,6 +71,8 @@ struct VistaHistorial: View {
     @State private var periodo:          PeriodoFiltro = .todo
     @State private var uvFiltro:         UVCategoria?  = nil
     @State private var ubicacionFiltro:  String?       = nil
+    @State private var archivoExportar:  URL?          = nil
+    @State private var mostrarExportar:  Bool          = false
 
     private var ubicacionesUnicas: [String] {
         Array(Set(sesiones.compactMap { $0.ubicacion })).sorted()
@@ -104,6 +107,36 @@ struct VistaHistorial: View {
             .navigationTitle(Textos.Estadisticas.historial)
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Menu {
+                        Button {
+                            archivoExportar = ExportadorHistorial.generarCSV(
+                                sesiones: sesionesFiltradas, idioma: idiomaApp
+                            )
+                            mostrarExportar = archivoExportar != nil
+                        } label: {
+                            Label(String(localized: "exportar.csv"), systemImage: "tablecells")
+                        }
+
+                        Button {
+                            let completadas = sesiones.filter { $0.completada }
+                            archivoExportar = ExportadorHistorial.generarPDF(
+                                sesiones: sesionesFiltradas,
+                                racha: Logro.rachaActual(de: completadas),
+                                logros: Logro.evaluar(sesiones: sesiones),
+                                idioma: idiomaApp
+                            )
+                            mostrarExportar = archivoExportar != nil
+                        } label: {
+                            Label(String(localized: "exportar.pdf"), systemImage: "doc.richtext")
+                        }
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 16))
+                            .foregroundStyle(.ambar)
+                    }
+                }
+
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { dismiss() } label: {
                         Image(systemName: "xmark.circle.fill")
@@ -111,6 +144,11 @@ struct VistaHistorial: View {
                             .foregroundStyle(.textoApagado)
                             .symbolRenderingMode(.hierarchical)
                     }
+                }
+            }
+            .sheet(isPresented: $mostrarExportar) {
+                if let url = archivoExportar {
+                    ActivityViewController(items: [url])
                 }
             }
         }
@@ -251,4 +289,16 @@ struct ChipFiltroTexto: View {
     var body: some View {
         ChipFiltro(LocalizedStringKey(texto), seleccionado: seleccionado, alSeleccionar: alSeleccionar)
     }
+}
+
+// MARK: Share sheet (UIKit wrapper)
+
+struct ActivityViewController: UIViewControllerRepresentable {
+    let items: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: items, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ vc: UIActivityViewController, context: Context) {}
 }

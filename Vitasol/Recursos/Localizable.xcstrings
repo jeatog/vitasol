@@ -1552,6 +1552,38 @@
         }
       }
     },
+    "exportar.csv" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export as CSV"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar como CSV"
+          }
+        }
+      }
+    },
+    "exportar.pdf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export as PDF"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar como PDF"
+          }
+        }
+      }
+    },
     "general.abrir_ajustes" : {
       "localizations" : {
         "en" : {
