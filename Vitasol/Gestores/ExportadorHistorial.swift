@@ -84,7 +84,7 @@ enum ExportadorHistorial {
             y += 20
 
             // --- Resumen ---
-            y = dibujarResumen(y: y, margen: margen, ancho: ancho, completadas: completadas, racha: racha, esIngles: esIngles)
+            y = dibujarResumen(y: y, margen: margen, ancho: ancho, sesiones: ordenadas, racha: racha, esIngles: esIngles)
             y += 20
 
             // --- Tabla ---
@@ -159,21 +159,21 @@ enum ExportadorHistorial {
 
     private static func dibujarResumen(
         y: CGFloat, margen: CGFloat, ancho: CGFloat,
-        completadas: [SesionSolar], racha: Int, esIngles: Bool
+        sesiones: [SesionSolar], racha: Int, esIngles: Bool
     ) -> CGFloat {
         var y = y
 
-        let totalSegundos = completadas.reduce(0) { $0 + $1.duracionSegundos }
+        let totalSegundos = sesiones.reduce(0) { $0 + $1.duracionSegundos }
         let horas = totalSegundos / 3600
         let mins  = (totalSegundos % 3600) / 60
         let tiempoTexto = horas > 0 ? "\(horas)h \(mins)m" : "\(mins)m"
-        let diasMeta = Set(completadas.map { Calendar.current.startOfDay(for: $0.fecha) }).count
+        let diasActivos = Set(sesiones.map { Calendar.current.startOfDay(for: $0.fecha) }).count
 
         let metricas: [(String, String)] = [
-            (esIngles ? "Sessions" : "Sesiones", "\(completadas.count)"),
+            (esIngles ? "Sessions" : "Sesiones", "\(sesiones.count)"),
             (esIngles ? "Total time" : "Tiempo total", tiempoTexto),
             (esIngles ? "Streak" : "Racha", esIngles ? "\(racha) days" : "\(racha) días"),
-            (esIngles ? "Goal days" : "Días meta", "\(diasMeta)"),
+            (esIngles ? "Active days" : "Días activos", "\(diasActivos)"),
         ]
 
         let anchoMetrica = ancho / CGFloat(metricas.count)

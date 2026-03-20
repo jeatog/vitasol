@@ -121,7 +121,7 @@ struct EstiloBotonPrincipal: ButtonStyle {
             .padding(.vertical, 17)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(destructivo ? Color.red.gradient : Color.ambarProfundo.gradient)
+                    .fill(destructivo ? Color.red.gradient : Color.ambar.gradient)
             )
             .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
             .opacity(configuration.isPressed ? 0.92 : 1.0)
