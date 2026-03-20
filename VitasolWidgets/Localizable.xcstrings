@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "es-419",
   "strings" : {
+    "%lld" : {
+
+    },
     "0:00" : {
 
     },
@@ -55,70 +58,6 @@
     "Vitasol" : {
 
     },
-    "widget.nombre" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daily Progress"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Progreso diario"
-          }
-        }
-      }
-    },
-    "widget.descripcion" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "See if you've met your daily sun goal."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mira si cumpliste tu meta solar del día."
-          }
-        }
-      }
-    },
-    "widget.meta_cumplida" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Goal achieved!"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Meta cumplida!"
-          }
-        }
-      }
-    },
-    "widget.listo_para_sol" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ready for sun"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Listo para el sol"
-          }
-        }
-      }
-    },
     "widget.buenas_noches" : {
       "localizations" : {
         "en" : {
@@ -147,6 +86,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nos vemos mañana"
+          }
+        }
+      }
+    },
+    "widget.descripcion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See if you've met your daily sun goal."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira si cumpliste tu meta solar del día."
+          }
+        }
+      }
+    },
+    "widget.listo_para_sol" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready for sun"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listo para el sol"
+          }
+        }
+      }
+    },
+    "widget.meta_cumplida" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal achieved!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Meta cumplida!"
+          }
+        }
+      }
+    },
+    "widget.nombre" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Progress"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso diario"
           }
         }
       }
