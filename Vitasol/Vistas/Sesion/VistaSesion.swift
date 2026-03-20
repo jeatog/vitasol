@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 struct VistaSesion: View {
     @Environment(\.modelContext) private var contexto
@@ -304,6 +305,15 @@ struct VistaSesion: View {
         if saludActiva {
             gestorSalud.registrar(duracionSegundos: duracion, fin: ahora)
         }
+        if completada { actualizarWidget() }
         gestorSesion.reiniciar()
+    }
+
+    private func actualizarWidget() {
+        let defaults = UserDefaults(suiteName: "group.dev.jeatog.Vitasol")
+        defaults?.set(true, forKey: "widget_meta_cumplida")
+        defaults?.set(gestorClima.uvEntero, forKey: "widget_uv_actual")
+        defaults?.set(gestorClima.tieneDatos, forKey: "widget_tiene_datos_uv")
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }

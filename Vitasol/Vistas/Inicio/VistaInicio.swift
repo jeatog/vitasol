@@ -1,6 +1,7 @@
 import CoreLocation
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 struct VistaInicio: View {
     @Binding var tabSeleccionada: Int
@@ -66,6 +67,7 @@ struct VistaInicio: View {
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 if ubicacionActiva { gestorUbicacion.solicitar() }
+                sincronizarWidget()
             }
             .onChange(of: gestorUbicacion.coordenadas) { _, coords in
                 if let coords {
@@ -351,5 +353,13 @@ struct VistaInicio: View {
         case 6...7: return .uvAlto
         default:    return .uvMuyAlto
         }
+    }
+
+    private func sincronizarWidget() {
+        let defaults = UserDefaults(suiteName: "group.dev.jeatog.Vitasol")
+        defaults?.set(sesionHoyCompletada, forKey: "widget_meta_cumplida")
+        defaults?.set(gestorClima.uvEntero, forKey: "widget_uv_actual")
+        defaults?.set(gestorClima.tieneDatos, forKey: "widget_tiene_datos_uv")
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
