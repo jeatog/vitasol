@@ -173,6 +173,8 @@ enum Textos {
         static let unidadTemp:              LocalizedStringKey = "ajustes.unidad_temp"
         static let ubicacionBloqueada:      LocalizedStringKey = "ajustes.ubicacion_bloqueada"
         static let ubicacionBloqueadaMsg:   LocalizedStringKey = "ajustes.ubicacion_bloqueada_msg"
+        static let duracionMin:             LocalizedStringKey = "ajustes.duracion_min"
+        static let duracionMax:             LocalizedStringKey = "ajustes.duracion_max"
 
         static func duracionValor(_ mins: Int) -> LocalizedStringKey {
             "ajustes.duracion_valor \(mins)"

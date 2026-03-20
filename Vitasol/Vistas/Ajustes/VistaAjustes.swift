@@ -164,9 +164,9 @@ struct VistaAjustes: View {
             .tint(.ambar)
 
             HStack {
-                Text("5 min").font(.fuenteCaption).foregroundStyle(.textoApagado)
+                Text(Textos.Ajustes.duracionMin).font(.fuenteCaption).foregroundStyle(.textoApagado)
                 Spacer()
-                Text("60 min").font(.fuenteCaption).foregroundStyle(.textoApagado)
+                Text(Textos.Ajustes.duracionMax).font(.fuenteCaption).foregroundStyle(.textoApagado)
             }
         }
         .padding(Diseno.relleno)

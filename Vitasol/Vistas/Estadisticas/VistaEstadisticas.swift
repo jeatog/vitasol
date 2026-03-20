@@ -244,8 +244,8 @@ struct FilaHistorial: View {
     }
 
     private var etiquetaFecha: String {
-        if Calendar.current.isDateInToday(sesion.fecha)     { return idiomaApp == "en" ? "Today"     : "Hoy"  }
-        if Calendar.current.isDateInYesterday(sesion.fecha) { return idiomaApp == "en" ? "Yesterday" : "Ayer" }
+        if Calendar.current.isDateInToday(sesion.fecha)     { return String(localized: "general.hoy")  }
+        if Calendar.current.isDateInYesterday(sesion.fecha) { return String(localized: "general.ayer") }
         let fmt       = DateFormatter()
         fmt.dateStyle = .medium
         fmt.timeStyle = .none
