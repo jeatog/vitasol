@@ -155,7 +155,11 @@ enum Textos {
     enum Ajustes {
         static let titulo:                  LocalizedStringKey = "ajustes.titulo"
         static let horaRecordatorio:        LocalizedStringKey = "ajustes.hora_recordatorio"
-        static let duracionRecomendada:     LocalizedStringKey = "ajustes.duracion_recomendada"
+        static let duracionSesion:          LocalizedStringKey = "ajustes.duracion_sesion"
+        static let duracionLeyenda:         LocalizedStringKey = "ajustes.duracion_leyenda"
+        static let duracionAlertaTitulo:    LocalizedStringKey = "ajustes.duracion_alerta_titulo"
+        static let duracionAlertaMensaje:   LocalizedStringKey = "ajustes.duracion_alerta_mensaje"
+        static let duracionAlertaContinuar: LocalizedStringKey = "ajustes.duracion_alerta_continuar"
         static let diasActivos:             LocalizedStringKey = "ajustes.dias_activos"
         static let notificaciones:          LocalizedStringKey = "ajustes.notificaciones"
         static let notificacionesSub:       LocalizedStringKey = "ajustes.notificaciones_sub"

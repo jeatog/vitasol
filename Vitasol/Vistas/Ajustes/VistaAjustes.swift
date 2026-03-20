@@ -21,6 +21,7 @@ struct VistaAjustes: View {
     @State private var mostrarNotifBloqueada     = false
     @State private var mostrarSaludBloqueada     = false
     @State private var mostrarUbicacionBloqueada = false
+    @State private var mostrarAlertaDuracion     = false
     @State private var primeraVez                = true
 
     private let diasSemana = [(1, "dia.dom"), (2, "dia.lun"), (3, "dia.mar"),
@@ -144,7 +145,7 @@ struct VistaAjustes: View {
     private var seccionDuracion: some View {
         VStack(alignment: .leading, spacing: Diseno.espaciado) {
             HStack {
-                CabeceraSeccion(icono: "timer", titulo: Textos.Ajustes.duracionRecomendada)
+                CabeceraSeccion(icono: "timer", titulo: Textos.Ajustes.duracionSesion)
                 Spacer()
                 Text(Textos.Ajustes.duracionValor(duracionMinutos))
                     .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -156,9 +157,16 @@ struct VistaAjustes: View {
             Slider(
                 value: Binding(
                     get: { Double(duracionMinutos) },
-                    set: { duracionMinutos = Int($0) }
+                    set: { nuevo in
+                        let valor = Int(nuevo)
+                        if valor > 15 && duracionMinutos <= 15 {
+                            mostrarAlertaDuracion = true
+                        } else {
+                            duracionMinutos = valor
+                        }
+                    }
                 ),
-                in: 5...60, step: 5
+                in: 5...30, step: 5
             )
             .tint(.ambar)
 
@@ -167,9 +175,22 @@ struct VistaAjustes: View {
                 Spacer()
                 Text(Textos.Ajustes.duracionMax).font(.fuenteCaption).foregroundStyle(.textoApagado)
             }
+
+            Text(Textos.Ajustes.duracionLeyenda)
+                .font(.fuenteMicro)
+                .foregroundStyle(.textoApagado)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .padding(Diseno.relleno)
         .tarjetaVidrio()
+        .alert(Textos.Ajustes.duracionAlertaTitulo, isPresented: $mostrarAlertaDuracion) {
+            Button(Textos.Ajustes.duracionAlertaContinuar) {
+                duracionMinutos = 20
+            }
+            Button(Textos.General.cancelar, role: .cancel) {}
+        } message: {
+            Text(Textos.Ajustes.duracionAlertaMensaje)
+        }
     }
 
     // MARK: Sección de días activos
