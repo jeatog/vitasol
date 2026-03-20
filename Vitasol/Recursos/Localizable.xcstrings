@@ -1851,7 +1851,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Iniciar Sesión de Sol"
+            "value" : "Iniciar sesión de sol"
           }
         }
       }
@@ -2507,7 +2507,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu Dosis de Sol ☀️"
+            "value" : "Tu dosis de sol ☀️"
           }
         }
       }
@@ -2907,7 +2907,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sesión de Sol"
+            "value" : "Sesión de sol"
           }
         }
       }
