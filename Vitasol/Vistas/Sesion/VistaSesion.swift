@@ -4,6 +4,7 @@ import WidgetKit
 
 struct VistaSesion: View {
     @Environment(\.modelContext) private var contexto
+    @Query private var sesionesHoy: [SesionSolar]
     @Environment(GestorSesion.self)    private var gestorSesion
     @Environment(GestorSalud.self)     private var gestorSalud
     @Environment(GestorUbicacion.self) private var gestorUbicacion
@@ -20,7 +21,21 @@ struct VistaSesion: View {
     @State private var mostrarConfirmacionNueva = false
     @State private var mostrarAlertaUVAlto      = false
     @State private var mostrarAlertaMalClima    = false
+    @State private var mostrarAlertaExcesoDiario = false
     @State private var pausado                  = false
+
+    private let maxDiarioRecomendado = 20 // minutos
+
+    init() {
+        let inicioHoy = Calendar.current.startOfDay(for: .now)
+        _sesionesHoy = Query(
+            filter: #Predicate<SesionSolar> { $0.fecha >= inicioHoy }
+        )
+    }
+
+    private var minutosHoy: Int {
+        sesionesHoy.reduce(0) { $0 + $1.duracionSegundos } / 60
+    }
 
     private var tempFormateada: String {
         guard let temp = gestorClima.temperatura else { return "--" }
@@ -82,6 +97,15 @@ struct VistaSesion: View {
                 Button(Textos.General.cancelar, role: .cancel) {}
             } message: {
                 Text(Textos.Sesion.alertaMalClimaMensaje)
+            }
+            .alert(Textos.Sesion.alertaExcesoDiarioTitulo, isPresented: $mostrarAlertaExcesoDiario) {
+                Button(Textos.Sesion.alertaExcesoDiarioContinuar, role: .destructive) {
+                    gestorSesion.iniciar(duracionMinutos: duracionMinutos)
+                    pausado = false
+                }
+                Button(Textos.General.cancelar, role: .cancel) {}
+            } message: {
+                Text(Textos.Sesion.alertaExcesoDiarioMensaje(minutosHoy, maxDiarioRecomendado))
             }
             .onChange(of: gestorSesion.completo) { _, terminado in
                 if terminado { mostrarAlertaCompletado = true }
@@ -210,6 +234,8 @@ struct VistaSesion: View {
                             mostrarAlertaUVAlto = true
                         } else if !gestorClima.esBuenDia && gestorClima.tieneDatos {
                             mostrarAlertaMalClima = true
+                        } else if minutosHoy + duracionMinutos > maxDiarioRecomendado {
+                            mostrarAlertaExcesoDiario = true
                         } else {
                             gestorSesion.iniciar(duracionMinutos: duracionMinutos)
                             pausado = false

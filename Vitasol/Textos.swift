@@ -81,6 +81,12 @@ enum Textos {
         static func alertaMensaje(_ mins: Int) -> LocalizedStringKey {
             "sesion.alerta_mensaje \(mins)"
         }
+
+        static let alertaExcesoDiarioTitulo:    LocalizedStringKey = "sesion.alerta_exceso_diario_titulo"
+        static let alertaExcesoDiarioContinuar: LocalizedStringKey = "sesion.alerta_exceso_diario_continuar"
+        static func alertaExcesoDiarioMensaje(_ acumulado: Int, _ maximo: Int) -> LocalizedStringKey {
+            "sesion.alerta_exceso_diario_mensaje \(acumulado) \(maximo)"
+        }
     }
 
     // MARK: Estadísticas

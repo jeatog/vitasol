@@ -2672,6 +2672,54 @@
         }
       }
     },
+    "sesion.alerta_exceso_diario_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily limit exceeded"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límite diario excedido"
+          }
+        }
+      }
+    },
+    "sesion.alerta_exceso_diario_continuar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start anyway"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar de todos modos"
+          }
+        }
+      }
+    },
+    "sesion.alerta_exceso_diario_mensaje %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've already had %lld minutes of sun today. The recommended maximum is %lld minutes per day. Starting this session will exceed that limit."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya llevas %lld minutos de sol hoy. El máximo recomendado es %lld minutos al día. Iniciar esta sesión superará ese límite."
+          }
+        }
+      }
+    },
     "sesion.alerta_titulo" : {
       "localizations" : {
         "en" : {
