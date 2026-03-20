@@ -55,10 +55,10 @@ extension Color {
         dia:   (0.420, 0.290, 0.165),
         noche: (0.604, 0.643, 0.784)
     )
-    // Día:  canela #A5886A  |  Noche: azul-gris apagado #565D81
+    // Día:  canela #A5886A  |  Noche: azul-gris claro #7880A3 (WCAG AA 4.5:1)
     static let textoApagado = colorAdaptativo(
         dia:   (0.647, 0.533, 0.412),
-        noche: (0.337, 0.365, 0.506)
+        noche: (0.471, 0.502, 0.639)
     )
 
     // UV semántico (no adaptativos pues son colores de alerta universales)
@@ -69,39 +69,15 @@ extension Color {
 }
 
 extension ShapeStyle where Self == Color {
-    static var ambar: Color { colorAdaptativo(
-        dia:   (0.910, 0.533, 0.227),
-        noche: (0.482, 0.557, 0.878)
-    )}
-    static var ambarProfundo: Color { colorAdaptativo(
-        dia:   (0.737, 0.349, 0.149),
-        noche: (0.333, 0.412, 0.765)
-    )}
-    static var dorado: Color { colorAdaptativo(
-        dia:   (0.973, 0.784, 0.427),
-        noche: (0.745, 0.776, 0.922)
-    )}
-    static var salvia:          Color { Color(red: 0.416, green: 0.659, blue: 0.471) }
-    static var fondoCrema: Color { colorAdaptativo(
-        dia:   (0.992, 0.973, 0.949),
-        noche: (0.059, 0.063, 0.122)
-    )}
-    static var fondoMelocoton: Color { colorAdaptativo(
-        dia:   (0.961, 0.914, 0.851),
-        noche: (0.086, 0.090, 0.157)
-    )}
-    static var textoPrimario: Color { colorAdaptativo(
-        dia:   (0.114, 0.067, 0.024),
-        noche: (0.933, 0.941, 0.973)
-    )}
-    static var textoSecundario: Color { colorAdaptativo(
-        dia:   (0.420, 0.290, 0.165),
-        noche: (0.604, 0.643, 0.784)
-    )}
-    static var textoApagado: Color { colorAdaptativo(
-        dia:   (0.647, 0.533, 0.412),
-        noche: (0.337, 0.365, 0.506)
-    )}
+    static var ambar:           Color { Color.ambar }
+    static var ambarProfundo:   Color { Color.ambarProfundo }
+    static var dorado:          Color { Color.dorado }
+    static var salvia:          Color { Color.salvia }
+    static var fondoCrema:      Color { Color.fondoCrema }
+    static var fondoMelocoton:  Color { Color.fondoMelocoton }
+    static var textoPrimario:   Color { Color.textoPrimario }
+    static var textoSecundario: Color { Color.textoSecundario }
+    static var textoApagado:    Color { Color.textoApagado }
 }
 
 // MARK: Fondo gradiente de la app
@@ -153,15 +129,15 @@ struct EstiloBotonPrincipal: ButtonStyle {
     }
 }
 
-// MARK: Tipografía (fuente redondeada para suavidad)
+// MARK: Tipografía (fuente redondeada, escala con Dynamic Type)
 extension Font {
-    static let fuenteTitular   = Font.system(size: 34, weight: .bold,     design: .rounded)
-    static let fuenteTitulo    = Font.system(size: 28, weight: .bold,     design: .rounded)
-    static let fuenteTitulo2   = Font.system(size: 22, weight: .semibold, design: .rounded)
-    static let fuenteCabecera  = Font.system(size: 17, weight: .semibold, design: .rounded)
-    static let fuenteCuerpo    = Font.system(size: 15, weight: .regular,  design: .rounded)
-    static let fuenteCaption   = Font.system(size: 12, weight: .medium,   design: .rounded)
-    static let fuenteMicro     = Font.system(size: 11, weight: .medium,   design: .rounded)
+    static let fuenteTitular   = Font.system(.largeTitle, design: .rounded, weight: .bold)
+    static let fuenteTitulo    = Font.system(.title,      design: .rounded, weight: .bold)
+    static let fuenteTitulo2   = Font.system(.title2,     design: .rounded, weight: .semibold)
+    static let fuenteCabecera  = Font.system(.headline,   design: .rounded, weight: .semibold)
+    static let fuenteCuerpo    = Font.system(.body,       design: .rounded, weight: .regular)
+    static let fuenteCaption   = Font.system(.caption,    design: .rounded, weight: .medium)
+    static let fuenteMicro     = Font.system(.caption2,   design: .rounded, weight: .medium)
 }
 
 // MARK: Constantes de espaciado / diseño
@@ -179,7 +155,6 @@ enum Diseno {
 struct CabeceraSeccion: View {
     let icono: String
     let titulo: LocalizedStringKey
-    var color: Color = .ambar
 
     var body: some View {
         Label(titulo, systemImage: icono)
