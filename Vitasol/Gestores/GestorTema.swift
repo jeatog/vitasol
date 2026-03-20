@@ -19,6 +19,10 @@ final class GestorTema: ObservableObject {
         }
     }
 
+    deinit {
+        timer?.invalidate()
+    }
+
     /// ColorScheme que debe aplicarse en la raíz de la app.
     var esquema: ColorScheme { esDeNoche ? .dark : .light }
 

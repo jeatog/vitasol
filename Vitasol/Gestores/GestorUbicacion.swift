@@ -6,6 +6,7 @@ final class GestorUbicacion: NSObject, ObservableObject {
     @Published var nombreUbicacion: String?
     @Published var coordenadas: CLLocation?
     @Published var autorizado: Bool = false
+    @Published var denegado: Bool = false
 
     private let manager  = CLLocationManager()
     // swiftlint:disable:next deployment_target
@@ -38,6 +39,7 @@ extension GestorUbicacion: CLLocationManagerDelegate {
         Task { @MainActor [weak self] in
             guard let self else { return }
             self.autorizado = status == .authorizedWhenInUse || status == .authorizedAlways
+            self.denegado   = status == .denied || status == .restricted
             if self.autorizado { manager.requestLocation() }
         }
     }
@@ -50,7 +52,11 @@ extension GestorUbicacion: CLLocationManagerDelegate {
         }
     }
 
-    nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
+    nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // CLError.locationUnknown es transitorio y se reintenta automaticamente
+        guard (error as? CLError)?.code != .locationUnknown else { return }
+        print("[GestorUbicacion] Error de ubicacion: \(error.localizedDescription)")
+    }
 
     private func geocodificar(_ location: CLLocation) {
         // Lo mismo del CLGeocoder que psue arriba

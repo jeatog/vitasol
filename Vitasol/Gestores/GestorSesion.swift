@@ -16,12 +16,14 @@ final class GestorSesion: ObservableObject {
     private var actividad:            Activity<SesionSolarActividad>?
     private var ticksActualizacion:   Int = 0
     private var fechaBackground:      Date?          // marca cuándo se fue a background
+    private var tareaBackground:      Task<Void, Never>?
+    private var tareaForeground:      Task<Void, Never>?
 
     // MARK: Manejamos estado en background
 
     init() {
         // Al ir a background se pausa el timer y anota la hora
-        Task { @MainActor [weak self] in
+        tareaBackground = Task { @MainActor [weak self] in
             for await _ in NotificationCenter.default.notifications(
                 named: UIApplication.didEnterBackgroundNotification
             ) {
@@ -32,7 +34,7 @@ final class GestorSesion: ObservableObject {
             }
         }
         // Al volver al frente compensamos el tiempo real transcurrido
-        Task { @MainActor [weak self] in
+        tareaForeground = Task { @MainActor [weak self] in
             for await _ in NotificationCenter.default.notifications(
                 named: UIApplication.willEnterForegroundNotification
             ) {
@@ -51,6 +53,12 @@ final class GestorSesion: ObservableObject {
                 }
             }
         }
+    }
+
+    deinit {
+        tareaBackground?.cancel()
+        tareaForeground?.cancel()
+        temporizador?.invalidate()
     }
 
     var progreso: Double {
@@ -161,8 +169,8 @@ final class GestorSesion: ObservableObject {
 
     private func programarNotificacionFin() {
         let contenido      = UNMutableNotificationContent()
-        contenido.title    = "¡Sesión completada!"
-        contenido.body     = "Tu sesión solar de \(segundosObjetivo / 60) minutos ha terminado."
+        contenido.title    = Textos.Notificacion.sesionCompletadaTitulo
+        contenido.body     = Textos.Notificacion.sesionCompletadaCuerpo(segundosObjetivo / 60)
         contenido.sound    = .default
 
         let disparador = UNTimeIntervalNotificationTrigger(

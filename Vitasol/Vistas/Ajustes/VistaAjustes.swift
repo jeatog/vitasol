@@ -4,6 +4,7 @@ import UIKit
 struct VistaAjustes: View {
     @EnvironmentObject private var gestorNotificaciones: GestorNotificaciones
     @EnvironmentObject private var gestorSalud:          GestorSalud
+    @EnvironmentObject private var gestorUbicacion:      GestorUbicacion
 
     @AppStorage("idiomaApp")              private var idiomaApp              = "es"
     @AppStorage("unidadTemp")             private var unidadTemp             = "C"
@@ -16,10 +17,11 @@ struct VistaAjustes: View {
     @AppStorage("mensajePersonalizado")   private var mensajePersonalizado   = ""
     @AppStorage("diasActivosTexto")       private var diasActivosTexto       = "2,3,4,5,6"
 
-    @State private var horaSeleccionada      = Date()
-    @State private var mostrarNotifBloqueada = false
-    @State private var mostrarSaludBloqueada = false
-    @State private var primeraVez            = true
+    @State private var horaSeleccionada          = Date()
+    @State private var mostrarNotifBloqueada     = false
+    @State private var mostrarSaludBloqueada     = false
+    @State private var mostrarUbicacionBloqueada = false
+    @State private var primeraVez                = true
 
     private let diasSemana = [(1, "dia.dom"), (2, "dia.lun"), (3, "dia.mar"),
                                (4, "dia.mie"), (5, "dia.jue"), (6, "dia.vie"), (7, "dia.sab")]
@@ -75,6 +77,16 @@ struct VistaAjustes: View {
                 Button(Textos.General.cancelar, role: .cancel) { }
             } message: {
                 Text(Textos.Ajustes.notifBloqueadasMsg)
+            }
+            .alert(Textos.Ajustes.ubicacionBloqueada, isPresented: $mostrarUbicacionBloqueada) {
+                Button(Textos.General.abrirAjustes) {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                }
+                Button(Textos.General.cancelar, role: .cancel) { }
+            } message: {
+                Text(Textos.Ajustes.ubicacionBloqueadaMsg)
             }
         }
         .id(idiomaApp)
@@ -229,8 +241,21 @@ struct VistaAjustes: View {
             subtitulo: Textos.Ajustes.ubicacionSub,
             color:     .salvia,
             activado:  $ubicacionActiva
-        ) { _ in
-            // TODO: CoreLocation
+        ) { activar in
+            if activar {
+                if gestorUbicacion.denegado {
+                    ubicacionActiva = false
+                    mostrarUbicacionBloqueada = true
+                } else {
+                    gestorUbicacion.solicitar()
+                }
+            }
+        }
+        .onChange(of: gestorUbicacion.denegado) { _, denegado in
+            if denegado && ubicacionActiva {
+                ubicacionActiva = false
+                mostrarUbicacionBloqueada = true
+            }
         }
         .tarjetaVidrio()
     }

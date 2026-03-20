@@ -53,14 +53,16 @@ final class GestorClima: ObservableObject {
         guard let url = URL(string: urlString) else { return }
 
         do {
-            let (datos, _) = try await URLSession.shared.data(from: url)
+            let (datos, respuestaHTTP) = try await URLSession.shared.data(from: url)
+            guard let http = respuestaHTTP as? HTTPURLResponse,
+                  (200...299).contains(http.statusCode) else { return }
             let respuesta = try JSONDecoder().decode(RespuestaOpenMeteo.self, from: datos)
             temperatura  = respuesta.current.temperature2m
             indiceUV     = respuesta.current.uvIndex
             codigoClima  = respuesta.current.weatherCode
             ultimaActualizacion = Date.now
         } catch {
-            // Sin conexión o error de decodificación mantenemos los últimos datos válidos
+            // Sin conexion o error de decodificacion: mantenemos los ultimos datos validos
         }
     }
 

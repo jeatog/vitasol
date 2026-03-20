@@ -171,6 +171,8 @@ enum Textos {
         static let espanol:                 LocalizedStringKey = "ajustes.espanol"
         static let ingles:                  LocalizedStringKey = "ajustes.ingles"
         static let unidadTemp:              LocalizedStringKey = "ajustes.unidad_temp"
+        static let ubicacionBloqueada:      LocalizedStringKey = "ajustes.ubicacion_bloqueada"
+        static let ubicacionBloqueadaMsg:   LocalizedStringKey = "ajustes.ubicacion_bloqueada_msg"
 
         static func duracionValor(_ mins: Int) -> LocalizedStringKey {
             "ajustes.duracion_valor \(mins)"
@@ -184,6 +186,12 @@ enum Textos {
         }
         static var cuerpoDefault: String {
             String(localized: "notificacion.cuerpo_default")
+        }
+        static var sesionCompletadaTitulo: String {
+            String(localized: "notificacion.sesion_completada_titulo")
+        }
+        static func sesionCompletadaCuerpo(_ mins: Int) -> String {
+            String(localized: "notificacion.sesion_completada_cuerpo \(mins)")
         }
     }
 

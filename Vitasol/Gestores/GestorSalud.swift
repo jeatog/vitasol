@@ -30,6 +30,8 @@ final class GestorSalud: ObservableObject {
         let cantidad = HKQuantity(unit: .second(), doubleValue: Double(duracionSegundos))
         let inicio   = fin.addingTimeInterval(-TimeInterval(duracionSegundos))
         let muestra  = HKQuantitySample(type: tipo, quantity: cantidad, start: inicio, end: fin)
-        store.save(muestra) { _, _ in }
+        store.save(muestra) { exito, error in
+            if let error { print("[GestorSalud] Error al guardar en HealthKit: \(error.localizedDescription)") }
+        }
     }
 }

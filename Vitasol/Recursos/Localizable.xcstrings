@@ -326,6 +326,38 @@
         }
       }
     },
+    "ajustes.ubicacion_bloqueada" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location blocked"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubicación bloqueada"
+          }
+        }
+      }
+    },
+    "ajustes.ubicacion_bloqueada_msg" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To get real-time weather data, enable location access in your iPhone Settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para obtener datos del clima en tiempo real, permite el acceso a la ubicación en Ajustes de tu iPhone."
+          }
+        }
+      }
+    },
     "ajustes.unidad_temp" : {
       "localizations" : {
         "en" : {
@@ -2050,6 +2082,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu Dosis de Sol ☀️"
+          }
+        }
+      }
+    },
+    "notificacion.sesion_completada_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session completed!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Sesión completada!"
+          }
+        }
+      }
+    },
+    "notificacion.sesion_completada_cuerpo %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your %lld-minute sun session is done."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu sesión solar de %lld minutos ha terminado."
           }
         }
       }
