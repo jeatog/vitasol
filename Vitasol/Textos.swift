@@ -28,6 +28,7 @@ enum Textos {
         static let indiceUV:         LocalizedStringKey = "inicio.indice_uv"
         static let buenDia:          LocalizedStringKey = "inicio.buen_dia"
         static let intentaManana:    LocalizedStringKey = "inicio.intenta_manana"
+        static let intentaMasTarde:  LocalizedStringKey = "inicio.intenta_mas_tarde"
         static let listoParaSol:     LocalizedStringKey = "inicio.listo_sol"
         static let iniciarSesion:    LocalizedStringKey = "inicio.iniciar_sesion"
         static let metaHoyCumplida:  LocalizedStringKey = "inicio.meta_hoy_cumplida"

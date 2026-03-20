@@ -190,7 +190,7 @@ struct VistaInicio: View {
                         .background(Color.salvia.opacity(0.12))
                         .clipShape(Capsule())
                 } else {
-                    Label(Textos.Inicio.intentaManana, systemImage: gestorClima.iconoSistema)
+                    Label(etiquetaIntenta, systemImage: gestorClima.iconoSistema)
                         .font(.fuenteCaption)
                         .foregroundStyle(.textoApagado)
                         .padding(.horizontal, 12)
@@ -344,6 +344,12 @@ struct VistaInicio: View {
         let minActual = (ahora.hour ?? 0) * 60 + (ahora.minute ?? 0)
         let minConfig = horaRecordatorio * 60 + minutoRecordatorio
         return minActual >= minConfig
+    }
+
+    /// "Intenta más tarde" si estamos antes de las 18:00, "Intenta mañana" si >= 18:00
+    private var etiquetaIntenta: LocalizedStringKey {
+        let hora = Calendar.current.component(.hour, from: .now)
+        return hora >= 18 ? Textos.Inicio.intentaManana : Textos.Inicio.intentaMasTarde
     }
 
     private var colorUV: Color {

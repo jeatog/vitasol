@@ -1872,6 +1872,22 @@
         }
       }
     },
+    "inicio.intenta_mas_tarde" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try later"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intenta más tarde"
+          }
+        }
+      }
+    },
     "inicio.lista_dosis" : {
       "localizations" : {
         "en" : {
