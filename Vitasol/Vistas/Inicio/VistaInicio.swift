@@ -7,10 +7,10 @@ struct VistaInicio: View {
 
     @Environment(\.modelContext) private var contexto
     @Query private var sesiones: [SesionSolar]
-    @EnvironmentObject private var gestorSesion:    GestorSesion
-    @EnvironmentObject private var gestorUbicacion: GestorUbicacion
-    @EnvironmentObject private var gestorTema:      GestorTema
-    @EnvironmentObject private var gestorClima:    GestorClima
+    @Environment(GestorSesion.self)    private var gestorSesion
+    @Environment(GestorUbicacion.self) private var gestorUbicacion
+    @Environment(GestorTema.self)      private var gestorTema
+    @Environment(GestorClima.self)     private var gestorClima
 
     @AppStorage("duracionSesionMinutos") private var duracionMinutos    = 15
     @AppStorage("horarioHora")           private var horaRecordatorio   = 10

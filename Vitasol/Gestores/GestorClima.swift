@@ -1,5 +1,5 @@
-import Combine
 import Foundation
+import Observation
 import SwiftUI
 
 // MARK: Modelo de respuesta Open-Meteo
@@ -23,12 +23,13 @@ private struct RespuestaOpenMeteo: Decodable {
 // MARK: Gestor de clima con Open-Meteo
 // TODO: Migrar a Apple WeatherKit llegado el momento, a saber cuándo eso sí
 
+@Observable
 @MainActor
-final class GestorClima: ObservableObject {
-    @Published var temperatura:  Double?
-    @Published var indiceUV:     Double?
-    @Published var codigoClima:  Int?
-    @Published var cargando:     Bool = false
+final class GestorClima {
+    var temperatura:  Double?
+    var indiceUV:     Double?
+    var codigoClima:  Int?
+    var cargando:     Bool = false
 
     private var ultimaActualizacion: Date?
 

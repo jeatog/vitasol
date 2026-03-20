@@ -2,9 +2,9 @@ import SwiftUI
 import UIKit
 
 struct VistaAjustes: View {
-    @EnvironmentObject private var gestorNotificaciones: GestorNotificaciones
-    @EnvironmentObject private var gestorSalud:          GestorSalud
-    @EnvironmentObject private var gestorUbicacion:      GestorUbicacion
+    @Environment(GestorNotificaciones.self) private var gestorNotificaciones
+    @Environment(GestorSalud.self)          private var gestorSalud
+    @Environment(GestorUbicacion.self)      private var gestorUbicacion
 
     @AppStorage("idiomaApp")              private var idiomaApp              = "es"
     @AppStorage("unidadTemp")             private var unidadTemp             = "C"

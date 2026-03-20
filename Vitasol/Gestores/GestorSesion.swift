@@ -1,16 +1,17 @@
 import ActivityKit
-import Combine
 import Foundation
+import Observation
 import UIKit
 import UserNotifications
 
+@Observable
 @MainActor
-final class GestorSesion: ObservableObject {
-    @Published var estaActiva:       Bool = false
-    @Published var segundosSesion:   Int  = 0
-    @Published var segundosObjetivo: Int  = 600
-    @Published var completo:         Bool = false
-    @Published var navegarASesion:   Bool = false
+final class GestorSesion {
+    var estaActiva:       Bool = false
+    var segundosSesion:   Int  = 0
+    var segundosObjetivo: Int  = 600
+    var completo:         Bool = false
+    var navegarASesion:   Bool = false
 
     private var temporizador:         Timer?
     private var actividad:            Activity<SesionSolarActividad>?

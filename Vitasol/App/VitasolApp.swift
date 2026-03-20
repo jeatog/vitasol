@@ -5,12 +5,12 @@ import SwiftData
 struct VitasolApp: App {
     let contenedor: ModelContainer
 
-    @StateObject private var gestorSesion         = GestorSesion()
-    @StateObject private var gestorNotificaciones = GestorNotificaciones()
-    @StateObject private var gestorUbicacion      = GestorUbicacion()
-    @StateObject private var gestorSalud          = GestorSalud()
-    @StateObject private var gestorTema           = GestorTema()
-    @StateObject private var gestorClima          = GestorClima()
+    @State private var gestorSesion         = GestorSesion()
+    @State private var gestorNotificaciones = GestorNotificaciones()
+    @State private var gestorUbicacion      = GestorUbicacion()
+    @State private var gestorSalud          = GestorSalud()
+    @State private var gestorTema           = GestorTema()
+    @State private var gestorClima          = GestorClima()
 
     /// Persiste el idioma elegido por el usuario (es / en)
     @AppStorage("idiomaApp") private var idiomaApp = "es"
@@ -29,12 +29,12 @@ struct VitasolApp: App {
     var body: some Scene {
         WindowGroup {
             VistaPrincipal()
-                .environmentObject(gestorSesion)
-                .environmentObject(gestorNotificaciones)
-                .environmentObject(gestorUbicacion)
-                .environmentObject(gestorSalud)
-                .environmentObject(gestorTema)
-                .environmentObject(gestorClima)
+                .environment(gestorSesion)
+                .environment(gestorNotificaciones)
+                .environment(gestorUbicacion)
+                .environment(gestorSalud)
+                .environment(gestorTema)
+                .environment(gestorClima)
                 .environment(\.locale, Locale(identifier: idiomaApp))
                 .preferredColorScheme(gestorTema.esquema)
                 .onOpenURL { url in

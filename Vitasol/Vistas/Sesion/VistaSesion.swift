@@ -3,11 +3,11 @@ import SwiftData
 
 struct VistaSesion: View {
     @Environment(\.modelContext) private var contexto
-    @EnvironmentObject private var gestorSesion:    GestorSesion
-    @EnvironmentObject private var gestorSalud:     GestorSalud
-    @EnvironmentObject private var gestorUbicacion: GestorUbicacion
-    @EnvironmentObject private var gestorTema:      GestorTema
-    @EnvironmentObject private var gestorClima:    GestorClima
+    @Environment(GestorSesion.self)    private var gestorSesion
+    @Environment(GestorSalud.self)     private var gestorSalud
+    @Environment(GestorUbicacion.self) private var gestorUbicacion
+    @Environment(GestorTema.self)      private var gestorTema
+    @Environment(GestorClima.self)     private var gestorClima
 
     @AppStorage("duracionSesionMinutos") private var duracionMinutos  = 15
     @AppStorage("saludActiva")           private var saludActiva      = false

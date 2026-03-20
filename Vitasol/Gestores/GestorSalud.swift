@@ -1,9 +1,10 @@
-import Combine
 import HealthKit
+import Observation
 
+@Observable
 @MainActor
-final class GestorSalud: ObservableObject {
-    @Published var autorizado: Bool = false
+final class GestorSalud {
+    var autorizado: Bool = false
 
     private let store = HKHealthStore()
     private let tipo  = HKQuantityType(.timeInDaylight)

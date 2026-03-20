@@ -1,10 +1,11 @@
-import Combine
+import Observation
 import UserNotifications
 import Foundation
 
+@Observable
 @MainActor
-final class GestorNotificaciones: ObservableObject {
-    @Published var estado: UNAuthorizationStatus = .notDetermined
+final class GestorNotificaciones {
+    var estado: UNAuthorizationStatus = .notDetermined
 
     var autorizado: Bool { estado == .authorized }
 

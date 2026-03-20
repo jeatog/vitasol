@@ -1,14 +1,15 @@
-import Combine
+import Observation
 import SwiftUI
 
 // MARK: Gestor de tema día/noche
 // Evalúa la hora cada 60 s y activa el modo noche entre las 19:00 y las 07:00,
 // los mismos límites que VistaSesion usa para bloquear sesiones nocturnas.
 
+@Observable
 @MainActor
-final class GestorTema: ObservableObject {
+final class GestorTema {
 
-    @Published private(set) var esDeNoche: Bool = false
+    private(set) var esDeNoche: Bool = false
 
     private var timer: Timer?
 

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct VistaPrincipal: View {
-    @EnvironmentObject private var gestorSesion: GestorSesion
+    @Environment(GestorSesion.self) private var gestorSesion
     @State private var tabSeleccionada = 0
     @AppStorage("idiomaApp") private var idiomaApp = "es"
 
