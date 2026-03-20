@@ -49,6 +49,7 @@
 		EC9281082F46A250009C9914 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EC92810A2F46A251009C9914 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		ECAF6B0E2F6CFCAE00D51C92 /* VitasolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VitasolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECAF6B212F6D058B00D51C92 /* VitasolWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitasolWidgetsExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -130,6 +131,7 @@
 		EC9280B82F4629F8009C9914 = {
 			isa = PBXGroup;
 			children = (
+				ECAF6B212F6D058B00D51C92 /* VitasolWidgetsExtension.entitlements */,
 				EC9280C32F4629F8009C9914 /* Vitasol */,
 				EC92810C2F46A251009C9914 /* VitasolWidgets */,
 				ECAF6B0F2F6CFCAE00D51C92 /* VitasolTests */,
@@ -554,6 +556,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = VitasolWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YWTHA6AQ38;
@@ -588,6 +591,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = VitasolWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YWTHA6AQ38;
