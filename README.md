@@ -21,13 +21,16 @@ El nombre combina *vita* (vida) y *sol*, reflejando el vínculo entre la exposic
 - Guarda cada sesión en SwiftData con fecha, duración, UV, temperatura y ubicación
 - Sincroniza el tiempo de exposición con Apple Salud (HealthKit)
 - Envía recordatorios diarios configurables por día de la semana y hora
-- Muestra estadísticas: total de sesiones, tiempo acumulado, racha actual y días con meta cumplida
-- Desbloquea logros según el historial (primera sesión, rachas, constancia)
+- Muestra estadísticas con layout bento: racha hero + sesiones, tiempo y días con meta
+- Desbloquea 14 logros con SF Symbols (rachas, horario, volumen, exploración, UV)
 - Muestra un historial filtrable por período, índice UV y ubicación
 - Contiene contenido educativo sobre vitamina D (qué es, beneficios, fuentes, consejos)
 - Muestra una Live Activity en el Dynamic Island y la pantalla de bloqueo durante la sesión
+- Widget de progreso diario con estado del día y UV actual
+- Vibración háptica al completar la meta de exposición
 - Soporta español e inglés con cambio de idioma en runtime sin reiniciar la app
 - Adapta colores y estilo entre modo día (paleta cálida) y modo noche (paleta fría) automáticamente
+- Accesibilidad: VoiceOver en todas las vistas, Dynamic Type con estilos semánticos
 
 ---
 
@@ -42,10 +45,11 @@ Dar a los usuarios una herramienta simple para cubrir su necesidad diaria de vit
 - **Plataforma:** iOS 26+
 - **Lenguaje:** Swift 5.10
 - **UI Framework:** SwiftUI (iOS 26, Liquid Glass)
-- **Persistencia:** SwiftData
+- **Persistencia:** SwiftData (esquema versionado con migración)
 - **Concurrencia:** async/await, @MainActor
 - **Arquitectura:** MVVM con @Observable (Observation framework) y @Environment
 - **Localización:** String Catalogs (.xcstrings), idioma fuente español
+- **Tests:** Swift Testing (55 casos en 6 suites)
 
 ---
 
@@ -53,12 +57,13 @@ Dar a los usuarios una herramienta simple para cubrir su necesidad diaria de vit
 
 | Framework | Uso |
 |-----------|-----|
-| SwiftUI | UI declarativa, animaciones, navegación |
-| SwiftData | Persistencia de sesiones solares |
+| SwiftUI | UI declarativa, animaciones, navegación, Liquid Glass |
+| SwiftData | Persistencia de sesiones solares con esquema versionado |
 | ActivityKit | Live Activity durante sesión activa |
-| WidgetKit | Widget extension (placeholder v1.0) |
+| WidgetKit | Widget de progreso diario y Live Activity |
 | HealthKit | Registro de tiempo de exposición en Apple Salud |
-| CoreLocation | Coordenadas GPS y geocodificación inversa |
+| CoreLocation | Coordenadas GPS para datos climáticos |
+| MapKit | Geocodificación inversa (MKReverseGeocodingRequest) |
 | UserNotifications | Recordatorios diarios configurables |
 | Observation | Reactividad con @Observable y tracking granular por propiedad |
 | Foundation / URLSession | Consumo de la API Open-Meteo |
@@ -69,7 +74,7 @@ Dar a los usuarios una herramienta simple para cubrir su necesidad diaria de vit
 
 Ninguna. La app usa exclusivamente frameworks de Apple y la API pública de Open-Meteo.
 
-**Open-Meteo** (https://open-meteo.com): API meteorológica gratuita y sin autenticación. Provee temperatura, índice UV y código climático WMO en tiempo real según coordenadas GPS. Diseñada para migrar a Apple WeatherKit en una versión futura sin cambiar la interfaz del GestorClima.
+**Open-Meteo** (https://open-meteo.com): API meteorológica gratuita y sin autenticación. Provee temperatura, índice UV y código climático WMO en tiempo real según coordenadas GPS.
 
 ---
 
@@ -78,8 +83,8 @@ Ninguna. La app usa exclusivamente frameworks de Apple y la API pública de Open
 ```
 Vitasol/
 ├── App/                        Entrada y navegación principal
-├── Gestores/                   Lógica de negocio (sesión, clima, ubicación, salud, etc.)
-├── Modelos/                    Entidades SwiftData y structs de datos
+├── Gestores/                   Lógica de negocio (sesión, clima, ubicación, salud, tema, notificaciones)
+├── Modelos/                    Entidades SwiftData y structs de datos (SesionSolar, Logro)
 ├── Vistas/                     Pantallas SwiftUI por sección
 │   ├── Inicio/
 │   ├── Sesion/
@@ -87,11 +92,18 @@ Vitasol/
 │   ├── Aprender/
 │   └── Ajustes/
 ├── Recursos/                   Localizable.xcstrings (es / en)
-├── Tema.swift                  Sistema de diseño Solsticio
+├── Tema.swift                  Sistema de diseño Solsticio (colores, tipografía, Liquid Glass)
 └── Textos.swift                Todas las claves de UI como LocalizedStringKey
 
 VitasolWidgets/                 Widget extension
+├── VitasolWidget               Widget de progreso diario (systemSmall)
 └── VitasolWidgetsLiveActivity  Live Activity del timer de sesión
+
+VitasolTests/                   Tests unitarios (Swift Testing)
+├── LogroTests                  Racha actual y evaluación de 14 logros
+├── GestorSesionTests           Progreso, segundos restantes, formato de tiempo
+├── GestorClimaTests            Mapeos de clima, UV y condiciones
+└── SesionSolarTests            Duración formateada, esHoy, rangos UV
 ```
 
 ---
@@ -111,17 +123,13 @@ Las siguientes funcionalidades fueron diferidas conscientemente de la v1.0 y se 
 - Histórico de rachas pasadas
 - Exportar historial como CSV
 
-### Widget de pantalla de inicio
-- Widget estático con progreso diario y UV actual
-
-### Sesión
-- Vibración háptica al completar la meta
-
 ### Perfil de usuario
-- Perfiles de usuario y datos en nube
 - Tipo de piel (escala Fitzpatrick I–VI) para calcular exposición segura personalizada
 - Edad y factores de riesgo opcionales
 - Meta de vitamina D personalizable (UI/día)
+
+### Sincronización
+- Respaldo del historial en iCloud vía CloudKit (requiere cuenta de desarrollador de pago)
 
 ### Accesibilidad
 - Modo de alto contraste
@@ -131,4 +139,4 @@ Las siguientes funcionalidades fueron diferidas conscientemente de la v1.0 y se 
 
 ### Técnico
 - CI/CD con Xcode Cloud
-- Migración de Open-Meteo a Apple WeatherKit
+- Migración de Open-Meteo a Apple WeatherKit (requiere suscripción)
