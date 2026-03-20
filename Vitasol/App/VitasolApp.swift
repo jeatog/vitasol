@@ -32,6 +32,6 @@ struct VitasolApp: App {
                     }
                 }
         }
-        .modelContainer(for: SesionSolar.self)
+        .modelContainer(for: SesionSolar.self, migrationPlan: PlanMigracionSesion.self)
     }
 }

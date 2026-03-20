@@ -8,7 +8,6 @@ struct Logro: Identifiable, Equatable {
     var desbloqueado: Bool = false
 
     // MARK: Catálogo
-    // TODO: Ver si puedo hacer esto más dinámico o, cuando menos, meter más
     static let catalogo: [Logro] = [
         Logro(id: "primer_rayo",
               titulo:      Textos.Logros.primerRayoTitulo,
@@ -63,7 +62,8 @@ struct Logro: Identifiable, Equatable {
         for dia in diasUnicos {
             if dia == diaAComprobar {
                 racha += 1
-                diaAComprobar = calendario.date(byAdding: .day, value: -1, to: diaAComprobar)!
+                guard let anterior = calendario.date(byAdding: .day, value: -1, to: diaAComprobar) else { break }
+                diaAComprobar = anterior
             } else if dia < diaAComprobar {
                 break
             }

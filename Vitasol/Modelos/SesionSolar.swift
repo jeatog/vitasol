@@ -3,6 +3,8 @@ import Foundation
 
 @Model
 final class SesionSolar {
+    #Index<SesionSolar>([\.fecha])
+
     var id:               UUID
     var fecha:            Date
     var duracionSegundos: Int
@@ -37,4 +39,16 @@ final class SesionSolar {
     var esHoy: Bool {
         Calendar.current.isDateInToday(fecha)
     }
+}
+
+// MARK: Esquema versionado (base para futuras migraciones)
+
+enum EsquemaSesionV1: VersionedSchema {
+    static var versionIdentifier = Schema.Version(1, 0, 0)
+    static var models: [any PersistentModel.Type] { [SesionSolar.self] }
+}
+
+enum PlanMigracionSesion: SchemaMigrationPlan {
+    static var schemas: [any VersionedSchema.Type] { [EsquemaSesionV1.self] }
+    static var stages: [MigrationStage] { [] }
 }
