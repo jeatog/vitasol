@@ -318,13 +318,17 @@ struct FilaLogro: View {
             ZStack {
                 Circle()
                     .fill(logro.desbloqueado
-                          ? Color.ambar.opacity(0.15)
+                          ? logro.colorIcono.opacity(0.15)
                           : Color.textoApagado.opacity(0.08))
                     .frame(width: 44, height: 44)
 
-                Text(logro.emoji)
-                    .font(.system(size: 22))
-                    .grayscale(logro.desbloqueado ? 0 : 1)
+                Image(systemName: logro.icono)
+                    .font(.system(size: 20))
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(
+                        logro.desbloqueado ? logro.colorIcono : .textoApagado,
+                        logro.desbloqueado ? logro.colorIcono.opacity(0.6) : Color.textoApagado.opacity(0.4)
+                    )
                     .opacity(logro.desbloqueado ? 1 : 0.45)
             }
 
