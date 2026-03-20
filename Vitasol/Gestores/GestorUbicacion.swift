@@ -1,5 +1,6 @@
 import Combine
 import CoreLocation
+import MapKit
 
 @MainActor
 final class GestorUbicacion: NSObject, ObservableObject {
@@ -8,9 +9,7 @@ final class GestorUbicacion: NSObject, ObservableObject {
     @Published var autorizado: Bool = false
     @Published var denegado: Bool = false
 
-    private let manager  = CLLocationManager()
-    // swiftlint:disable:next deployment_target
-    private let geocoder = CLGeocoder()   // CLGeocoder deprecated en iOS 26 — migrar a MKReverseGeocodingRequest cuando la API sea estable, no tengo referencias de esto aún, así que lo dejo así lel. Igual no es mucho pedo en iOS 26 aún.
+    private let manager = CLLocationManager()
 
     override init() {
         super.init()
@@ -59,14 +58,11 @@ extension GestorUbicacion: CLLocationManagerDelegate {
     }
 
     private func geocodificar(_ location: CLLocation) {
-        // Lo mismo del CLGeocoder que psue arriba
-        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, _ in
-            guard let pm = placemarks?.first else { return }
-            let partes = [pm.locality, pm.administrativeArea, pm.country].compactMap { $0 }
-            let nombre = partes.joined(separator: ", ")
-            Task { @MainActor [weak self] in
-                self?.nombreUbicacion = nombre
-            }
+        Task {
+            guard let solicitud = MKReverseGeocodingRequest(location: location) else { return }
+            guard let item = try? await solicitud.mapItems.first,
+                  let direccion = item.address else { return }
+            nombreUbicacion = direccion.shortAddress ?? direccion.fullAddress
         }
     }
 }
