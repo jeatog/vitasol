@@ -8,6 +8,7 @@
 
     },
     "live.quedan" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -54,9 +55,6 @@
           }
         }
       }
-    },
-    "Vitasol" : {
-
     },
     "widget.buenas_noches" : {
       "localizations" : {
