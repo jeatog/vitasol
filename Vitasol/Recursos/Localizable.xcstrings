@@ -10,6 +10,9 @@
     "%lld UV" : {
 
     },
+    "• %@" : {
+
+    },
     "°C" : {
 
     },
@@ -497,22 +500,6 @@
         }
       }
     },
-    "aprender.fuentes" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sources"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fuentes"
-          }
-        }
-      }
-    },
     "aprender.aviso_titulo" : {
       "localizations" : {
         "en" : {
@@ -722,6 +709,7 @@
       }
     },
     "aprender.contraer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -738,6 +726,7 @@
       }
     },
     "aprender.expandir" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -749,6 +738,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Toca para expandir"
+          }
+        }
+      }
+    },
+    "aprender.fuentes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuentes"
           }
         }
       }
