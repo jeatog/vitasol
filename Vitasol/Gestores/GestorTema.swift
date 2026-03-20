@@ -27,7 +27,7 @@ final class GestorTema {
 
     /// Determina si es de noche para una hora dada en minutos desde medianoche.
     /// Noche: antes de las 6:30 (390 min) o desde las 19:00 (1140 min).
-    static func calcularEsDeNoche(minutosDia: Int) -> Bool {
+    nonisolated static func calcularEsDeNoche(minutosDia: Int) -> Bool {
         minutosDia < 390 || minutosDia >= 1140
     }
 
