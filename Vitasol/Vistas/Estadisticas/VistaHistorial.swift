@@ -71,8 +71,7 @@ struct VistaHistorial: View {
     @State private var periodo:          PeriodoFiltro = .todo
     @State private var uvFiltro:         UVCategoria?  = nil
     @State private var ubicacionFiltro:  String?       = nil
-    @State private var archivoExportar:  URL?          = nil
-    @State private var mostrarExportar:  Bool          = false
+    @State private var archivoExportar:  ArchivoExportable?
 
     private var ubicacionesUnicas: [String] {
         Array(Set(sesiones.compactMap { $0.ubicacion })).sorted()
@@ -110,23 +109,25 @@ struct VistaHistorial: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Menu {
                         Button {
-                            archivoExportar = ExportadorHistorial.generarCSV(
+                            if let url = ExportadorHistorial.generarCSV(
                                 sesiones: sesionesFiltradas, idioma: idiomaApp
-                            )
-                            mostrarExportar = archivoExportar != nil
+                            ) {
+                                archivoExportar = ArchivoExportable(url: url)
+                            }
                         } label: {
                             Label(String(localized: "exportar.csv"), systemImage: "tablecells")
                         }
 
                         Button {
                             let completadas = sesiones.filter { $0.completada }
-                            archivoExportar = ExportadorHistorial.generarPDF(
+                            if let url = ExportadorHistorial.generarPDF(
                                 sesiones: sesionesFiltradas,
                                 racha: Logro.rachaActual(de: completadas),
                                 logros: Logro.evaluar(sesiones: sesiones),
                                 idioma: idiomaApp
-                            )
-                            mostrarExportar = archivoExportar != nil
+                            ) {
+                                archivoExportar = ArchivoExportable(url: url)
+                            }
                         } label: {
                             Label(String(localized: "exportar.pdf"), systemImage: "doc.richtext")
                         }
@@ -146,10 +147,8 @@ struct VistaHistorial: View {
                     }
                 }
             }
-            .sheet(isPresented: $mostrarExportar) {
-                if let url = archivoExportar {
-                    ActivityViewController(items: [url])
-                }
+            .sheet(item: $archivoExportar) { archivo in
+                ActivityViewController(items: [archivo.url])
             }
         }
         .environment(\.locale, Locale(identifier: idiomaApp))
@@ -289,6 +288,13 @@ struct ChipFiltroTexto: View {
     var body: some View {
         ChipFiltro(LocalizedStringKey(texto), seleccionado: seleccionado, alSeleccionar: alSeleccionar)
     }
+}
+
+// MARK: Wrapper para .sheet(item:)
+
+struct ArchivoExportable: Identifiable {
+    let id = UUID()
+    let url: URL
 }
 
 // MARK: Share sheet (UIKit wrapper)

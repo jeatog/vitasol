@@ -46,8 +46,8 @@ enum ExportadorHistorial {
             csv += "\(fmtHora.string(from: inicio)),"
             csv += "\(fmtHora.string(from: fin)),"
             csv += "\(mins),"
-            csv += "\(String(format: "%.1f", sesion.indiceUV)),"
-            csv += "\(Int(sesion.temperatura)),"
+            csv += "\(sesion.indiceUV > 0 ? String(format: "%.1f", sesion.indiceUV) : ""),"
+            csv += "\(sesion.temperatura != 0 ? "\(Int(sesion.temperatura))" : ""),"
             csv += "\(lugar),"
             csv += "\(estado)\n"
         }
@@ -269,8 +269,8 @@ enum ExportadorHistorial {
             let inicio = fin.addingTimeInterval(-TimeInterval(sesion.duracionSegundos))
             let horario = "\(fmtHora.string(from: inicio)) – \(fmtHora.string(from: fin))"
             let duracion = "\(sesion.duracionSegundos / 60) min"
-            let uv     = String(format: "%.1f", sesion.indiceUV)
-            let temp   = "\(Int(sesion.temperatura))°C"
+            let uv     = sesion.indiceUV > 0 ? String(format: "%.1f", sesion.indiceUV) : "--"
+            let temp   = sesion.temperatura != 0 ? "\(Int(sesion.temperatura))°C" : "--"
             let lugar  = sesion.ubicacion ?? "—"
             let estado = sesion.completada ? "✓" : "—"
 
