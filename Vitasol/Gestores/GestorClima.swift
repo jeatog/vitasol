@@ -113,11 +113,11 @@ final class GestorClima {
         }
     }
 
-    /// Buen día para tomar sol: UV >= 3 y sin lluvia/tormenta/nieve
+    /// Buen día para tomar sol: UV entre 3 y 7, sin lluvia/tormenta/nieve
     var esBuenDia: Bool {
         guard let uv = indiceUV, let codigo = codigoClima else { return false }
         let sinPrecipitacion = ![51, 53, 55, 61, 63, 65, 71, 73, 75, 77, 80, 81, 82, 95, 96, 99].contains(codigo)
-        return uv >= 3 && sinPrecipitacion
+        return uv >= 3 && uv < 8 && sinPrecipitacion
     }
 
     var uvEntero: Int {

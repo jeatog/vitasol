@@ -298,12 +298,6 @@ struct VistaInicio: View {
                 Text(Textos.Inicio.metaHoyCumplida)
                     .font(.fuenteCabecera)
                     .foregroundStyle(.textoPrimario)
-
-                if let sesion = sesionDeHoy {
-                    Text(Textos.Inicio.duracionSesion(sesion.duracionFormateada))
-                        .font(.fuenteCuerpo)
-                        .foregroundStyle(.textoSecundario)
-                }
             }
 
             Spacer()

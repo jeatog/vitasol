@@ -32,66 +32,18 @@
         }
       }
     },
-    "ajustes.duracion_max" : {
+    "ajustes.duracion_alerta_continuar" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "30 min"
+            "value" : "Continue anyway"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "30 min"
-          }
-        }
-      }
-    },
-    "ajustes.duracion_sesion" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Session duration"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duración de la sesión"
-          }
-        }
-      }
-    },
-    "ajustes.duracion_leyenda" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dermatologists recommend no more than 15–20 minutes of direct sun exposure per day for vitamin D synthesis."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los dermatólogos recomiendan no más de 15–20 minutos de exposición solar directa al día para la síntesis de vitamina D."
-          }
-        }
-      }
-    },
-    "ajustes.duracion_alerta_titulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Extended duration"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duración extendida"
+            "value" : "Continuar de todos modos"
           }
         }
       }
@@ -112,18 +64,50 @@
         }
       }
     },
-    "ajustes.duracion_alerta_continuar" : {
+    "ajustes.duracion_alerta_titulo" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Continue anyway"
+            "value" : "Extended duration"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Continuar de todos modos"
+            "value" : "Duración extendida"
+          }
+        }
+      }
+    },
+    "ajustes.duracion_leyenda" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dermatologists recommend no more than 15–20 minutes of direct sun exposure per day for vitamin D synthesis."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los dermatólogos recomiendan no más de 15–20 minutos de exposición solar directa al día para la síntesis de vitamina D."
+          }
+        }
+      }
+    },
+    "ajustes.duracion_max" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 min"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 min"
           }
         }
       }
@@ -145,6 +129,7 @@
       }
     },
     "ajustes.duracion_recomendada" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -156,6 +141,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duración recomendada"
+          }
+        }
+      }
+    },
+    "ajustes.duracion_sesion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session duration"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duración de la sesión"
           }
         }
       }
@@ -1877,13 +1878,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recommended: %lld minutes"
+            "value" : "Session duration: %lld minutes"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Duración recomendada: %lld minutos"
+            "value" : "Duración de la sesión: %lld minutos"
           }
         }
       }
@@ -2608,6 +2609,54 @@
         }
       }
     },
+    "sesion.alerta_exceso_diario_continuar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start anyway"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar de todos modos"
+          }
+        }
+      }
+    },
+    "sesion.alerta_exceso_diario_mensaje %lld %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've already had %lld minutes of sun today. The recommended maximum is %lld minutes per day. Starting this session will exceed that limit."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya llevas %lld minutos de sol hoy. El máximo recomendado es %lld minutos al día. Iniciar esta sesión superará ese límite."
+          }
+        }
+      }
+    },
+    "sesion.alerta_exceso_diario_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily limit exceeded"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límite diario excedido"
+          }
+        }
+      }
+    },
     "sesion.alerta_mal_clima_continuar" : {
       "localizations" : {
         "en" : {
@@ -2668,54 +2717,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Completaste %lld minutos de sol. ¡Excelente trabajo!"
-          }
-        }
-      }
-    },
-    "sesion.alerta_exceso_diario_titulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daily limit exceeded"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Límite diario excedido"
-          }
-        }
-      }
-    },
-    "sesion.alerta_exceso_diario_continuar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start anyway"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Iniciar de todos modos"
-          }
-        }
-      }
-    },
-    "sesion.alerta_exceso_diario_mensaje %lld %lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You've already had %lld minutes of sun today. The recommended maximum is %lld minutes per day. Starting this session will exceed that limit."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ya llevas %lld minutos de sol hoy. El máximo recomendado es %lld minutos al día. Iniciar esta sesión superará ese límite."
           }
         }
       }

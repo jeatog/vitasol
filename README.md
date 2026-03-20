@@ -139,4 +139,6 @@ Las siguientes funcionalidades fueron diferidas conscientemente de la v1.0 y se 
 
 ### Técnico
 - CI/CD con Xcode Cloud
-- Migración de Open-Meteo a Apple WeatherKit (requiere suscripción)
+- Migración de Open-Meteo a Apple WeatherKit (requiere cuenta de desarrollador de pago)
+- Horario dinámico de sol basado en sunrise/sunset de WeatherKit (con fallback a 6:30–19:00)
+- StoreKit 2 para in-app purchase "Vitasol Pro"
