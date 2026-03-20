@@ -115,7 +115,7 @@ struct VistaHistorial: View {
                                 archivoExportar = ArchivoExportable(url: url)
                             }
                         } label: {
-                            Label(String(localized: "exportar.csv"), systemImage: "tablecells")
+                            Label("exportar.csv", systemImage: "tablecells")
                         }
 
                         Button {
@@ -129,7 +129,7 @@ struct VistaHistorial: View {
                                 archivoExportar = ArchivoExportable(url: url)
                             }
                         } label: {
-                            Label(String(localized: "exportar.pdf"), systemImage: "doc.richtext")
+                            Label("exportar.pdf", systemImage: "doc.richtext")
                         }
                     } label: {
                         Image(systemName: "square.and.arrow.up")
