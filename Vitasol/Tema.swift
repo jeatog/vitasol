@@ -115,13 +115,13 @@ struct EstiloBotonPrincipal: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 17, weight: .semibold, design: .rounded))
+            .font(.system(size: 18, weight: .bold, design: .rounded))
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 17)
             .background(
                 RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    .fill(destructivo ? Color.red.gradient : Color.ambar.gradient)
+                    .fill(destructivo ? Color.red.gradient : Color.ambarProfundo.gradient)
             )
             .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
             .opacity(configuration.isPressed ? 0.92 : 1.0)
