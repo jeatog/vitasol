@@ -80,6 +80,35 @@ struct GestorClimaTests {
     }
 
     @MainActor
+    @Test("esBuenDia es false con UV >= 8 (muy alto)")
+    func esBuenDiaUVMuyAlto() {
+        let gestor = GestorClima()
+        gestor.codigoClima = 0
+
+        gestor.indiceUV = 8.0
+        #expect(!gestor.esBuenDia)
+
+        gestor.indiceUV = 10.0
+        #expect(!gestor.esBuenDia)
+    }
+
+    @MainActor
+    @Test("esBuenDia es true con UV 7.9 (justo bajo el límite)")
+    func esBuenDiaUVLimite() {
+        let gestor = GestorClima()
+        gestor.codigoClima = 0
+
+        gestor.indiceUV = 7.9
+        #expect(gestor.esBuenDia)
+
+        gestor.indiceUV = 3.0
+        #expect(gestor.esBuenDia)
+
+        gestor.indiceUV = 2.9
+        #expect(!gestor.esBuenDia)
+    }
+
+    @MainActor
     @Test("iconoSistema retorna ícono correcto por código")
     func iconoSistema() {
         let gestor = GestorClima()
