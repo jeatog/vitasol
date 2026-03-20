@@ -41,9 +41,9 @@ enum UVCategoria: CaseIterable, Equatable, Hashable {
 
     var rango: ClosedRange<Double> {
         switch self {
-        case .bajo:    return 0...2
-        case .medio:   return 3...5
-        case .alto:    return 6...7
+        case .bajo:    return 0...2.999
+        case .medio:   return 3...5.999
+        case .alto:    return 6...7.999
         case .muyAlto: return 8...20
         }
     }
