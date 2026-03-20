@@ -81,33 +81,64 @@ struct VistaEstadisticas: View {
         }
     }
 
-    // MARK: Cuadrícula de estadísticas
+    // MARK: Estadísticas — bento asimétrico
     private var cuadriculaStats: some View {
-        LazyVGrid(
-            columns: [GridItem(.flexible(), spacing: Diseno.espaciadoS),
-                      GridItem(.flexible(), spacing: Diseno.espaciadoS)],
-            spacing: Diseno.espaciadoS
-        ) {
-            MosaicoStat(icono: "calendar.badge.checkmark",
-                        etiqueta: Textos.Estadisticas.totalSesiones,
-                        valor: "\(completadas.count)",
-                        color: .ambar)
+        VStack(spacing: Diseno.espaciadoS) {
+            // Card hero: racha actual
+            tarjetaRachaHero
 
-            MosaicoStat(icono: "clock.fill",
-                        etiqueta: Textos.Estadisticas.tiempoTotal,
-                        valor: completadas.isEmpty ? "0m" : tiempoTotalTexto,
-                        color: .dorado)
-
-            MosaicoStat(icono: "flame.fill",
-                        etiqueta: Textos.Estadisticas.rachaActual,
-                        valor: String(localized: "estadisticas.dias \(racha)"),
-                        color: .orange)
-
-            MosaicoStat(icono: "flag.checkered",
-                        etiqueta: Textos.Estadisticas.diasConMeta,
-                        valor: "\(diasConMeta)",
-                        color: .salvia)
+            // Fila de 3 stats compactas
+            HStack(spacing: Diseno.espaciadoS) {
+                MosaicoStatCompacto(icono: "calendar.badge.checkmark",
+                                    etiqueta: Textos.Estadisticas.totalSesiones,
+                                    valor: "\(completadas.count)",
+                                    color: .ambar)
+                MosaicoStatCompacto(icono: "clock.fill",
+                                    etiqueta: Textos.Estadisticas.tiempoTotal,
+                                    valor: completadas.isEmpty ? "0m" : tiempoTotalTexto,
+                                    color: .dorado)
+                MosaicoStatCompacto(icono: "flag.checkered",
+                                    etiqueta: Textos.Estadisticas.diasConMeta,
+                                    valor: "\(diasConMeta)",
+                                    color: .salvia)
+            }
         }
+    }
+
+    // MARK: Card hero de racha
+    private var tarjetaRachaHero: some View {
+        HStack(spacing: 16) {
+            // Anillo de progreso de racha (meta visual: 30 días)
+            ZStack {
+                Circle()
+                    .stroke(Color.ambar.opacity(0.12), lineWidth: 6)
+                Circle()
+                    .trim(from: 0, to: min(Double(racha) / 30.0, 1.0))
+                    .stroke(Color.ambar.gradient, style: StrokeStyle(lineWidth: 6, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                Image(systemName: "flame.fill")
+                    .font(.system(size: 20))
+                    .foregroundStyle(.ambar)
+            }
+            .frame(width: 56, height: 56)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(Textos.Estadisticas.rachaActual)
+                    .font(.fuenteCaption)
+                    .foregroundStyle(.textoApagado)
+                    .textCase(.uppercase)
+                    .tracking(0.8)
+                Text(String(localized: "estadisticas.dias \(racha)"))
+                    .font(.system(.title, design: .rounded, weight: .bold))
+                    .foregroundStyle(.textoPrimario)
+                    .contentTransition(.numericText())
+            }
+
+            Spacer()
+        }
+        .padding(Diseno.relleno)
+        .tarjetaVidrio()
+        .accessibilityElement(children: .combine)
     }
 
     // MARK: Sección de logros
@@ -185,36 +216,38 @@ struct VistaEstadisticas: View {
     }
 }
 
-// MARK: Mosaico de estadística individual
-struct MosaicoStat: View {
+// MARK: Mosaico compacto (3 en fila)
+struct MosaicoStatCompacto: View {
     let icono:    String
     let etiqueta: LocalizedStringKey
     let valor:    String
     let color:    Color
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Diseno.rellenoS) {
+        VStack(spacing: 8) {
             Image(systemName: icono)
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .foregroundStyle(color)
-                .frame(width: 40, height: 40)
+                .frame(width: 32, height: 32)
                 .background(color.opacity(0.12))
-                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
 
-            VStack(alignment: .leading, spacing: 2) {
-                Text(valor)
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .foregroundStyle(.textoPrimario)
-                    .minimumScaleFactor(0.7)
-                    .lineLimit(1)
+            Text(valor)
+                .font(.system(.title3, design: .rounded, weight: .bold))
+                .foregroundStyle(.textoPrimario)
+                .minimumScaleFactor(0.6)
+                .lineLimit(1)
 
-                Text(etiqueta)
-                    .font(.fuenteCaption)
-                    .foregroundStyle(.textoApagado)
-            }
+            Text(etiqueta)
+                .font(.fuenteMicro)
+                .foregroundStyle(.textoApagado)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .fixedSize(horizontal: false, vertical: true)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(Diseno.rellenoS + 4)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, Diseno.rellenoS + 2)
+        .padding(.horizontal, 6)
         .tarjetaVidrio()
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(etiqueta))
