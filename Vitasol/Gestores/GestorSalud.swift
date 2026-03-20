@@ -32,7 +32,9 @@ final class GestorSalud {
         let inicio   = fin.addingTimeInterval(-TimeInterval(duracionSegundos))
         let muestra  = HKQuantitySample(type: tipo, quantity: cantidad, start: inicio, end: fin)
         store.save(muestra) { exito, error in
+            #if DEBUG
             if let error { print("[GestorSalud] Error al guardar en HealthKit: \(error.localizedDescription)") }
+            #endif
         }
     }
 }

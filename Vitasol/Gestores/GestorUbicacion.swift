@@ -38,7 +38,9 @@ final class GestorUbicacion {
         delegado.alFallar = { error in
             // CLError.locationUnknown es transitorio y se reintenta automáticamente
             guard (error as? CLError)?.code != .locationUnknown else { return }
+            #if DEBUG
             print("[GestorUbicacion] Error de ubicación: \(error.localizedDescription)")
+            #endif
         }
     }
 
