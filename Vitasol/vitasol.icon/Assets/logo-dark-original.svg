@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+
+  <defs>
+    <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BEC6EB"/>
+      <stop offset="100%" stop-color="#7B8EE0"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(200,200)">
+
+    <!-- Rayos verticales -->
+    <rect x="-14" y="-190" width="28" height="80" rx="14" fill="#BEC6EB"/>
+    <rect x="-14" y="110" width="28" height="80" rx="14" fill="#BEC6EB"/>
+
+    <!-- Rayos horizontales -->
+    <rect x="-190" y="-14" width="80" height="28" rx="14" fill="#BEC6EB"/>
+    <rect x="110" y="-14" width="80" height="28" rx="14" fill="#BEC6EB"/>
+
+    <!-- Rayos diagonales -->
+    <g transform="rotate(45)">
+      <rect x="-14" y="-170" width="28" height="70" rx="14" fill="#7B8EE0"/>
+      <rect x="-14" y="100" width="28" height="70" rx="14" fill="#7B8EE0"/>
+    </g>
+
+    <g transform="rotate(-45)">
+      <rect x="-14" y="-170" width="28" height="70" rx="14" fill="#7B8EE0"/>
+      <rect x="-14" y="100" width="28" height="70" rx="14" fill="#7B8EE0"/>
+    </g>
+
+    <!-- Círculo central -->
+    <circle r="90" fill="url(#sunGradient)" />
+
+    <!-- V estilizada más gruesa para mejor legibilidad en tamaños pequeños -->
+    <path
+      d="M-45 -25 L0 60 L45 -25 L28 -25 L0 25 L-28 -25 Z"
+      fill="white"
+    />
+
+  </g>
+
+</svg>
