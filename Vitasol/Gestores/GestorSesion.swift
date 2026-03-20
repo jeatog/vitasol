@@ -13,12 +13,12 @@ final class GestorSesion {
     var completo:         Bool = false
     var navegarASesion:   Bool = false
 
-    private var temporizador:         Timer?
-    private var actividad:            Activity<SesionSolarActividad>?
-    private var ticksActualizacion:   Int = 0
-    private var fechaBackground:      Date?          // marca cuándo se fue a background
-    private var tareaBackground:      Task<Void, Never>?
-    private var tareaForeground:      Task<Void, Never>?
+    nonisolated(unsafe) private var temporizador:  Timer?
+    private var actividad:                          Activity<SesionSolarActividad>?
+    private var ticksActualizacion:                 Int = 0
+    private var fechaBackground:                    Date?
+    nonisolated(unsafe) private var tareaBackground: Task<Void, Never>?
+    nonisolated(unsafe) private var tareaForeground: Task<Void, Never>?
 
     // MARK: Manejamos estado en background
 

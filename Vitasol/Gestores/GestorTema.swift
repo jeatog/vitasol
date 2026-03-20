@@ -11,7 +11,7 @@ final class GestorTema {
 
     private(set) var esDeNoche: Bool = false
 
-    private var timer: Timer?
+    nonisolated(unsafe) private var timer: Timer?
 
     init() {
         actualizar()
