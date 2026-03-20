@@ -335,9 +335,6 @@ enum ExportadorHistorial {
             colAmbar.withAlphaComponent(0.3).setFill()
             circulo.fill()
 
-            // Nombre del logro
-            let nombre = String(localized: String.LocalizationValue(stringLiteral: "\(logro.id)_nombre_logro"))
-            // Fallback: usar el id formateado
             let textoLogro = logro.id.replacingOccurrences(of: "_", with: " ").capitalized
             NSString(string: textoLogro).draw(at: CGPoint(x: x + 14, y: y), withAttributes: attrLogro)
 
