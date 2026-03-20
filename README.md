@@ -108,37 +108,27 @@ VitasolTests/                   Tests unitarios (Swift Testing)
 
 ---
 
-## TODOs (v1.1+)
+## Roadmap
 
-Las siguientes funcionalidades fueron diferidas conscientemente de la v1.0 y se priorizarán según el feedback de usuarios.
+### v1.0.0 (requiere cuenta de desarrollador de pago)
+- Migración de Open-Meteo a Apple WeatherKit
+- Horario dinámico de sol basado en sunrise/sunset de WeatherKit (con fallback a 6:30–19:00)
+- StoreKit 2 para in-app purchase "Vitasol Pro"
+- Paywall en historial completo, filtros, exportación y logros extendidos
 
-### Historial
-- Filtro por rango de temperatura
-- Filtro por franja horaria (ej. 8–10 h, 12–14 h)
-- Filtro por mes/año específico
-
-### Estadísticas
+### v1.1.0
+- Respaldo del historial en iCloud vía CloudKit
 - Gráfico de UV promedio semanal con Swift Charts
 - Distribución horaria de sesiones
 - Histórico de rachas pasadas
-- Exportar historial como CSV
+- Filtro de historial por rango de temperatura
+- Filtro de historial por franja horaria (ej. 8–10 h, 12–14 h)
+- Filtro de historial por mes/año específico
 
-### Perfil de usuario
-- Tipo de piel (escala Fitzpatrick I–VI) para calcular exposición segura personalizada
+### v1.2.0+
+- Tipo de piel (escala Fitzpatrick I–VI) para exposición personalizada
 - Edad y factores de riesgo opcionales
 - Meta de vitamina D personalizable (UI/día)
-
-### Sincronización
-- Respaldo del historial en iCloud vía CloudKit (requiere cuenta de desarrollador de pago)
-
-### Accesibilidad
+- Onboarding: carousel de 3 pantallas al primer lanzamiento
 - Modo de alto contraste
-
-### Onboarding
-- Carousel de 3 pantallas al primer lanzamiento
-
-### Técnico
 - CI/CD con Xcode Cloud
-- Migración de Open-Meteo a Apple WeatherKit (requiere cuenta de desarrollador de pago)
-- Horario dinámico de sol basado en sunrise/sunset de WeatherKit (con fallback a 6:30–19:00)
-- StoreKit 2 para in-app purchase "Vitasol Pro"
