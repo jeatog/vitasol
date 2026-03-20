@@ -3,6 +3,8 @@ import SwiftData
 
 @main
 struct VitasolApp: App {
+    let contenedor: ModelContainer
+
     @StateObject private var gestorSesion         = GestorSesion()
     @StateObject private var gestorNotificaciones = GestorNotificaciones()
     @StateObject private var gestorUbicacion      = GestorUbicacion()
@@ -12,6 +14,17 @@ struct VitasolApp: App {
 
     /// Persiste el idioma elegido por el usuario (es / en)
     @AppStorage("idiomaApp") private var idiomaApp = "es"
+
+    init() {
+        do {
+            contenedor = try ModelContainer(
+                for: SesionSolar.self,
+                migrationPlan: PlanMigracionSesion.self
+            )
+        } catch {
+            fatalError("No se pudo crear el ModelContainer: \(error)")
+        }
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -32,6 +45,6 @@ struct VitasolApp: App {
                     }
                 }
         }
-        .modelContainer(for: SesionSolar.self, migrationPlan: PlanMigracionSesion.self)
+        .modelContainer(contenedor)
     }
 }
