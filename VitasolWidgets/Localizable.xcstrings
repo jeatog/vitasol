@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "es-419",
+  "strings" : {
+    "live.sesion_completada" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session completed!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\u00a1Sesi\u00f3n completada!"
+          }
+        }
+      }
+    },
+    "live.sesion_solar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solar session"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sesi\u00f3n solar"
+          }
+        }
+      }
+    },
+    "live.quedan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remaining"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quedan"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -45,7 +45,7 @@ private struct BannerSesion: View {
 
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    Text(context.isStale ? "¡Sesión completada!" : "Sesión solar")
+                    Text(context.isStale ? String(localized: "live.sesion_completada") : String(localized: "live.sesion_solar"))
                         .font(.system(size: 13, weight: .semibold, design: .rounded))
                         .foregroundStyle(.primary)
 
@@ -120,11 +120,11 @@ struct VitasolWidgetsLiveActivity: Widget {
                                 Image(systemName: "checkmark.circle.fill")
                                     .font(.system(size: 16, weight: .semibold))
                                     .foregroundStyle(colAmbar)
-                                Text("¡Sesión completada!")
+                                Text(String(localized: "live.sesion_completada"))
                                     .font(.system(size: 14, weight: .semibold, design: .rounded))
                                     .foregroundStyle(colAmbar)
                             } else {
-                                Text("Quedan")
+                                Text(String(localized: "live.quedan"))
                                     .font(.system(size: 13, weight: .medium, design: .rounded))
                                     .foregroundStyle(.secondary)
                                 Text(context.state.fechaFin, style: .timer)
