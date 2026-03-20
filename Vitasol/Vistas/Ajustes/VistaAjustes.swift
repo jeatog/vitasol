@@ -103,7 +103,7 @@ struct VistaAjustes: View {
             .pickerStyle(.segmented)
 
             Divider()
-                .overlay(Color.textoApagado.opacity(0.15))
+                .overlay(Color.textoApagado.opacity(Diseno.opacidadDivider))
 
             HStack {
                 CabeceraSeccion(icono: "thermometer", titulo: Textos.Ajustes.unidadTemp)
@@ -137,7 +137,7 @@ struct VistaAjustes: View {
                 }
 
             Divider()
-                .overlay(Color.textoApagado.opacity(0.15))
+                .overlay(Color.textoApagado.opacity(Diseno.opacidadDivider))
 
             CabeceraSeccion(icono: "calendar", titulo: Textos.Ajustes.diasRecordatorio)
 

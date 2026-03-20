@@ -165,7 +165,7 @@ struct VistaInicio: View {
             }
 
             Divider()
-                .overlay(Color.textoApagado.opacity(0.25))
+                .overlay(Color.textoApagado.opacity(Diseno.opacidadDivider))
 
             HStack {
                 VStack(alignment: .leading, spacing: 2) {

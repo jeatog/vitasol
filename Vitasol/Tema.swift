@@ -142,13 +142,14 @@ extension Font {
 
 // MARK: Constantes de espaciado / diseño
 enum Diseno {
-    static let relleno:    CGFloat = 20
-    static let rellenoS:   CGFloat = 12
-    static let rellenoG:   CGFloat = 28
-    static let radio:      CGFloat = 20
-    static let radioS:     CGFloat = 12
-    static let espaciado:  CGFloat = 16
-    static let espaciadoS: CGFloat = 10
+    static let relleno:         CGFloat = 20
+    static let rellenoS:        CGFloat = 12
+    static let rellenoG:        CGFloat = 28
+    static let radio:           CGFloat = 20
+    static let radioS:          CGFloat = 12
+    static let espaciado:       CGFloat = 16
+    static let espaciadoS:      CGFloat = 10
+    static let opacidadDivider: Double  = 0.2
 }
 
 // MARK: Estilo de botón para tarjetas interactivas

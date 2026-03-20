@@ -224,7 +224,7 @@ struct VistaHistorial: View {
                         FilaHistorial(sesion: sesion)
                         if indice < sesionesFiltradas.count - 1 {
                             Divider()
-                                .overlay(Color.textoApagado.opacity(0.15))
+                                .overlay(Color.textoApagado.opacity(Diseno.opacidadDivider))
                                 .padding(.leading, 16)
                         }
                     }

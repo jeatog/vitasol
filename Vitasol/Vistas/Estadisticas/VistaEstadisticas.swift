@@ -160,7 +160,7 @@ struct VistaEstadisticas: View {
                     FilaLogro(logro: logro)
                     if indice < logros.count - 1 {
                         Divider()
-                            .overlay(Color.textoApagado.opacity(0.15))
+                            .overlay(Color.textoApagado.opacity(Diseno.opacidadDivider))
                             .padding(.leading, 58)
                     }
                 }

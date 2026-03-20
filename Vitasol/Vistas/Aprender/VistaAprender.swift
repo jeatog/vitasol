@@ -133,25 +133,32 @@ struct DetalleArticulo: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    // Encabezado con gradiente
-                    ZStack(alignment: .bottomLeading) {
-                        LinearGradient(
-                            colors: [articulo.colorInicio, articulo.colorFin],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
+                    // Encabezado con gradiente y parallax
+                    GeometryReader { geo in
+                        let desplazamiento = geo.frame(in: .scrollView).minY
+                        let estirado = max(0, desplazamiento)
 
-                        // Íconos decorativos
-                        Image(systemName: articulo.icono)
-                            .font(.system(size: 120, weight: .bold))
-                            .foregroundStyle(.white.opacity(0.1))
-                            .offset(x: 180, y: -20)
+                        ZStack(alignment: .bottomLeading) {
+                            LinearGradient(
+                                colors: [articulo.colorInicio, articulo.colorFin],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
 
-                        Image(systemName: articulo.icono)
-                            .font(.system(size: 44, weight: .semibold))
-                            .foregroundStyle(.white)
-                            .shadow(color: .black.opacity(0.2), radius: 6, y: 3)
-                            .padding(Diseno.rellenoG)
+                            // Íconos decorativos
+                            Image(systemName: articulo.icono)
+                                .font(.system(size: 120, weight: .bold))
+                                .foregroundStyle(.white.opacity(0.1))
+                                .offset(x: 180, y: -20 - estirado * 0.3)
+
+                            Image(systemName: articulo.icono)
+                                .font(.system(size: 44, weight: .semibold))
+                                .foregroundStyle(.white)
+                                .shadow(color: .black.opacity(0.2), radius: 6, y: 3)
+                                .padding(Diseno.rellenoG)
+                        }
+                        .frame(height: 200 + estirado)
+                        .offset(y: -estirado)
                     }
                     .frame(height: 200)
 
