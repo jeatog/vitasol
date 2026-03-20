@@ -6,25 +6,7 @@ import SwiftUI
 
 private let colAmbar = Color(red: 0.910, green: 0.533, blue: 0.227) // #E8883A
 
-// MARK: Arco de progreso (Dynamic Island expandida)
-
-private struct ArcoProgreso: View {
-    let progreso: Double
-
-    var body: some View {
-        ZStack {
-            Circle()
-                .stroke(colAmbar.opacity(0.2), lineWidth: 3)
-            Circle()
-                .trim(from: 0, to: progreso)
-                .stroke(colAmbar, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                .rotationEffect(.degrees(-90))
-            Image(systemName: "sun.min.fill")
-                .font(.system(size: 13, weight: .bold))
-                .foregroundStyle(colAmbar)
-        }
-    }
-}
+// (sin struct auxiliar, todo inline en el DI)
 
 // MARK: Banner / Pantalla de bloqueo
 
@@ -94,51 +76,54 @@ struct VitasolWidgetsLiveActivity: Widget {
 
         } dynamicIsland: { context in
 
+            let inicio = context.state.fechaFin.addingTimeInterval(-Double(context.attributes.duracionSegundos))
+
             return DynamicIsland {
 
                 DynamicIslandExpandedRegion(.leading) {
-                    ArcoProgreso(progreso: context.isStale ? 1.0 : context.state.progreso)
-                        .frame(width: 52, height: 52)
+                    Image(systemName: context.isStale ? "checkmark.circle.fill" : "sun.min.fill")
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundStyle(colAmbar)
                         .frame(maxHeight: .infinity, alignment: .center)
                         .padding(.leading, 8)
                 }
 
+                DynamicIslandExpandedRegion(.center) {
+                    if context.isStale {
+                        Text(String(localized: "live.sesion_completada"))
+                            .font(.system(size: 15, weight: .semibold, design: .rounded))
+                            .foregroundStyle(.primary)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    } else {
+                        Text(context.state.fechaFin, style: .timer)
+                            .monospacedDigit()
+                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                            .foregroundStyle(colAmbar)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    }
+                }
+
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Vitasol")
-                        .font(.system(size: 12, weight: .medium, design: .rounded))
-                        .foregroundStyle(.secondary)
-                        .frame(maxHeight: .infinity, alignment: .center)
-                        .padding(.trailing, 10)
+                    Link(destination: URL(string: "vitasol://sesion")!) {
+                        Image(systemName: "arrow.right.circle.fill")
+                            .font(.system(size: 22))
+                            .foregroundStyle(colAmbar)
+                    }
+                    .frame(maxHeight: .infinity, alignment: .center)
+                    .padding(.trailing, 6)
                 }
 
                 DynamicIslandExpandedRegion(.bottom) {
-                    Link(destination: URL(string: "vitasol://sesion")!) {
-                        HStack(spacing: 6) {
-                            if context.isStale {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .font(.system(size: 16, weight: .semibold))
-                                    .foregroundStyle(colAmbar)
-                                Text(String(localized: "live.sesion_completada"))
-                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                    .foregroundStyle(colAmbar)
-                            } else {
-                                Text(String(localized: "live.quedan"))
-                                    .font(.system(size: 13, weight: .medium, design: .rounded))
-                                    .foregroundStyle(.secondary)
-                                Text(context.state.fechaFin, style: .timer)
-                                    .monospacedDigit()
-                                    .font(.system(size: 20, weight: .bold, design: .rounded))
-                                    .foregroundStyle(colAmbar)
-                            }
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.system(size: 11, weight: .semibold))
-                                .foregroundStyle(.secondary)
-                        }
-                        .padding(.horizontal, 10)
-                        .padding(.top, 2)
-                        .padding(.bottom, 8)
-                    }
+                    ProgressView(
+                        timerInterval: inicio...context.state.fechaFin,
+                        countsDown: false
+                    )
+                    .labelsHidden()
+                    .progressViewStyle(.linear)
+                    .tint(colAmbar)
+                    .padding(.horizontal, 10)
+                    .padding(.bottom, 8)
                 }
 
             } compactLeading: {
