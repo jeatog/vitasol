@@ -134,6 +134,7 @@ final class GestorSesion {
                     self.completo     = true
                     self.cancelarNotificacionFin()
                     self.terminarActividad()
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
                 }
             }
         }
