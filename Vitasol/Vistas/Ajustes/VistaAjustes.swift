@@ -41,7 +41,6 @@ struct VistaAjustes: View {
                         seccionIdioma
                         seccionHorario
                         seccionDuracion
-                        seccionDiasActivos
                         seccionNotificaciones
                         seccionUbicacion
                         seccionSalud
@@ -121,7 +120,7 @@ struct VistaAjustes: View {
         .tarjetaVidrio()
     }
 
-    // MARK: Sección de horario
+    // MARK: Sección de horario + días de recordatorio
     private var seccionHorario: some View {
         VStack(alignment: .leading, spacing: Diseno.rellenoS) {
             CabeceraSeccion(icono: "bell.fill", titulo: Textos.Ajustes.horaRecordatorio)
@@ -136,6 +135,37 @@ struct VistaAjustes: View {
                     minutoRecordatorio  = c.minute ?? 0
                     reprogramarSiProcede()
                 }
+
+            Divider()
+                .overlay(Color.textoApagado.opacity(0.15))
+
+            CabeceraSeccion(icono: "calendar", titulo: Textos.Ajustes.diasRecordatorio)
+
+            HStack(spacing: 6) {
+                ForEach(diasSemana, id: \.0) { numero, claveTexto in
+                    let activo = diasActivos.contains(numero)
+                    Button { alternarDia(numero) } label: {
+                        Text(LocalizedStringKey(claveTexto))
+                            .font(.system(size: 12, weight: .semibold, design: .rounded))
+                            .foregroundStyle(activo ? .white : .textoSecundario)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .fill(activo ? Color.ambar : Color.clear)
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .strokeBorder(
+                                        activo ? Color.clear : Color.textoApagado.opacity(0.3),
+                                        lineWidth: 1
+                                    )
+                            )
+                    }
+                    .accessibilityAddTraits(activo ? .isSelected : [])
+                    .animation(.easeInOut(duration: 0.18), value: activo)
+                }
+            }
         }
         .padding(Diseno.relleno)
         .tarjetaVidrio()
@@ -191,41 +221,6 @@ struct VistaAjustes: View {
         } message: {
             Text(Textos.Ajustes.duracionAlertaMensaje)
         }
-    }
-
-    // MARK: Sección de días activos
-    private var seccionDiasActivos: some View {
-        VStack(alignment: .leading, spacing: Diseno.espaciado) {
-            CabeceraSeccion(icono: "calendar", titulo: Textos.Ajustes.diasActivos)
-
-            HStack(spacing: 6) {
-                ForEach(diasSemana, id: \.0) { numero, claveTexto in
-                    let activo = diasActivos.contains(numero)
-                    Button { alternarDia(numero) } label: {
-                        Text(LocalizedStringKey(claveTexto))
-                            .font(.system(size: 12, weight: .semibold, design: .rounded))
-                            .foregroundStyle(activo ? .white : .textoSecundario)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 10)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .fill(activo ? Color.ambar : Color.clear)
-                            )
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .strokeBorder(
-                                        activo ? Color.clear : Color.textoApagado.opacity(0.3),
-                                        lineWidth: 1
-                                    )
-                            )
-                    }
-                    .accessibilityAddTraits(activo ? .isSelected : [])
-                    .animation(.easeInOut(duration: 0.18), value: activo)
-                }
-            }
-        }
-        .padding(Diseno.relleno)
-        .tarjetaVidrio()
     }
 
     // MARK: Sección de notificaciones

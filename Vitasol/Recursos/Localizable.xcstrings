@@ -35,6 +35,22 @@
         }
       }
     },
+    "ajustes.dias_recordatorio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminder days"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Días de recordatorio"
+          }
+        }
+      }
+    },
     "ajustes.duracion_alerta_continuar" : {
       "localizations" : {
         "en" : {
