@@ -14,6 +14,7 @@ struct VitasolApp: App {
 
     @AppStorage("idiomaApp")          private var idiomaApp          = "es"
     @AppStorage("primerLanzamiento") private var primerLanzamiento = true
+    @State private var mostrarSplash = true
 
     init() {
         do {
@@ -28,11 +29,22 @@ struct VitasolApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Group {
-                if primerLanzamiento {
-                    VistaBienvenida()
-                } else {
-                    VistaPrincipal()
+            ZStack {
+                Group {
+                    if primerLanzamiento {
+                        VistaBienvenida()
+                    } else {
+                        VistaPrincipal()
+                    }
+                }
+
+                if mostrarSplash {
+                    VistaSplash()
+                        .ignoresSafeArea()
+                        .task {
+                            try? await Task.sleep(nanoseconds: 1_800_000_000)
+                            withAnimation { mostrarSplash = false }
+                        }
                 }
             }
                 .environment(gestorSesion)
