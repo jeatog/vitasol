@@ -138,27 +138,28 @@ struct VistaBienvenida: View {
     // MARK: Carrusel 3D
     private var carrusel3D: some View {
         GeometryReader { geo in
-            let anchoCard: CGFloat = geo.size.width * 0.7
-            let centroX = geo.size.width / 2
+            let anchoCard: CGFloat = geo.size.width * 0.65
+            let espacioEntreCards: CGFloat = anchoCard * 0.75
+            let desplazamientoX = -CGFloat(paginaActual) * espacioEntreCards
 
-            HStack(spacing: -anchoCard * 0.15) {
+            HStack(spacing: 16) {
                 ForEach(cardsInfo) { card in
-                    let offset = CGFloat(card.id - paginaActual)
-                    let angulo = Double(offset) * 15
-                    let escala = offset == 0 ? 1.0 : 0.85
-                    let opacidad = abs(offset) > 1 ? 0.0 : (offset == 0 ? 1.0 : 0.6)
+                    let distancia = CGFloat(card.id - paginaActual)
+                    let angulo = Double(distancia) * 18
+                    let escala = distancia == 0 ? 1.0 : 0.82
+                    let opacidad = abs(distancia) > 1.5 ? 0.3 : (distancia == 0 ? 1.0 : 0.55)
 
                     cardView(card: card)
                         .frame(width: anchoCard, height: anchoCard * 1.3)
                         .scaleEffect(escala)
-                        .rotation3DEffect(.degrees(angulo), axis: (x: 0, y: 1, z: 0), perspective: 0.5)
+                        .rotation3DEffect(.degrees(angulo), axis: (x: 0, y: 1, z: 0), perspective: 0.4)
                         .opacity(opacidad)
-                        .zIndex(offset == 0 ? 1 : 0)
-                        .animation(.spring(response: 0.5, dampingFraction: 0.8), value: paginaActual)
+                        .zIndex(distancia == 0 ? 1 : 0)
                 }
             }
-            .frame(maxWidth: .infinity)
-            .position(x: centroX, y: geo.size.height / 2)
+            .offset(x: desplazamientoX + (geo.size.width - anchoCard) / 2)
+            .animation(.spring(response: 0.5, dampingFraction: 0.85), value: paginaActual)
+            .frame(height: geo.size.height)
             .gesture(
                 DragGesture(minimumDistance: 30)
                     .onEnded { value in
