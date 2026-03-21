@@ -4,294 +4,6 @@
     "" : {
 
     },
-    "onboarding.card1_titulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Smart sun sessions"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sesiones de sol inteligentes"
-          }
-        }
-      }
-    },
-    "onboarding.card1_desc" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Set your session time and get notified when it's done. Track it live from the Dynamic Island."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configura tu tiempo de sesión y recibe aviso al terminar. Síguela en vivo desde la Dynamic Island."
-          }
-        }
-      }
-    },
-    "onboarding.card2_titulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Real-time weather and UV"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clima y UV en tiempo real"
-          }
-        }
-      }
-    },
-    "onboarding.card2_desc" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Know the UV index and weather conditions before going out. The app alerts you if it's not a good day."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Consulta el índice UV y las condiciones climáticas antes de salir. La app te alerta si no es buen día."
-          }
-        }
-      }
-    },
-    "onboarding.card3_titulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stats and achievements"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estadísticas y logros"
-          }
-        }
-      }
-    },
-    "onboarding.card3_desc" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Track your streaks, unlock achievements, and export your history as PDF. Your progress, always at hand."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sigue tu racha, desbloquea logros y exporta tu historial en PDF. Tu progreso, siempre a la mano."
-          }
-        }
-      }
-    },
-    "bienvenida.subtitulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Smart sun tracking for your daily vitamin D dose."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seguimiento solar inteligente para tu dosis diaria de vitamina D."
-          }
-        }
-      }
-    },
-    "bienvenida.continuar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continue"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuar"
-          }
-        }
-      }
-    },
-    "bienvenida.comenzar" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Get started"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comenzar"
-          }
-        }
-      }
-    },
-    "bienvenida.despues" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can change these anytime in Settings."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Puedes cambiar esto en cualquier momento en Ajustes."
-          }
-        }
-      }
-    },
-    "bienvenida.permisos_titulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Works better with"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Funciona mejor con"
-          }
-        }
-      }
-    },
-    "bienvenida.permisos_desc" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "These permissions are optional. The app works without them, but the experience is better with real-time data."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estos permisos son opcionales. La app funciona sin ellos, pero la experiencia es mejor con datos en tiempo real."
-          }
-        }
-      }
-    },
-    "bienvenida.permiso_ubicacion" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Location"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ubicación"
-          }
-        }
-      }
-    },
-    "bienvenida.permiso_ubicacion_desc" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Real-time UV index and weather"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Índice UV y clima en tiempo real"
-          }
-        }
-      }
-    },
-    "bienvenida.permiso_notificaciones" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notifications"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notificaciones"
-          }
-        }
-      }
-    },
-    "bienvenida.permiso_notificaciones_desc" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daily reminders for your sun dose"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recordatorios diarios de tu dosis de sol"
-          }
-        }
-      }
-    },
-    "bienvenida.permiso_salud" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Health"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Salud"
-          }
-        }
-      }
-    },
-    "bienvenida.permiso_salud_desc" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Record sun exposure time"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Registrar tiempo de exposición solar"
-          }
-        }
-      }
-    },
     "%lld" : {
 
     },
@@ -1234,6 +946,199 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aprende"
+          }
+        }
+      }
+    },
+    "bienvenida.comenzar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comenzar"
+          }
+        }
+      }
+    },
+    "bienvenida.continuar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        }
+      }
+    },
+    "bienvenida.despues" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can change these anytime in Settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puedes cambiar esto en cualquier momento en Ajustes."
+          }
+        }
+      }
+    },
+    "bienvenida.permiso_notificaciones" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones"
+          }
+        }
+      }
+    },
+    "bienvenida.permiso_notificaciones_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily reminders for your sun dose"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordatorios diarios de tu dosis de sol"
+          }
+        }
+      }
+    },
+    "bienvenida.permiso_salud" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Health"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Salud"
+          }
+        }
+      }
+    },
+    "bienvenida.permiso_salud_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record sun exposure time"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registrar tiempo de exposición solar"
+          }
+        }
+      }
+    },
+    "bienvenida.permiso_ubicacion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubicación"
+          }
+        }
+      }
+    },
+    "bienvenida.permiso_ubicacion_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Real-time UV index and weather"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Índice UV y clima en tiempo real"
+          }
+        }
+      }
+    },
+    "bienvenida.permisos_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These permissions are optional. The app works without them, but the experience is better with real-time data."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estos permisos son opcionales. La app funciona sin ellos, pero la experiencia es mejor con datos en tiempo real."
+          }
+        }
+      }
+    },
+    "bienvenida.permisos_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works better with"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funciona mejor con"
+          }
+        }
+      }
+    },
+    "bienvenida.subtitulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart sun tracking for your daily vitamin D dose."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguimiento solar inteligente para tu dosis diaria de vitamina D."
           }
         }
       }
@@ -2374,22 +2279,6 @@
         }
       }
     },
-    "inicio.recordatorio_manana %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tomorrow at %@"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mañana a las %@"
-          }
-        }
-      }
-    },
     "inicio.recordatorio_dia %@ %@" : {
       "localizations" : {
         "en" : {
@@ -2402,6 +2291,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ a las %2$@"
+          }
+        }
+      }
+    },
+    "inicio.recordatorio_manana %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tomorrow at %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mañana a las %@"
           }
         }
       }
@@ -2946,6 +2851,102 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tu dosis de sol ☀️"
+          }
+        }
+      }
+    },
+    "onboarding.card1_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set your session time and get notified when it's done. Track it live from the Dynamic Island."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura tu tiempo de sesión y recibe aviso al terminar. Síguela en vivo desde la Dynamic Island."
+          }
+        }
+      }
+    },
+    "onboarding.card1_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart sun sessions"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sesiones de sol inteligentes"
+          }
+        }
+      }
+    },
+    "onboarding.card2_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Know the UV index and weather conditions before going out. The app alerts you if it's not a good day."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta el índice UV y las condiciones climáticas antes de salir. La app te alerta si no es buen día."
+          }
+        }
+      }
+    },
+    "onboarding.card2_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Real-time weather and UV"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clima y UV en tiempo real"
+          }
+        }
+      }
+    },
+    "onboarding.card3_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track your streaks, unlock achievements, and export your history as PDF. Your progress, always at hand."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sigue tu racha, desbloquea logros y exporta tu historial en PDF. Tu progreso, siempre a la mano."
+          }
+        }
+      }
+    },
+    "onboarding.card3_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stats and achievements"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas y logros"
           }
         }
       }
