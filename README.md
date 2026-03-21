@@ -2,6 +2,15 @@
 
 Aplicación iOS para el seguimiento consciente de la exposición solar y la síntesis de vitamina D.
 
+[![Swift](https://img.shields.io/badge/Swift-5.10-F05138?logo=swift&logoColor=white)](#)
+[![iOS](https://img.shields.io/badge/iOS-26+-000000?logo=apple&logoColor=white)](#)
+[![SwiftUI](https://img.shields.io/badge/SwiftUI-Liquid_Glass-007AFF?logo=swift&logoColor=white)](#)
+[![SwiftData](https://img.shields.io/badge/SwiftData-Versionado-34C759?logo=swift&logoColor=white)](#)
+[![WidgetKit](https://img.shields.io/badge/WidgetKit-Live_Activity-FF9500?logo=apple&logoColor=white)](#)
+[![HealthKit](https://img.shields.io/badge/HealthKit-Time_in_Daylight-FF2D55?logo=apple&logoColor=white)](#)
+[![Swift Testing](https://img.shields.io/badge/Tests-74_passing-34C759?logo=checkmarx&logoColor=white)](#)
+[![Localización](https://img.shields.io/badge/i18n-es_%7C_en-8E8E93)](#)
+
 ---
 
 ## Qué es
@@ -14,20 +23,23 @@ El nombre combina *vita* (vida) y *sol*, reflejando el vínculo entre la exposic
 
 ## Qué hace
 
-- Registra sesiones de exposición solar con timer configurable (5–60 min)
+- Registra sesiones de exposición solar con timer configurable (5-30 min)
 - Muestra el índice UV y temperatura en tiempo real según la ubicación GPS
-- Bloquea el inicio de sesiones en horario nocturno (19:00–06:59)
-- Advierte al usuario cuando las condiciones climáticas son desfavorables (lluvia, nieve, UV bajo)
+- Bloquea el inicio de sesiones en horario nocturno (19:00-06:29)
+- Advierte al usuario cuando las condiciones climáticas son desfavorables (lluvia, nieve, UV bajo o muy alto)
+- Alerta si la sesión supera el tiempo recomendado o el límite diario de exposición
 - Guarda cada sesión en SwiftData con fecha, duración, UV, temperatura y ubicación
 - Sincroniza el tiempo de exposición con Apple Salud (HealthKit)
 - Envía recordatorios diarios configurables por día de la semana y hora
-- Muestra estadísticas con layout bento: racha hero + sesiones, tiempo y días con meta
+- Muestra estadísticas con layout bento: racha hero con anillo animado + sesiones, tiempo y días activos
 - Desbloquea 14 logros con SF Symbols (rachas, horario, volumen, exploración, UV)
 - Muestra un historial filtrable por período, índice UV y ubicación
-- Contiene contenido educativo sobre vitamina D (qué es, beneficios, fuentes, consejos)
+- Exporta historial como CSV y reporte PDF con logo, estadísticas, tabla UV y logros
+- Contiene 8 artículos educativos sobre vitamina D con fuentes médicas (NIH, OMS, Harvard)
 - Muestra una Live Activity en el Dynamic Island y la pantalla de bloqueo durante la sesión
 - Widget de progreso diario con estado del día y UV actual
 - Vibración háptica al completar la meta de exposición
+- Onboarding con carrusel 3D y permisos opcionales al primer lanzamiento
 - Soporta español e inglés con cambio de idioma en runtime sin reiniciar la app
 - Adapta colores y estilo entre modo día (paleta cálida) y modo noche (paleta fría) automáticamente
 - Accesibilidad: VoiceOver en todas las vistas, Dynamic Type con estilos semánticos
@@ -49,7 +61,7 @@ Dar a los usuarios una herramienta simple para cubrir su necesidad diaria de vit
 - **Concurrencia:** async/await, @MainActor
 - **Arquitectura:** MVVM con @Observable (Observation framework) y @Environment
 - **Localización:** String Catalogs (.xcstrings), idioma fuente español
-- **Tests:** Swift Testing (55 casos en 6 suites)
+- **Tests:** Swift Testing (74 casos en 8 suites)
 
 ---
 
@@ -57,7 +69,7 @@ Dar a los usuarios una herramienta simple para cubrir su necesidad diaria de vit
 
 | Framework | Uso |
 |-----------|-----|
-| SwiftUI | UI declarativa, animaciones, navegación, Liquid Glass |
+| SwiftUI | UI declarativa, animaciones, Liquid Glass, onboarding 3D |
 | SwiftData | Persistencia de sesiones solares con esquema versionado |
 | ActivityKit | Live Activity durante sesión activa |
 | WidgetKit | Widget de progreso diario y Live Activity |
@@ -66,6 +78,7 @@ Dar a los usuarios una herramienta simple para cubrir su necesidad diaria de vit
 | MapKit | Geocodificación inversa (MKReverseGeocodingRequest) |
 | UserNotifications | Recordatorios diarios configurables |
 | Observation | Reactividad con @Observable y tracking granular por propiedad |
+| UIKit / PDFRenderer | Generación de reportes PDF con logo y tabla |
 | Foundation / URLSession | Consumo de la API Open-Meteo |
 
 ---
@@ -82,16 +95,17 @@ Ninguna. La app usa exclusivamente frameworks de Apple y la API pública de Open
 
 ```
 Vitasol/
-├── App/                        Entrada y navegación principal
-├── Gestores/                   Lógica de negocio (sesión, clima, ubicación, salud, tema, notificaciones)
-├── Modelos/                    Entidades SwiftData y structs de datos (SesionSolar, Logro)
+├── App/                        Entrada, navegación y splash
+├── Gestores/                   Lógica de negocio (sesión, clima, ubicación, salud, tema, notificaciones, exportador)
+├── Modelos/                    Entidades SwiftData y structs de datos (SesionSolar, Logro, Articulo)
 ├── Vistas/                     Pantallas SwiftUI por sección
+│   ├── Bienvenida/             Onboarding con carrusel 3D y permisos
 │   ├── Inicio/
 │   ├── Sesion/
 │   ├── Estadisticas/
 │   ├── Aprender/
 │   └── Ajustes/
-├── Recursos/                   Localizable.xcstrings (es / en)
+├── Recursos/                   Localizable.xcstrings, artículos JSON (es/en), logo
 ├── Tema.swift                  Sistema de diseño Solsticio (colores, tipografía, Liquid Glass)
 └── Textos.swift                Todas las claves de UI como LocalizedStringKey
 
@@ -102,8 +116,10 @@ VitasolWidgets/                 Widget extension
 VitasolTests/                   Tests unitarios (Swift Testing)
 ├── LogroTests                  Racha actual y evaluación de 14 logros
 ├── GestorSesionTests           Progreso, segundos restantes, formato de tiempo
-├── GestorClimaTests            Mapeos de clima, UV y condiciones
-└── SesionSolarTests            Duración formateada, esHoy, rangos UV
+├── GestorClimaTests            Mapeos de clima, UV, condiciones y límites
+├── GestorTemaTests             Horario día/noche (6:30-19:00)
+├── SesionSolarTests            Duración formateada, esHoy, rangos UV
+└── ExportadorTests             Generación CSV y PDF
 ```
 
 ---
@@ -112,7 +128,7 @@ VitasolTests/                   Tests unitarios (Swift Testing)
 
 ### v1.0.0 (requiere cuenta de desarrollador de pago)
 - Migración de Open-Meteo a Apple WeatherKit
-- Horario dinámico de sol basado en sunrise/sunset de WeatherKit (con fallback a 6:30–19:00)
+- Horario dinámico de sol basado en sunrise/sunset de WeatherKit (con fallback a 6:30-19:00)
 - StoreKit 2 para in-app purchase "Vitasol Pro"
 - Paywall en historial completo, filtros, exportación y logros extendidos
 
@@ -122,13 +138,12 @@ VitasolTests/                   Tests unitarios (Swift Testing)
 - Distribución horaria de sesiones
 - Histórico de rachas pasadas
 - Filtro de historial por rango de temperatura
-- Filtro de historial por franja horaria (ej. 8–10 h, 12–14 h)
+- Filtro de historial por franja horaria (ej. 8-10 h, 12-14 h)
 - Filtro de historial por mes/año específico
 
 ### v1.2.0+
-- Tipo de piel (escala Fitzpatrick I–VI) para exposición personalizada
+- Tipo de piel (escala Fitzpatrick I-VI) para exposición personalizada
 - Edad y factores de riesgo opcionales
 - Meta de vitamina D personalizable (UI/día)
-- Onboarding: carousel de 3 pantallas al primer lanzamiento
 - Modo de alto contraste
 - CI/CD con Xcode Cloud
