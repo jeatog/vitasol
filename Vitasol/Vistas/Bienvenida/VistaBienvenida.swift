@@ -136,13 +136,16 @@ struct VistaBienvenida: View {
     }
 
     // MARK: Carrusel 3D
+    private let espacioCards: CGFloat = 16
+
     private var carrusel3D: some View {
         GeometryReader { geo in
             let anchoCard: CGFloat = geo.size.width * 0.65
-            let espacioEntreCards: CGFloat = anchoCard * 0.75
-            let desplazamientoX = -CGFloat(paginaActual) * espacioEntreCards
+            let paso = anchoCard + espacioCards
+            let inicioX = (geo.size.width - anchoCard) / 2
+            let desplazamientoX = inicioX - CGFloat(paginaActual) * paso
 
-            HStack(spacing: 16) {
+            HStack(spacing: espacioCards) {
                 ForEach(cardsInfo) { card in
                     let distancia = CGFloat(card.id - paginaActual)
                     let angulo = Double(distancia) * 18
@@ -157,9 +160,10 @@ struct VistaBienvenida: View {
                         .zIndex(distancia == 0 ? 1 : 0)
                 }
             }
-            .offset(x: desplazamientoX + (geo.size.width - anchoCard) / 2)
+            .offset(x: desplazamientoX)
             .animation(.spring(response: 0.5, dampingFraction: 0.85), value: paginaActual)
             .frame(height: geo.size.height)
+            .contentShape(Rectangle())
             .gesture(
                 DragGesture(minimumDistance: 30)
                     .onEnded { value in
@@ -216,8 +220,7 @@ struct VistaBienvenida: View {
 
             Spacer()
         }
-        .tarjetaVidrio()
-        .clipShape(RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
+        .glassEffect(in: RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
     }
 
     // MARK: Indicadores de página
