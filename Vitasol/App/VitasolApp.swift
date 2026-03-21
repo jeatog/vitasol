@@ -42,7 +42,7 @@ struct VitasolApp: App {
                     VistaSplash()
                         .ignoresSafeArea()
                         .task {
-                            try? await Task.sleep(nanoseconds: 1_800_000_000)
+                            try? await Task.sleep(nanoseconds: 1_400_000_000)
                             withAnimation { mostrarSplash = false }
                         }
                 }
