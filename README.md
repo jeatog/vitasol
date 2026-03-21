@@ -8,8 +8,6 @@ Aplicación iOS para el seguimiento consciente de la exposición solar y la sín
 [![SwiftData](https://img.shields.io/badge/SwiftData-Versionado-34C759?logo=swift&logoColor=white)](#)
 [![WidgetKit](https://img.shields.io/badge/WidgetKit-Live_Activity-FF9500?logo=apple&logoColor=white)](#)
 [![HealthKit](https://img.shields.io/badge/HealthKit-Time_in_Daylight-FF2D55?logo=apple&logoColor=white)](#)
-[![Swift Testing](https://img.shields.io/badge/Tests-74_passing-34C759?logo=checkmarx&logoColor=white)](#)
-[![Localización](https://img.shields.io/badge/i18n-es_%7C_en-8E8E93)](#)
 
 ---
 
