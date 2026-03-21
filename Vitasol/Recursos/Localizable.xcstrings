@@ -4,6 +4,102 @@
     "" : {
 
     },
+    "onboarding.card1_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart sun sessions"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sesiones de sol inteligentes"
+          }
+        }
+      }
+    },
+    "onboarding.card1_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set your session time and get notified when it's done. Track it live from the Dynamic Island."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configura tu tiempo de sesión y recibe aviso al terminar. Síguela en vivo desde la Dynamic Island."
+          }
+        }
+      }
+    },
+    "onboarding.card2_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Real-time weather and UV"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clima y UV en tiempo real"
+          }
+        }
+      }
+    },
+    "onboarding.card2_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Know the UV index and weather conditions before going out. The app alerts you if it's not a good day."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta el índice UV y las condiciones climáticas antes de salir. La app te alerta si no es buen día."
+          }
+        }
+      }
+    },
+    "onboarding.card3_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stats and achievements"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas y logros"
+          }
+        }
+      }
+    },
+    "onboarding.card3_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track your streaks, unlock achievements, and export your history as PDF. Your progress, always at hand."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sigue tu racha, desbloquea logros y exporta tu historial en PDF. Tu progreso, siempre a la mano."
+          }
+        }
+      }
+    },
     "bienvenida.subtitulo" : {
       "localizations" : {
         "en" : {

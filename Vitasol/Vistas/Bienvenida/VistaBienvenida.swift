@@ -1,5 +1,45 @@
 import SwiftUI
 
+// MARK: Datos de las cards del onboarding
+
+private struct CardOnboarding: Identifiable {
+    let id: Int
+    let icono: String
+    let titulo: String
+    let descripcion: String
+    let colorInicio: Color
+    let colorFin: Color
+}
+
+private let cardsInfo: [CardOnboarding] = [
+    CardOnboarding(
+        id: 0,
+        icono: "timer",
+        titulo: String(localized: "onboarding.card1_titulo"),
+        descripcion: String(localized: "onboarding.card1_desc"),
+        colorInicio: .ambar,
+        colorFin: .dorado
+    ),
+    CardOnboarding(
+        id: 1,
+        icono: "sun.max.fill",
+        titulo: String(localized: "onboarding.card2_titulo"),
+        descripcion: String(localized: "onboarding.card2_desc"),
+        colorInicio: .dorado,
+        colorFin: .salvia
+    ),
+    CardOnboarding(
+        id: 2,
+        icono: "trophy.fill",
+        titulo: String(localized: "onboarding.card3_titulo"),
+        descripcion: String(localized: "onboarding.card3_desc"),
+        colorInicio: .salvia,
+        colorFin: .ambar
+    ),
+]
+
+// MARK: Vista principal de bienvenida
+
 struct VistaBienvenida: View {
     @Environment(GestorNotificaciones.self) private var gestorNotificaciones
     @Environment(GestorUbicacion.self)      private var gestorUbicacion
@@ -10,19 +50,26 @@ struct VistaBienvenida: View {
     @AppStorage("saludActiva")           private var saludActiva          = false
     @AppStorage("primerLanzamiento")     private var primerLanzamiento    = true
 
-    @State private var pasoActual = 0
+    @State private var paginaActual = 0
+    private let totalPaginas = 4 // 3 info + 1 permisos
 
     var body: some View {
         ZStack {
+            // Fondo con logo blur
             FondoSolar()
+            fondoLogoBlur
 
             VStack(spacing: 0) {
+                // Logo y nombre (fijos arriba)
+                cabeceraLogo
+                    .padding(.top, 60)
+
                 Spacer()
 
-                // Logo y nombre
-                if pasoActual == 0 {
-                    contenidoBienvenida
-                        .transition(.opacity.combined(with: .move(edge: .leading)))
+                // Carrusel o permisos
+                if paginaActual < 3 {
+                    carrusel3D
+                        .transition(.opacity)
                 } else {
                     contenidoPermisos
                         .transition(.opacity.combined(with: .move(edge: .trailing)))
@@ -30,65 +77,185 @@ struct VistaBienvenida: View {
 
                 Spacer()
 
-                // Botón principal
-                Button {
-                    withAnimation(.spring(response: 0.4)) {
-                        if pasoActual == 0 {
-                            pasoActual = 1
-                        } else {
-                            primerLanzamiento = false
-                        }
-                    }
-                } label: {
-                    Text(pasoActual == 0
-                         ? String(localized: "bienvenida.continuar")
-                         : String(localized: "bienvenida.comenzar"))
-                        .font(.system(.headline, design: .rounded, weight: .bold))
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 17)
-                        .background(Color.ambar.gradient, in: RoundedRectangle(cornerRadius: 16))
-                }
-                .padding(.horizontal, Diseno.relleno)
+                // Indicadores de página
+                indicadores
+                    .padding(.bottom, 20)
 
-                // Skip / indicador
-                if pasoActual == 1 {
-                    Text(String(localized: "bienvenida.despues"))
-                        .font(.fuenteCaption)
-                        .foregroundStyle(.textoApagado)
-                        .padding(.top, 10)
+                // Botón (solo visible en la última)
+                if paginaActual == totalPaginas - 1 {
+                    botonComenzar
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .padding(.bottom, 10)
                 }
 
-                Spacer(minLength: 40)
+                // Texto helper
+                Text(String(localized: "bienvenida.despues"))
+                    .font(.fuenteCaption)
+                    .foregroundStyle(.textoApagado)
+                    .opacity(paginaActual == totalPaginas - 1 ? 1 : 0)
+                    .padding(.bottom, 30)
             }
         }
+        .animation(.spring(response: 0.5), value: paginaActual)
     }
 
-    // MARK: Paso 1 — Bienvenida
-    private var contenidoBienvenida: some View {
-        VStack(spacing: 24) {
+    // MARK: Logo blur de fondo
+    private var fondoLogoBlur: some View {
+        Group {
             if let logo = UIImage(named: "logo_solo") {
                 Image(uiImage: logo)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
-            }
-
-            VStack(spacing: 8) {
-                Text("Vitasol")
-                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                    .foregroundStyle(.textoPrimario)
-
-                Text(String(localized: "bienvenida.subtitulo"))
-                    .font(.fuenteCuerpo)
-                    .foregroundStyle(.textoSecundario)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, Diseno.rellenoG)
+                    .frame(width: 300)
+                    .blur(radius: 60)
+                    .opacity(0.12)
             }
         }
     }
 
-    // MARK: Paso 2 — Permisos
+    // MARK: Cabecera con logo
+    private var cabeceraLogo: some View {
+        VStack(spacing: 10) {
+            if let logo = UIImage(named: "logo_solo") {
+                Image(uiImage: logo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 72, height: 72)
+            }
+
+            Text("Vitasol")
+                .font(.system(.title, design: .rounded, weight: .bold))
+                .foregroundStyle(.textoPrimario)
+
+            Text(String(localized: "bienvenida.subtitulo"))
+                .font(.fuenteCaption)
+                .foregroundStyle(.textoApagado)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, Diseno.rellenoG)
+        }
+    }
+
+    // MARK: Carrusel 3D
+    private var carrusel3D: some View {
+        GeometryReader { geo in
+            let anchoCard: CGFloat = geo.size.width * 0.7
+            let centroX = geo.size.width / 2
+
+            HStack(spacing: -anchoCard * 0.15) {
+                ForEach(cardsInfo) { card in
+                    let offset = CGFloat(card.id - paginaActual)
+                    let angulo = Double(offset) * 15
+                    let escala = offset == 0 ? 1.0 : 0.85
+                    let opacidad = abs(offset) > 1 ? 0.0 : (offset == 0 ? 1.0 : 0.6)
+
+                    cardView(card: card)
+                        .frame(width: anchoCard, height: anchoCard * 1.3)
+                        .scaleEffect(escala)
+                        .rotation3DEffect(.degrees(angulo), axis: (x: 0, y: 1, z: 0), perspective: 0.5)
+                        .opacity(opacidad)
+                        .zIndex(offset == 0 ? 1 : 0)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.8), value: paginaActual)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .position(x: centroX, y: geo.size.height / 2)
+            .gesture(
+                DragGesture(minimumDistance: 30)
+                    .onEnded { value in
+                        if value.translation.width < -50 && paginaActual < totalPaginas - 1 {
+                            paginaActual += 1
+                        } else if value.translation.width > 50 && paginaActual > 0 {
+                            paginaActual -= 1
+                        }
+                    }
+            )
+        }
+        .frame(height: 340)
+    }
+
+    // MARK: Card individual
+    private func cardView(card: CardOnboarding) -> some View {
+        VStack(spacing: 20) {
+            // Gradiente con ícono
+            ZStack {
+                LinearGradient(
+                    colors: [card.colorInicio, card.colorFin],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+
+                Image(systemName: card.icono)
+                    .font(.system(size: 80, weight: .bold))
+                    .foregroundStyle(.white.opacity(0.15))
+                    .offset(x: 40, y: -20)
+
+                Image(systemName: card.icono)
+                    .font(.system(size: 40, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .shadow(color: .black.opacity(0.2), radius: 6, y: 3)
+            }
+            .frame(height: 140)
+            .clipShape(UnevenRoundedRectangle(topLeadingRadius: Diseno.radio, topTrailingRadius: Diseno.radio))
+
+            // Texto
+            VStack(spacing: 8) {
+                Text(card.titulo)
+                    .font(.fuenteCabecera)
+                    .foregroundStyle(.textoPrimario)
+                    .multilineTextAlignment(.center)
+
+                Text(card.descripcion)
+                    .font(.fuenteCaption)
+                    .foregroundStyle(.textoApagado)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(3)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(.horizontal, Diseno.rellenoS)
+
+            Spacer()
+        }
+        .tarjetaVidrio()
+        .clipShape(RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
+    }
+
+    // MARK: Indicadores de página
+    private var indicadores: some View {
+        HStack(spacing: 8) {
+            ForEach(0..<totalPaginas, id: \.self) { indice in
+                if indice == totalPaginas - 1 {
+                    // Último es checkmark
+                    Image(systemName: paginaActual == indice ? "checkmark.circle.fill" : "checkmark.circle")
+                        .font(.system(size: 10))
+                        .foregroundStyle(paginaActual == indice ? .ambar : .textoApagado.opacity(0.4))
+                } else {
+                    Circle()
+                        .fill(paginaActual == indice ? Color.ambar : Color.textoApagado.opacity(0.3))
+                        .frame(width: paginaActual == indice ? 10 : 7, height: paginaActual == indice ? 10 : 7)
+                }
+            }
+        }
+        .animation(.spring(response: 0.3), value: paginaActual)
+    }
+
+    // MARK: Botón comenzar
+    private var botonComenzar: some View {
+        Button {
+            withAnimation {
+                primerLanzamiento = false
+            }
+        } label: {
+            Label(String(localized: "bienvenida.comenzar"), systemImage: "checkmark")
+                .font(.system(.headline, design: .rounded, weight: .bold))
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 17)
+                .background(Color.ambar.gradient, in: RoundedRectangle(cornerRadius: 16))
+        }
+        .padding(.horizontal, Diseno.relleno)
+    }
+
+    // MARK: Contenido de permisos (página 4)
     private var contenidoPermisos: some View {
         VStack(spacing: Diseno.espaciado) {
             Text(String(localized: "bienvenida.permisos_titulo"))
