@@ -11,7 +11,7 @@ struct VistaAjustes: View {
     @AppStorage("horarioHora")            private var horaRecordatorio       = 10
     @AppStorage("horarioMinuto")          private var minutoRecordatorio     = 0
     @AppStorage("duracionSesionMinutos")  private var duracionMinutos        = 15
-    @AppStorage("notificacionesActivas")  private var notificacionesActivas  = true
+    @AppStorage("notificacionesActivas")  private var notificacionesActivas  = false
     @AppStorage("ubicacionActiva")        private var ubicacionActiva        = false
     @AppStorage("saludActiva")            private var saludActiva            = false
     @AppStorage("mensajePersonalizado")   private var mensajePersonalizado   = ""

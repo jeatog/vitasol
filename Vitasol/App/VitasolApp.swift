@@ -12,8 +12,8 @@ struct VitasolApp: App {
     @State private var gestorTema           = GestorTema()
     @State private var gestorClima          = GestorClima()
 
-    /// Persiste el idioma elegido por el usuario (es / en)
-    @AppStorage("idiomaApp") private var idiomaApp = "es"
+    @AppStorage("idiomaApp")          private var idiomaApp          = "es"
+    @AppStorage("primerLanzamiento") private var primerLanzamiento = true
 
     init() {
         do {
@@ -28,7 +28,13 @@ struct VitasolApp: App {
 
     var body: some Scene {
         WindowGroup {
-            VistaPrincipal()
+            Group {
+                if primerLanzamiento {
+                    VistaBienvenida()
+                } else {
+                    VistaPrincipal()
+                }
+            }
                 .environment(gestorSesion)
                 .environment(gestorNotificaciones)
                 .environment(gestorUbicacion)
