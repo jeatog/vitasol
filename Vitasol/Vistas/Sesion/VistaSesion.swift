@@ -108,11 +108,20 @@ struct VistaSesion: View {
                 Text(Textos.Sesion.alertaExcesoDiarioMensaje(minutosHoy, maxDiarioRecomendado))
             }
             .onChange(of: gestorSesion.completo) { _, terminado in
-                if terminado { mostrarAlertaCompletado = true }
+                if terminado {
+                    mostrarAlertaCompletado = true
+                    // Limpiar notificación entregada para que no se pueda entrar de nuevo
+                    UNUserNotificationCenter.current()
+                        .removeDeliveredNotifications(withIdentifiers: ["sesion_solar_fin"])
+                }
             }
             .onAppear {
                 if !gestorSesion.estaActiva {
                     gestorSesion.segundosObjetivo = duracionMinutos * 60
+                }
+                // Si volvemos y la sesión ya se completó en background
+                if gestorSesion.completo && !mostrarAlertaCompletado {
+                    mostrarAlertaCompletado = true
                 }
             }
             .onChange(of: duracionMinutos) { _, nuevoValor in

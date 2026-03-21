@@ -32,5 +32,11 @@ struct VistaPrincipal: View {
                 gestorSesion.navegarASesion = false
             }
         }
+        .onChange(of: gestorSesion.completo) { _, terminado in
+            if terminado {
+                // Navegar al tab de sesión para que VistaSesion muestre el alert
+                tabSeleccionada = 1
+            }
+        }
     }
 }

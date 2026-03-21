@@ -51,6 +51,10 @@ final class GestorSesion {
                     self.completo   = true
                     self.cancelarNotificacionFin()
                     self.terminarActividad()
+                    // Limpiar notificación ya entregada
+                    UNUserNotificationCenter.current()
+                        .removeDeliveredNotifications(withIdentifiers: ["sesion_solar_fin"])
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
                 }
             }
         }
