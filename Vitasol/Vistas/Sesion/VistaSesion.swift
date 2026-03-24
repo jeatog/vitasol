@@ -101,8 +101,7 @@ struct VistaSesion: View {
             }
             .alert(Textos.Sesion.alertaExcesoDiarioTitulo, isPresented: $mostrarAlertaExcesoDiario) {
                 Button(Textos.Sesion.alertaExcesoDiarioContinuar, role: .destructive) {
-                    gestorSesion.iniciar(duracionMinutos: duracionMinutos)
-                    pausado = false
+                    verificarClimaEIniciar()
                 }
                 Button(Textos.General.cancelar, role: .cancel) {}
             } message: {
@@ -236,7 +235,12 @@ struct VistaSesion: View {
                 .accessibilityLabel(pausado ? String(localized: "sesion.reanudar") : String(localized: "sesion.pausar"))
 
                 Button {
-                    mostrarAlertaDetener = true
+                    if gestorSesion.segundosSesion < 60 {
+                        gestorSesion.reiniciar()
+                        pausado = false
+                    } else {
+                        mostrarAlertaDetener = true
+                    }
                 } label: {
                     Image(systemName: "stop.fill")
                         .font(.system(size: 20, weight: .semibold))
@@ -257,14 +261,8 @@ struct VistaSesion: View {
                         let excedeMaxDiario = segundosHoy + segundosSesion > maxDiarioRecomendado * 60
                         if excedeMaxDiario {
                             mostrarAlertaExcesoDiario = true
-                        } else if uvActual >= 8 {
-                            mostrarAlertaUVAlto = true
-                        } else if !gestorClima.esBuenDia && gestorClima.tieneDatos {
-                            mostrarAlertaMalClima = true
                         } else {
-                            gestorSesion.iniciar(duracionMinutos: duracionMinutos)
-                            pausado = false
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            verificarClimaEIniciar()
                         }
                     } else {
                         mostrarConfirmacionNueva = true
@@ -364,6 +362,19 @@ struct VistaSesion: View {
         }
         if completada { actualizarWidget() }
         gestorSesion.reiniciar()
+    }
+
+    /// Verifica UV y clima antes de iniciar. Se llama directamente o después de aceptar exceso diario.
+    private func verificarClimaEIniciar() {
+        if uvActual >= 8 {
+            mostrarAlertaUVAlto = true
+        } else if !gestorClima.esBuenDia && gestorClima.tieneDatos {
+            mostrarAlertaMalClima = true
+        } else {
+            gestorSesion.iniciar(duracionMinutos: duracionMinutos)
+            pausado = false
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        }
     }
 
     private func actualizarWidget() {
