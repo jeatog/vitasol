@@ -5,8 +5,8 @@ import SwiftUI
 private struct CardOnboarding: Identifiable {
     let id: Int
     let icono: String
-    let titulo: String
-    let descripcion: String
+    let titulo: LocalizedStringKey
+    let descripcion: LocalizedStringKey
     let colorInicio: Color
     let colorFin: Color
 }
@@ -15,24 +15,24 @@ private let cardsInfo: [CardOnboarding] = [
     CardOnboarding(
         id: 0,
         icono: "timer",
-        titulo: String(localized: "onboarding.card1_titulo"),
-        descripcion: String(localized: "onboarding.card1_desc"),
+        titulo: "onboarding.card1_titulo",
+        descripcion: "onboarding.card1_desc",
         colorInicio: .ambar,
         colorFin: .dorado
     ),
     CardOnboarding(
         id: 1,
         icono: "sun.max.fill",
-        titulo: String(localized: "onboarding.card2_titulo"),
-        descripcion: String(localized: "onboarding.card2_desc"),
+        titulo: "onboarding.card2_titulo",
+        descripcion: "onboarding.card2_desc",
         colorInicio: .dorado,
         colorFin: .salvia
     ),
     CardOnboarding(
         id: 2,
         icono: "trophy.fill",
-        titulo: String(localized: "onboarding.card3_titulo"),
-        descripcion: String(localized: "onboarding.card3_desc"),
+        titulo: "onboarding.card3_titulo",
+        descripcion: "onboarding.card3_desc",
         colorInicio: .salvia,
         colorFin: .ambar
     ),
@@ -100,7 +100,7 @@ struct VistaBienvenida: View {
                 }
 
                 // Texto helper
-                Text(String(localized: "bienvenida.despues"))
+                Text("bienvenida.despues")
                     .font(.fuenteCaption)
                     .foregroundStyle(.textoApagado)
                     .opacity(paginaActual == 3 ? 1 : 0)
@@ -183,7 +183,7 @@ struct VistaBienvenida: View {
                 .font(.system(.title, design: .rounded, weight: .bold))
                 .foregroundStyle(.textoPrimario)
 
-            Text(String(localized: "bienvenida.subtitulo"))
+            Text("bienvenida.subtitulo")
                 .font(.fuenteCaption)
                 .foregroundStyle(.textoApagado)
                 .multilineTextAlignment(.center)
@@ -305,7 +305,7 @@ struct VistaBienvenida: View {
                 primerLanzamiento = false
             }
         } label: {
-            Label(String(localized: "bienvenida.comenzar"), systemImage: "checkmark")
+            Label("bienvenida.comenzar", systemImage: "checkmark")
                 .font(.system(.headline, design: .rounded, weight: .bold))
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
@@ -318,11 +318,11 @@ struct VistaBienvenida: View {
     // MARK: Contenido de permisos (página 4)
     private var contenidoPermisos: some View {
         VStack(spacing: Diseno.espaciado) {
-            Text(String(localized: "bienvenida.permisos_titulo"))
+            Text("bienvenida.permisos_titulo")
                 .font(.fuenteTitulo2)
                 .foregroundStyle(.textoPrimario)
 
-            Text(String(localized: "bienvenida.permisos_desc"))
+            Text("bienvenida.permisos_desc")
                 .font(.fuenteCuerpo)
                 .foregroundStyle(.textoSecundario)
                 .multilineTextAlignment(.center)
@@ -332,8 +332,8 @@ struct VistaBienvenida: View {
                 filaPermiso(
                     icono: "location.fill",
                     color: .salvia,
-                    titulo: String(localized: "bienvenida.permiso_ubicacion"),
-                    descripcion: String(localized: "bienvenida.permiso_ubicacion_desc"),
+                    titulo: "bienvenida.permiso_ubicacion",
+                    descripcion: "bienvenida.permiso_ubicacion_desc",
                     activado: $ubicacionActiva
                 ) { activar in
                     if activar { gestorUbicacion.solicitar() }
@@ -342,8 +342,8 @@ struct VistaBienvenida: View {
                 filaPermiso(
                     icono: "bell.badge.fill",
                     color: .ambar,
-                    titulo: String(localized: "bienvenida.permiso_notificaciones"),
-                    descripcion: String(localized: "bienvenida.permiso_notificaciones_desc"),
+                    titulo: "bienvenida.permiso_notificaciones",
+                    descripcion: "bienvenida.permiso_notificaciones_desc",
                     activado: $notificacionesActivas
                 ) { activar in
                     if activar {
@@ -357,8 +357,8 @@ struct VistaBienvenida: View {
                 filaPermiso(
                     icono: "heart.fill",
                     color: .red,
-                    titulo: String(localized: "bienvenida.permiso_salud"),
-                    descripcion: String(localized: "bienvenida.permiso_salud_desc"),
+                    titulo: "bienvenida.permiso_salud",
+                    descripcion: "bienvenida.permiso_salud_desc",
                     activado: $saludActiva
                 ) { activar in
                     if activar {
@@ -376,7 +376,7 @@ struct VistaBienvenida: View {
     // MARK: Fila de permiso
     private func filaPermiso(
         icono: String, color: Color,
-        titulo: String, descripcion: String,
+        titulo: LocalizedStringKey, descripcion: LocalizedStringKey,
         activado: Binding<Bool>,
         alCambiar: @escaping (Bool) -> Void
     ) -> some View {
