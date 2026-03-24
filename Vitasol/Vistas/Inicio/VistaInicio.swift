@@ -39,6 +39,13 @@ struct VistaInicio: View {
         sesiones.first
     }
 
+    private var tiempoTotalHoyTexto: String {
+        let total = sesiones.reduce(0) { $0 + $1.duracionSegundos }
+        let mins = total / 60
+        let segs = total % 60
+        return String(format: "%d:%02d", mins, segs)
+    }
+
     private static let fmtDiaSemana: DateFormatter = {
         let fmt = DateFormatter()
         fmt.dateFormat = "EEEE"
@@ -310,6 +317,10 @@ struct VistaInicio: View {
                 Text(Textos.Inicio.metaHoyCumplida)
                     .font(.fuenteCabecera)
                     .foregroundStyle(.textoPrimario)
+
+                Label(tiempoTotalHoyTexto, systemImage: "clock.fill")
+                    .font(.fuenteCaption)
+                    .foregroundStyle(.textoSecundario)
             }
 
             Spacer()
