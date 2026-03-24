@@ -2986,6 +2986,38 @@
         }
       }
     },
+    "sesion.alerta_detener_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop session?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Detener sesión?"
+          }
+        }
+      }
+    },
+    "sesion.alerta_detener_mensaje" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to save the session progress or discard it?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Quieres guardar el progreso de la sesión o descartarlo?"
+          }
+        }
+      }
+    },
     "sesion.alerta_exceso_diario_titulo" : {
       "localizations" : {
         "en" : {

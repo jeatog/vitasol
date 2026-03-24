@@ -22,6 +22,7 @@ struct VistaSesion: View {
     @State private var mostrarAlertaUVAlto      = false
     @State private var mostrarAlertaMalClima    = false
     @State private var mostrarAlertaExcesoDiario = false
+    @State private var mostrarAlertaDetener     = false
     @State private var pausado                  = false
 
     private let maxDiarioRecomendado = 20 // minutos
@@ -106,6 +107,21 @@ struct VistaSesion: View {
                 Button(Textos.General.cancelar, role: .cancel) {}
             } message: {
                 Text(Textos.Sesion.alertaExcesoDiarioMensaje((segundosHoy + 59) / 60, maxDiarioRecomendado))
+            }
+            .alert(Textos.Sesion.alertaDetenerTitulo, isPresented: $mostrarAlertaDetener) {
+                Button(Textos.General.guardar) {
+                    withAnimation {
+                        guardarSesion(completada: false)
+                        pausado = false
+                    }
+                }
+                Button(Textos.General.descartar, role: .destructive) {
+                    gestorSesion.reiniciar()
+                    pausado = false
+                }
+                Button(Textos.General.cancelar, role: .cancel) {}
+            } message: {
+                Text(Textos.Sesion.alertaDetenerMensaje)
             }
             .onChange(of: gestorSesion.completo) { _, terminado in
                 if terminado {
@@ -220,10 +236,7 @@ struct VistaSesion: View {
                 .accessibilityLabel(pausado ? String(localized: "sesion.reanudar") : String(localized: "sesion.pausar"))
 
                 Button {
-                    withAnimation {
-                        guardarSesion(completada: false)
-                        pausado = false
-                    }
+                    mostrarAlertaDetener = true
                 } label: {
                     Image(systemName: "stop.fill")
                         .font(.system(size: 20, weight: .semibold))
@@ -329,7 +342,11 @@ struct VistaSesion: View {
 
     // MARK: Guardar sesión
     private func guardarSesion(completada: Bool) {
-        guard gestorSesion.segundosSesion > 0 else { return }
+        // No guardar sesiones de menos de 60 segundos (evita datos basura)
+        guard gestorSesion.segundosSesion >= 60 else {
+            gestorSesion.reiniciar()
+            return
+        }
         let duracion = gestorSesion.segundosSesion
         let ahora    = Date.now
         let sesion   = SesionSolar(
