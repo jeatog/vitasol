@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "es-419",
   "strings" : {
+    "¡Sesión completada!" : {
+
+    },
     "%lld" : {
 
     },
@@ -25,6 +28,7 @@
       }
     },
     "live.sesion_completada" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -41,6 +45,7 @@
       }
     },
     "live.sesion_solar" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -55,6 +60,15 @@
           }
         }
       }
+    },
+    "Sesión solar" : {
+
+    },
+    "Session completed!" : {
+
+    },
+    "Solar session" : {
+
     },
     "widget.buenas_noches" : {
       "localizations" : {

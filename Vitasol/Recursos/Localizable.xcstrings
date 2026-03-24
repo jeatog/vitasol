@@ -2795,6 +2795,7 @@
       }
     },
     "notificacion.cuerpo_default" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2811,6 +2812,7 @@
       }
     },
     "notificacion.sesion_completada_cuerpo %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2827,6 +2829,7 @@
       }
     },
     "notificacion.sesion_completada_titulo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2843,6 +2846,7 @@
       }
     },
     "notificacion.titulo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2954,6 +2958,38 @@
         }
       }
     },
+    "sesion.alerta_detener_mensaje" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to save the session progress or discard it?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Quieres guardar el progreso de la sesión o descartarlo?"
+          }
+        }
+      }
+    },
+    "sesion.alerta_detener_titulo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop session?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Detener sesión?"
+          }
+        }
+      }
+    },
     "sesion.alerta_exceso_diario_continuar" : {
       "localizations" : {
         "en" : {
@@ -2982,38 +3018,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ya llevas %lld minutos de sol hoy. El máximo recomendado es %lld minutos al día. Iniciar esta sesión superará ese límite."
-          }
-        }
-      }
-    },
-    "sesion.alerta_detener_titulo" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stop session?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Detener sesión?"
-          }
-        }
-      }
-    },
-    "sesion.alerta_detener_mensaje" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Do you want to save the session progress or discard it?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Quieres guardar el progreso de la sesión o descartarlo?"
           }
         }
       }
