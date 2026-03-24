@@ -135,7 +135,7 @@ struct VistaEstadisticas: View {
                     .foregroundStyle(.textoApagado)
                     .textCase(.uppercase)
                     .tracking(0.8)
-                Text(String(localized: "estadisticas.dias \(racha)"))
+                Text(Textos.Estadisticas.dias(racha))
                     .font(.system(.title, design: .rounded, weight: .bold))
                     .foregroundStyle(.textoPrimario)
                     .contentTransition(.numericText())
