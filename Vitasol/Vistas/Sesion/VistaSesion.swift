@@ -33,8 +33,8 @@ struct VistaSesion: View {
         )
     }
 
-    private var minutosHoy: Int {
-        sesionesHoy.reduce(0) { $0 + $1.duracionSegundos } / 60
+    private var segundosHoy: Int {
+        sesionesHoy.reduce(0) { $0 + $1.duracionSegundos }
     }
 
     private var tempFormateada: String {
@@ -105,7 +105,7 @@ struct VistaSesion: View {
                 }
                 Button(Textos.General.cancelar, role: .cancel) {}
             } message: {
-                Text(Textos.Sesion.alertaExcesoDiarioMensaje(minutosHoy, maxDiarioRecomendado))
+                Text(Textos.Sesion.alertaExcesoDiarioMensaje((segundosHoy + 59) / 60, maxDiarioRecomendado))
             }
             .onChange(of: gestorSesion.completo) { _, terminado in
                 if terminado {
@@ -240,12 +240,14 @@ struct VistaSesion: View {
             } else {
                 Button {
                     if gestorSesion.segundosSesion == 0 {
-                        if uvActual >= 8 {
+                        let segundosSesion = duracionMinutos * 60
+                        let excedeMaxDiario = segundosHoy + segundosSesion > maxDiarioRecomendado * 60
+                        if excedeMaxDiario {
+                            mostrarAlertaExcesoDiario = true
+                        } else if uvActual >= 8 {
                             mostrarAlertaUVAlto = true
                         } else if !gestorClima.esBuenDia && gestorClima.tieneDatos {
                             mostrarAlertaMalClima = true
-                        } else if minutosHoy + duracionMinutos > maxDiarioRecomendado {
-                            mostrarAlertaExcesoDiario = true
                         } else {
                             gestorSesion.iniciar(duracionMinutos: duracionMinutos)
                             pausado = false

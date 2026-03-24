@@ -72,13 +72,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The recommended session time is 15 minutes. Longer exposure increases the risk of skin damage."
+            "value" : "The recommended maximum is 20 minutes per day. Longer exposure increases the risk of skin damage."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El tiempo recomendado de sesión es 15 minutos. Una exposición más larga aumenta el riesgo de daño en la piel."
+            "value" : "El máximo recomendado es 20 minutos al día. Una exposición más larga aumenta el riesgo de daño en la piel."
           }
         }
       }
@@ -104,13 +104,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dermatologists recommend no more than 15–20 minutes of direct sun exposure per day for vitamin D synthesis."
+            "value" : "Dermatologists recommend no more than 20 minutes of direct sun exposure per day for vitamin D synthesis."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Los dermatólogos recomiendan no más de 15–20 minutos de exposición solar directa al día para la síntesis de vitamina D."
+            "value" : "Los dermatólogos recomiendan no más de 20 minutos de exposición solar directa al día para la síntesis de vitamina D."
           }
         }
       }
@@ -1142,6 +1142,9 @@
           }
         }
       }
+    },
+    "Choose your language" : {
+
     },
     "clima.chubascos" : {
       "localizations" : {

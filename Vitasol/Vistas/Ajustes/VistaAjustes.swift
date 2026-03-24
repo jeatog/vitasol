@@ -189,7 +189,7 @@ struct VistaAjustes: View {
                     get: { Double(duracionMinutos) },
                     set: { nuevo in
                         let valor = Int(nuevo)
-                        if valor > 15 && duracionMinutos <= 15 {
+                        if valor > 20 && duracionMinutos <= 20 {
                             mostrarAlertaDuracion = true
                         } else {
                             duracionMinutos = valor
@@ -215,7 +215,7 @@ struct VistaAjustes: View {
         .tarjetaVidrio()
         .alert(Textos.Ajustes.duracionAlertaTitulo, isPresented: $mostrarAlertaDuracion) {
             Button(Textos.Ajustes.duracionAlertaContinuar) {
-                duracionMinutos = 20
+                duracionMinutos = 25
             }
             Button(Textos.General.cancelar, role: .cancel) {}
         } message: {
