@@ -49,9 +49,15 @@ struct VistaBienvenida: View {
     @AppStorage("ubicacionActiva")       private var ubicacionActiva      = false
     @AppStorage("saludActiva")           private var saludActiva          = false
     @AppStorage("primerLanzamiento")     private var primerLanzamiento    = true
+    @AppStorage("idiomaApp")             private var idiomaApp            = "es"
 
-    @State private var paginaActual = 0
-    private let totalPaginas = 4 // 3 info + 1 permisos
+    @State private var paginaActual = -1 // -1 = idioma, 0-2 = cards, 3 = permisos
+    private let totalPaginas = 5 // 1 idioma + 3 info + 1 permisos
+
+    private var idiomaDetectado: String {
+        let lang = Locale.current.language.languageCode?.identifier ?? "es"
+        return lang == "en" ? "en" : "es"
+    }
 
     var body: some View {
         ZStack {
@@ -66,8 +72,11 @@ struct VistaBienvenida: View {
 
                 Spacer()
 
-                // Carrusel o permisos
-                if paginaActual < 3 {
+                // Idioma, carrusel o permisos
+                if paginaActual == -1 {
+                    selectorIdioma
+                        .transition(.opacity)
+                } else if paginaActual < 3 {
                     carrusel3D
                         .transition(.opacity)
                 } else {
@@ -77,12 +86,14 @@ struct VistaBienvenida: View {
 
                 Spacer()
 
-                // Indicadores de página
-                indicadores
-                    .padding(.bottom, 20)
+                // Indicadores de página (no se muestran en la pantalla de idioma)
+                if paginaActual >= 0 {
+                    indicadores
+                        .padding(.bottom, 20)
+                }
 
-                // Botón (solo visible en la última)
-                if paginaActual == totalPaginas - 1 {
+                // Botón comenzar (solo en la última)
+                if paginaActual == 3 {
                     botonComenzar
                         .transition(.move(edge: .bottom).combined(with: .opacity))
                         .padding(.bottom, 10)
@@ -92,11 +103,56 @@ struct VistaBienvenida: View {
                 Text(String(localized: "bienvenida.despues"))
                     .font(.fuenteCaption)
                     .foregroundStyle(.textoApagado)
-                    .opacity(paginaActual == totalPaginas - 1 ? 1 : 0)
+                    .opacity(paginaActual == 3 ? 1 : 0)
                     .padding(.bottom, 30)
             }
         }
         .animation(.spring(response: 0.5), value: paginaActual)
+        .onAppear {
+            idiomaApp = idiomaDetectado
+        }
+    }
+
+    // MARK: Selector de idioma (pantalla 0)
+    private var selectorIdioma: some View {
+        VStack(spacing: 24) {
+            Text("Choose your language")
+                .font(.fuenteTitulo2)
+                .foregroundStyle(.textoApagado)
+
+            VStack(spacing: Diseno.rellenoS) {
+                botonIdioma(nombre: "Español", codigo: "es", bandera: "🇲🇽")
+                botonIdioma(nombre: "English", codigo: "en", bandera: "🇺🇸")
+            }
+            .padding(.horizontal, Diseno.rellenoG)
+        }
+    }
+
+    private func botonIdioma(nombre: String, codigo: String, bandera: String) -> some View {
+        Button {
+            idiomaApp = codigo
+            withAnimation { paginaActual = 0 }
+        } label: {
+            HStack(spacing: 14) {
+                Text(bandera)
+                    .font(.system(size: 28))
+
+                Text(nombre)
+                    .font(.fuenteCabecera)
+                    .foregroundStyle(.textoPrimario)
+
+                Spacer()
+
+                if idiomaApp == codigo {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(.ambar)
+                        .font(.system(size: 20))
+                }
+            }
+            .padding(Diseno.rellenoS + 4)
+            .tarjetaVidrio()
+        }
+        .buttonStyle(EstiloBotonTarjeta())
     }
 
     // MARK: Logo blur de fondo
@@ -223,11 +279,11 @@ struct VistaBienvenida: View {
         .glassEffect(in: RoundedRectangle(cornerRadius: Diseno.radio, style: .continuous))
     }
 
-    // MARK: Indicadores de página
+    // MARK: Indicadores de página (4: cards 0-2 + permisos)
     private var indicadores: some View {
         HStack(spacing: 8) {
-            ForEach(0..<totalPaginas, id: \.self) { indice in
-                if indice == totalPaginas - 1 {
+            ForEach(0..<4, id: \.self) { indice in
+                if indice == 3 {
                     // Último es checkmark
                     Image(systemName: paginaActual == indice ? "checkmark.circle.fill" : "checkmark.circle")
                         .font(.system(size: 10))
