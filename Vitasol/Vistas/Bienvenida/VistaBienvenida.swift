@@ -52,7 +52,7 @@ struct VistaBienvenida: View {
     @AppStorage("idiomaApp")             private var idiomaApp            = "es"
 
     @State private var paginaActual = -1 // -1 = idioma, 0-2 = cards, 3 = permisos
-    private let totalPaginas = 5 // 1 idioma + 3 info + 1 permisos
+    private let ultimaPagina = 3 // permisos
 
     private var idiomaDetectado: String {
         let lang = Locale.current.language.languageCode?.identifier ?? "es"
@@ -108,6 +108,10 @@ struct VistaBienvenida: View {
             }
         }
         .animation(.spring(response: 0.5), value: paginaActual)
+        .onChange(of: paginaActual) { _, nueva in
+            // Clamp para evitar ir más allá de los permisos
+            if nueva > ultimaPagina { paginaActual = ultimaPagina }
+        }
         .onAppear {
             idiomaApp = idiomaDetectado
         }
@@ -183,11 +187,13 @@ struct VistaBienvenida: View {
                 .font(.system(.title, design: .rounded, weight: .bold))
                 .foregroundStyle(.textoPrimario)
 
-            Text("bienvenida.subtitulo")
-                .font(.fuenteCaption)
-                .foregroundStyle(.textoApagado)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, Diseno.rellenoG)
+            if paginaActual >= 0 {
+                Text("bienvenida.subtitulo")
+                    .font(.fuenteCaption)
+                    .foregroundStyle(.textoApagado)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, Diseno.rellenoG)
+            }
         }
     }
 
@@ -223,7 +229,7 @@ struct VistaBienvenida: View {
             .gesture(
                 DragGesture(minimumDistance: 30)
                     .onEnded { value in
-                        if value.translation.width < -50 && paginaActual < totalPaginas - 1 {
+                        if value.translation.width < -50 && paginaActual < ultimaPagina {
                             paginaActual += 1
                         } else if value.translation.width > 50 && paginaActual > 0 {
                             paginaActual -= 1
