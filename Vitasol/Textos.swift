@@ -197,22 +197,25 @@ enum Textos {
     }
 
     // MARK: Notificación
-    // Usa locale explícito porque las notificaciones no respetan .environment(\.locale)
+    // Usa traducciones inline porque String(localized:locale:) y NSLocalizedString
+    // no respetan el idioma de la app (usan el del sistema) con xcstrings es-419.
     enum Notificacion {
-        private static var locale: Locale {
-            Locale(identifier: UserDefaults.standard.string(forKey: "idiomaApp") ?? "es")
+        private static var esIngles: Bool {
+            UserDefaults.standard.string(forKey: "idiomaApp") == "en"
         }
         static var titulo: String {
-            String(localized: "notificacion.titulo", locale: locale)
+            esIngles ? "Your Sun Dose ☀️" : "Tu dosis de sol ☀️"
         }
         static var cuerpoDefault: String {
-            String(localized: "notificacion.cuerpo_default", locale: locale)
+            esIngles ? "Time for your sun dose!" : "¡Hora de tu dosis de sol!"
         }
         static var sesionCompletadaTitulo: String {
-            String(localized: "notificacion.sesion_completada_titulo", locale: locale)
+            esIngles ? "Session completed!" : "¡Sesión completada!"
         }
         static func sesionCompletadaCuerpo(_ mins: Int) -> String {
-            String(localized: "notificacion.sesion_completada_cuerpo \(mins)", locale: locale)
+            esIngles
+                ? "Your \(mins)-minute sun session is done."
+                : "Tu sesión solar de \(mins) minutos ha terminado."
         }
     }
 

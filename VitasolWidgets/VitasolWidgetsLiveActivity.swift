@@ -17,7 +17,7 @@ private struct BannerSesion: View {
         context.state.fechaFin.addingTimeInterval(-Double(context.attributes.duracionSegundos))
     }
 
-    private var locale: Locale { Locale(identifier: context.attributes.idioma) }
+    private var esIngles: Bool { context.attributes.idioma == "en" }
 
     var body: some View {
         HStack(spacing: 14) {
@@ -29,8 +29,8 @@ private struct BannerSesion: View {
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text(context.isStale
-                         ? String(localized: "live.sesion_completada", locale: locale)
-                         : String(localized: "live.sesion_solar", locale: locale))
+                         ? (esIngles ? "Session completed!" : "¡Sesión completada!")
+                         : (esIngles ? "Solar session" : "Sesión solar"))
                         .font(.system(size: 13, weight: .semibold, design: .rounded))
                         .foregroundStyle(.primary)
 
@@ -93,9 +93,9 @@ struct VitasolWidgetsLiveActivity: Widget {
                 }
 
                 DynamicIslandExpandedRegion(.center) {
-                    let locale = Locale(identifier: context.attributes.idioma)
+                    let esEn = context.attributes.idioma == "en"
                     if context.isStale {
-                        Text(String(localized: "live.sesion_completada", locale: locale))
+                        Text(esEn ? "Session completed!" : "¡Sesión completada!")
                             .font(.system(size: 15, weight: .semibold, design: .rounded))
                             .foregroundStyle(.primary)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
