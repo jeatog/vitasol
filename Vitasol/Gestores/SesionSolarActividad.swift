@@ -11,4 +11,5 @@ struct SesionSolarActividad: ActivityAttributes {
 
     // Atributos estáticos
     var duracionSegundos: Int
+    var idioma: String
 }

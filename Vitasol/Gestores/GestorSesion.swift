@@ -148,7 +148,8 @@ final class GestorSesion {
 
     private func iniciarActividad() {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
-        let atributos = SesionSolarActividad(duracionSegundos: segundosObjetivo)
+        let idioma = UserDefaults.standard.string(forKey: "idiomaApp") ?? "es"
+        let atributos = SesionSolarActividad(duracionSegundos: segundosObjetivo, idioma: idioma)
         let fechaFin  = Date.now.addingTimeInterval(Double(segundosObjetivo))
         let estado    = SesionSolarActividad.ContentState(progreso: 0, fechaFin: fechaFin)
         actividad = try? Activity.request(

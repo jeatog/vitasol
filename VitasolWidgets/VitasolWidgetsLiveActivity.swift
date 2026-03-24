@@ -17,6 +17,8 @@ private struct BannerSesion: View {
         context.state.fechaFin.addingTimeInterval(-Double(context.attributes.duracionSegundos))
     }
 
+    private var locale: Locale { Locale(identifier: context.attributes.idioma) }
+
     var body: some View {
         HStack(spacing: 14) {
             Image(systemName: context.isStale ? "checkmark.circle.fill" : "sun.min.fill")
@@ -26,7 +28,9 @@ private struct BannerSesion: View {
 
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
-                    Text(context.isStale ? String(localized: "live.sesion_completada") : String(localized: "live.sesion_solar"))
+                    Text(context.isStale
+                         ? String(localized: "live.sesion_completada", locale: locale)
+                         : String(localized: "live.sesion_solar", locale: locale))
                         .font(.system(size: 13, weight: .semibold, design: .rounded))
                         .foregroundStyle(.primary)
 
@@ -89,8 +93,9 @@ struct VitasolWidgetsLiveActivity: Widget {
                 }
 
                 DynamicIslandExpandedRegion(.center) {
+                    let locale = Locale(identifier: context.attributes.idioma)
                     if context.isStale {
-                        Text(String(localized: "live.sesion_completada"))
+                        Text(String(localized: "live.sesion_completada", locale: locale))
                             .font(.system(size: 15, weight: .semibold, design: .rounded))
                             .foregroundStyle(.primary)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -163,7 +168,7 @@ struct VitasolWidgetsLiveActivity: Widget {
 
 extension SesionSolarActividad {
     fileprivate static var preview: SesionSolarActividad {
-        SesionSolarActividad(duracionSegundos: 900)
+        SesionSolarActividad(duracionSegundos: 900, idioma: "es")
     }
 }
 

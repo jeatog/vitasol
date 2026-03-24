@@ -197,18 +197,22 @@ enum Textos {
     }
 
     // MARK: Notificación
+    // Usa locale explícito porque las notificaciones no respetan .environment(\.locale)
     enum Notificacion {
+        private static var locale: Locale {
+            Locale(identifier: UserDefaults.standard.string(forKey: "idiomaApp") ?? "es")
+        }
         static var titulo: String {
-            String(localized: "notificacion.titulo")
+            String(localized: "notificacion.titulo", locale: locale)
         }
         static var cuerpoDefault: String {
-            String(localized: "notificacion.cuerpo_default")
+            String(localized: "notificacion.cuerpo_default", locale: locale)
         }
         static var sesionCompletadaTitulo: String {
-            String(localized: "notificacion.sesion_completada_titulo")
+            String(localized: "notificacion.sesion_completada_titulo", locale: locale)
         }
         static func sesionCompletadaCuerpo(_ mins: Int) -> String {
-            String(localized: "notificacion.sesion_completada_cuerpo \(mins)")
+            String(localized: "notificacion.sesion_completada_cuerpo \(mins)", locale: locale)
         }
     }
 
