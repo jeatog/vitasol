@@ -23,6 +23,19 @@ final class GestorSesion {
     // MARK: Manejamos estado en background
 
     init() {
+        // Limpiar actividades huérfanas de sesiones anteriores (ej. si la app fue cerrada)
+        Task {
+            for actividad in Activity<SesionSolarActividad>.activities {
+                await actividad.end(
+                    ActivityContent(
+                        state: SesionSolarActividad.ContentState(progreso: 1.0, fechaFin: .now),
+                        staleDate: nil
+                    ),
+                    dismissalPolicy: .immediate
+                )
+            }
+        }
+
         // Al ir a background se pausa el timer y anota la hora
         tareaBackground = Task { @MainActor [weak self] in
             for await _ in NotificationCenter.default.notifications(
